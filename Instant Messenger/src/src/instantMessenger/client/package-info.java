@@ -5,4 +5,4 @@
  * @author Joshua
  *
  */
-package src.instantMessenger.net;
+package src.instantMessenger.client;
