@@ -6,6 +6,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import src.instantMessenger.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,7 @@ import javax.swing.JButton;
 public final class ClientGUI extends JFrame {
 
 	public static void main(String[] args) {
-		new ClientGUI();
+		ClientGUI x = new ClientGUI();
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -39,15 +40,19 @@ public final class ClientGUI extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		//chatFeedPane = new JScrollPane(chatFeed);
-//		add(chatFeedPane);
+		setResizable(true);
 		
 		chatFeed = new JTextArea();
 		chatFeed.setEditable(true);
+		chatFeed.setLineWrap(true);
+		chatFeed.setWrapStyleWord(true);
+		chatFeed.setFont(Constants.CHAT_FONT);
+		
 		chatFeedPane = new JScrollPane(chatFeed);
 		chatFeedPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		chatFeedPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		chatFeed.setLineWrap(true);
+		
+		
 		add(chatFeedPane);
 		setSize(500, 300);
 	}
@@ -56,17 +61,23 @@ public final class ClientGUI extends JFrame {
 		Client.sendMessage(message);
 	}
 
-
+	JMenu getCientMenu() {
+		return clientMenu;
+	}
+	
+	JTextArea getChatFeed() {
+		return chatFeed;
+	}
+	
+	JScrollPane getChatFeedPane() {
+		return chatFeedPane;
+	}
+	
 	JTextField getMessageField() {
 		return messageField;
 	}
-
-	JScrollPane getchatFeedPane() {
-		return chatFeedPane;
-	}
-
+	
 	JButton getSendButton() {
 		return sendButton;
 	}
-
 }
