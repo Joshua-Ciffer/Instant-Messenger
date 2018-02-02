@@ -10,4 +10,6 @@ public interface Constants {
 	
 	public static final Font CHAT_FONT_BOLD = new Font("Courier new", Font.BOLD, 12);
 	
+	public static final int ENTER_KEY = 13;
+	
 }
