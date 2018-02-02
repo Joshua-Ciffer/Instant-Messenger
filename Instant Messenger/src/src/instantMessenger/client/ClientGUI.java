@@ -1,6 +1,8 @@
 package src.instantMessenger.client;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
@@ -27,8 +29,20 @@ public final class ClientGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private JMenu clientMenu;
+	private final Client client = new Client();
+	
+	private JMenuBar clientMenuBar;
 
+	private JMenu fileMenu;
+	
+	private JMenu editMenu;
+	
+	private JMenu connectionMenu;
+	
+	private JMenuItem exitItem;
+	
+	private JMenuItem saveLogButton;
+	
 	private JTextArea chatFeed;
 
 	private JScrollPane chatFeedPane;
@@ -39,18 +53,36 @@ public final class ClientGUI extends JFrame {
 
 	private JButton sendButton;
 	
-	private KeyListener enterKeyListener;
 
 	ClientGUI() {
 		super("Instant Messenger Client");
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setResizable(true);
+		setResizable(false);
 		setLayout(null);
 
+		clientMenuBar = new JMenuBar();
+		
+		fileMenu = new JMenu("File");
+		
+		connectionMenu = new JMenu("Connection");
+		
+		saveLogButton = new JMenuItem("Save Chat Log");
+		
+		exitItem = new JMenuItem("Exit");
+		exitItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				System.exit(0);
+			}
+		});
+		clientMenuBar.add(fileMenu);
+		clientMenuBar.add(connectionMenu);
+		clientMenuBar.add(exitItem);
+		fileMenu.add(saveLogButton);
+		
 		chatFeed = new JTextArea();
-		chatFeed.setEditable(true);
+		chatFeed.setEditable(false);
 		chatFeed.setLineWrap(true);
 		chatFeed.setWrapStyleWord(true);
 		chatFeed.setFont(Constants.CHAT_FONT);
@@ -76,60 +108,24 @@ public final class ClientGUI extends JFrame {
 			}
 		});
 		
-		enterKeyListener = new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent k) {
-				if (k.getKeyCode() == Constants.ENTER_KEY) {
-					sendMessage();
-				}
-			}
-
-			@Override
-			public void keyReleased(KeyEvent k) {}
-
-			@Override
-			public void keyTyped(KeyEvent k) {}
-		};
 		
-		addKeyListener(enterKeyListener);
-		chatFeed.addKeyListener(enterKeyListener);
-		messageField.addKeyListener(enterKeyListener);
-		sendButton.addKeyListener(enterKeyListener);
 		
+		add(clientMenuBar);
 		add(chatFeedPane);
 		add(messageFieldPane);
 		add(sendButton);
 		setSize(500, 300);
-		chatFeedPane.setBounds(0, 0, 485, 200);
-		messageFieldPane.setBounds(0, 200, 410, 65);
-		sendButton.setBounds(410, 200, 75, 64);
-
+		clientMenuBar.setBounds(0, 0, 500, 20);
+		chatFeedPane.setBounds(0, 20, 485, 195);
+		messageFieldPane.setBounds(0, 215, 410, 50);
+		sendButton.setBounds(410, 215, 75, 49);
+		
 	}
 
 	public void sendMessage() {
-		Client.sendMessage(messageField.getText());
-		System.out.println(messageField.getText());
+		client.sendMessage(messageField.getText());
 		chatFeed.append(messageField.getText() + "\n");
-		messageField.setText("");
+		messageField.setText(null);
 	}
-
-	JMenu getCientMenu() {
-		return clientMenu;
-	}
-
-	JTextArea getChatFeed() {
-		return chatFeed;
-	}
-
-	JScrollPane getChatFeedPane() {
-		return chatFeedPane;
-	}
-
-	JTextArea getMessageField() {
-		return messageField;
-	}
-
-	JButton getSendButton() {
-		return sendButton;
-	}
+	
 }
