@@ -81,7 +81,7 @@ public final class ClientGUI extends JFrame {
 		clientMenuBar.add(connectionMenu);
 		clientMenuBar.add(exitItem);
 		fileMenu.add(saveLogButton);
-		// jksfkjsdbffsdfjkb
+		
 		chatFeed = new JTextArea();
 		chatFeed.setEditable(false);
 		chatFeed.setLineWrap(true);
