@@ -29,20 +29,20 @@ public final class ClientGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private final Client client = new Client();
-	
+	private final Client client;
+
 	private JMenuBar clientMenuBar;
 
 	private JMenu fileMenu;
-	
+
 	private JMenu editMenu;
-	
+
 	private JMenu connectionMenu;
-	
+
 	private JMenuItem exitItem;
-	
+
 	private JMenuItem saveLogButton;
-	
+
 	private JTextArea chatFeed;
 
 	private JScrollPane chatFeedPane;
@@ -52,35 +52,36 @@ public final class ClientGUI extends JFrame {
 	private JScrollPane messageFieldPane;
 
 	private JButton sendButton;
-	
 
 	ClientGUI() {
 		super("Instant Messenger Client");
-		setVisible(true);
+		client = new Client();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setLayout(null);
 
 		clientMenuBar = new JMenuBar();
-		
+
 		fileMenu = new JMenu("File");
-		
+
 		connectionMenu = new JMenu("Connection");
-		
+
 		saveLogButton = new JMenuItem("Save Chat Log");
-		
+
 		exitItem = new JMenuItem("Exit");
+
 		exitItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
 				System.exit(0);
 			}
 		});
+		
 		clientMenuBar.add(fileMenu);
 		clientMenuBar.add(connectionMenu);
 		clientMenuBar.add(exitItem);
 		fileMenu.add(saveLogButton);
-		
+		// jksfkjsdbffsdfjkb
 		chatFeed = new JTextArea();
 		chatFeed.setEditable(false);
 		chatFeed.setLineWrap(true);
@@ -107,9 +108,7 @@ public final class ClientGUI extends JFrame {
 				sendMessage();
 			}
 		});
-		
-		
-		
+
 		add(clientMenuBar);
 		add(chatFeedPane);
 		add(messageFieldPane);
@@ -119,13 +118,13 @@ public final class ClientGUI extends JFrame {
 		chatFeedPane.setBounds(0, 20, 485, 195);
 		messageFieldPane.setBounds(0, 215, 410, 50);
 		sendButton.setBounds(410, 215, 75, 49);
-		
+		setVisible(true);
 	}
 
-	public void sendMessage() {
+	private void sendMessage() {
 		client.sendMessage(messageField.getText());
-		chatFeed.append(messageField.getText() + "\n");
+		chatFeed.append(client.getUserName() + " " + Constants.getTime() + " - " + messageField.getText() + "\n");
 		messageField.setText(null);
 	}
-	
+
 }

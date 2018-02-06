@@ -29,17 +29,17 @@ public class Client {
 	Client() {
 		serverIP = "192.168.1.1";
 		serverPort = 2075;
-		connectToServer();
+		//connectToServer();
 
 	}
 
 	void sendMessage(String message) {
-		try {
-			outgoingTraffic.writeObject(userName + " " + Constants.getTime() + " - " + message + "\n");
-			outgoingTraffic.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			outgoingTraffic.writeObject(userName + " " + Constants.getTime() + " - " + message + "\n");
+//			outgoingTraffic.flush();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	void connectToServer() {
