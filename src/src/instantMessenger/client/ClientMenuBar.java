@@ -2,6 +2,7 @@ package src.instantMessenger.client;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +18,9 @@ public class ClientMenuBar extends JMenuBar {
 
 	private final JMenu fileMenu;
 	
-	private final JMenuItem saveChatLogButton;
+	private final JMenuItem changeUserNameItem;
+	
+	private final JMenuItem saveChatLogItem;
 	
 	private final JMenu editMenu;
 
@@ -29,21 +32,31 @@ public class ClientMenuBar extends JMenuBar {
 
 	private final JMenuItem exitItem;
 	
-	ClientMenuBar(ClientGUI parentGUI) {
+	ClientMenuBar(ClientFrame parentFrame) {
 		super();
 		fileMenu = new JMenu("File");
 		fileMenu.setVerticalAlignment(SwingConstants.CENTER);
 		fileMenu.setHorizontalAlignment(SwingConstants.LEFT);
-		saveChatLogButton = new JMenuItem("Save Chat Log...");
-		saveChatLogButton.setVerticalAlignment(SwingConstants.CENTER);
-		saveChatLogButton.setHorizontalAlignment(SwingConstants.LEFT);
-		saveChatLogButton.addActionListener(new ActionListener() {
+		changeUserNameItem = new JMenuItem("Change User Name...");
+		changeUserNameItem.setVerticalAlignment(SwingConstants.CENTER);
+		changeUserNameItem.setHorizontalAlignment(SwingConstants.LEFT);
+		changeUserNameItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				new SaveChatLogDialog(parentGUI);
+				new ChangeUserNameDialog(parentFrame);
 			}
 		});
-		fileMenu.add(saveChatLogButton);
+		saveChatLogItem = new JMenuItem("Save Chat Log...");
+		saveChatLogItem.setVerticalAlignment(SwingConstants.CENTER);
+		saveChatLogItem.setHorizontalAlignment(SwingConstants.LEFT);
+		saveChatLogItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+				new SaveChatLogDialog(parentFrame);
+			}
+		});
+		fileMenu.add(changeUserNameItem);
+		fileMenu.add(saveChatLogItem);
 		editMenu = new JMenu("Edit");
 		editMenu.setVerticalAlignment(SwingConstants.CENTER);
 		editMenu.setHorizontalAlignment(SwingConstants.LEFT);
@@ -65,7 +78,7 @@ public class ClientMenuBar extends JMenuBar {
 		disconnectItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				parentGUI.disconnect();
+				parentFrame.disconnect();
 			}
 		});
 		connectionMenu.add(connectToServerItem);
@@ -76,7 +89,7 @@ public class ClientMenuBar extends JMenuBar {
 		exitItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				parentGUI.terminate();
+				parentFrame.terminate();
 			}
 		});
 		add(fileMenu);
