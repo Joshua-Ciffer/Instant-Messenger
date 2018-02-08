@@ -25,7 +25,7 @@ public class SaveChatLogDialog extends JFileChooser {
 	
 	private Scanner chatLogParser;
 	
-	SaveChatLogDialog(ClientGUI parentGUI) {
+	SaveChatLogDialog(ClientFrame parentFrame) {
 		super();
 		setDialogTitle("Save Chat Log");
 		setDialogType(JFileChooser.SAVE_DIALOG);
@@ -33,7 +33,7 @@ public class SaveChatLogDialog extends JFileChooser {
 		setFileFilter(textFile = new FileNameExtensionFilter("Text file", "txt"));
 		setApproveButtonText("Save");
 		setApproveButtonToolTipText("Save the log of your chat history.");
-		if (showSaveDialog(parentGUI) == JFileChooser.APPROVE_OPTION) {
+		if (showSaveDialog(parentFrame) == JFileChooser.APPROVE_OPTION) {
 			chatLog = getSelectedFile();
 			if (!textFile.accept(chatLog)) {
 				chatLog = new File(chatLog.getPath() + ".txt");
@@ -42,7 +42,7 @@ public class SaveChatLogDialog extends JFileChooser {
 				fileWriter = new PrintWriter(chatLog);
 				chatLog.createNewFile();
 				chatLog.setWritable(true);
-				chatLogParser = new Scanner(parentGUI.getChatLog());
+				chatLogParser = new Scanner(parentFrame.getChatLog());
 				chatLogParser.useDelimiter("\n");
 				while (chatLogParser.hasNext()) {
 					fileWriter.println(chatLogParser.next());
