@@ -12,7 +12,7 @@ import src.instantMessenger.util.Constants;
  * @author Joshua Ciffer
  * @version 02/08/2018
  */
-public class Client {
+public final class Client {
 
 	private Socket serverConnection;
 

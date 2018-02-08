@@ -9,7 +9,7 @@ import src.instantMessenger.util.Constants;
  * @author Joshua Ciffer
  * @version 02/08/2018
  */
-public class ChatFeedPanel extends JPanel {
+final class ChatFeedPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,10 +36,6 @@ public class ChatFeedPanel extends JPanel {
 	
 	JTextArea getChatFeed() {
 		return chatFeed;
-	}
-	
-	String getChatLog() {
-		return chatFeed.getText();
 	}
 	
 }

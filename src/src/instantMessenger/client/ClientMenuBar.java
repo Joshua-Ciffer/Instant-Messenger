@@ -12,25 +12,25 @@ import java.awt.event.ActionListener;
  * @author Joshua Ciffer
  * @version 02/08/2018
  */
-public class ClientMenuBar extends JMenuBar {
+final class ClientMenuBar extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
 
-	private final JMenu fileMenu;
+	private JMenu fileMenu;
 	
-	private final JMenuItem changeUserNameItem;
+	private JMenuItem changeUserNameItem;
 	
-	private final JMenuItem saveChatLogItem;
+	private JMenuItem saveChatLogItem;
 	
-	private final JMenu editMenu;
+	private JMenu editMenu;
 
-	private final JMenu connectionMenu;
+	private JMenu connectionMenu;
 	
-	private final JMenuItem connectToServerItem;
+	private JMenuItem connectToServerItem;
 	
-	private final JMenuItem disconnectItem;
+	private JMenuItem disconnectItem;
 
-	private final JMenuItem exitItem;
+	private JMenuItem exitItem;
 	
 	ClientMenuBar(ClientFrame parentFrame) {
 		super();

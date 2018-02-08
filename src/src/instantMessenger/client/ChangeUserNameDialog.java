@@ -11,17 +11,17 @@ import java.awt.event.ActionListener;
  * @author Joshua Ciffer
  * @version 02/08/2018
  */
-class ChangeUserNameDialog extends JDialog {
+final class ChangeUserNameDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
-	private final JLabel changeUserNameLabel;
+	private JLabel changeUserNameLabel;
 	
-	private final JTextField userNameTextField;
+	private JTextField userNameTextField;
 	
-	private final JButton cancelButton;
+	private JButton cancelButton;
 	
-	private final JButton saveButton;
+	private JButton saveButton;
 	
 	ChangeUserNameDialog(ClientFrame parentFrame) {
 		super(parentFrame, "Change User Name");
