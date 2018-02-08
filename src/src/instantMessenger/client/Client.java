@@ -10,7 +10,7 @@ import src.instantMessenger.util.Constants;
 /**
  * 
  * @author Joshua Ciffer
- * @version 02/01/2018
+ * @version 02/08/2018
  */
 public class Client {
 
