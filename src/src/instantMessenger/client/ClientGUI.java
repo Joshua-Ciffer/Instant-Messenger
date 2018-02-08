@@ -143,4 +143,8 @@ public final class ClientGUI extends JFrame {
 		System.exit(0);
 	}
 
+	void disconnect() {
+		client.disconnect();
+	}
+	
 }
