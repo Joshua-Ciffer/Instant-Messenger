@@ -50,6 +50,10 @@ public class Client {
 		}
 		initializeNetworkStreams();
 	}
+	
+	void terminateConnection() {
+		
+	}
 
 	private void initializeNetworkStreams() {
 		try {

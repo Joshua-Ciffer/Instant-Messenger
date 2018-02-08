@@ -139,7 +139,7 @@ public final class ClientGUI extends JFrame {
 	}
 	
 	void terminate() {
-		
+		client.terminateConnection();
 		System.exit(0);
 	}
 
