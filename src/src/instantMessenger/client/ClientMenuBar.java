@@ -8,34 +8,32 @@ import java.awt.event.ActionListener;
 /**
  * 
  * @author Joshua Ciffer
- * @version 02/07/2018
+ * @version 02/08/2018
  */
 public class ClientMenuBar extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
 
 	private final JMenu fileMenu;
-
+	
+	private final JMenuItem saveChatLogButton;
+	
 	private final JMenu editMenu;
 
 	private final JMenu connectionMenu;
+	
+	private final JMenuItem connectToServerItem;
+	
+	private final JMenuItem disconnectItem;
 
 	private final JMenuItem exitItem;
-
-	private final JMenuItem saveChatLogButton;
-	
-	public static void main(String[] args) {
-		javax.swing.JFrame fuck = new javax.swing.JFrame();
-		fuck.setSize(500, 300);
-		fuck.add(new ClientMenuBar(null));
-		fuck.setVisible(true);
-	}
 	
 	ClientMenuBar(ClientGUI parentGUI) {
 		super();
 		fileMenu = new JMenu("File");
 		saveChatLogButton = new JMenuItem("Save Chat Log...");
 		saveChatLogButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent a) {
 				new SaveChatLogDialog(parentGUI);
 			}
@@ -43,6 +41,20 @@ public class ClientMenuBar extends JMenuBar {
 		fileMenu.add(saveChatLogButton);
 		editMenu = new JMenu("Edit");
 		connectionMenu = new JMenu("Connection");
+		connectToServerItem = new JMenuItem("Connect to Server...");
+		connectToServerItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+				
+			}
+		});
+		disconnectItem = new JMenuItem("Disconnect");
+		disconnectItem.addActionListener(new ActionListener() {
+			@Override
+			parrentGUI.disconnect();
+		});
+		connectionMenu.add(connectToServerItem);
+		connectionMenu.add(disconnectItem);
 		exitItem = new JMenuItem("Exit");
 		exitItem.addActionListener(new ActionListener() {
 			@Override
@@ -55,7 +67,6 @@ public class ClientMenuBar extends JMenuBar {
 		add(connectionMenu);
 		add(exitItem);
 		setBounds(0, 0, 500, 20);
-		//setVisible(true);
 	}
 	
 }
