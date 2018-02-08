@@ -27,17 +27,17 @@ public class ClientMenuBar extends JMenuBar {
 	public static void main(String[] args) {
 		javax.swing.JFrame fuck = new javax.swing.JFrame();
 		fuck.setSize(500, 300);
-		fuck.add(new ClientMenuBar());
+		fuck.add(new ClientMenuBar(null));
 		fuck.setVisible(true);
 	}
 	
-	ClientMenuBar() {
+	ClientMenuBar(ClientGUI parentGUI) {
 		super();
 		fileMenu = new JMenu("File");
 		saveChatLogButton = new JMenuItem("Save Chat Log...");
 		saveChatLogButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
-				
+				new SaveChatLogDialog(parentGUI);
 			}
 		});
 		fileMenu.add(saveChatLogButton);
@@ -47,7 +47,7 @@ public class ClientMenuBar extends JMenuBar {
 		exitItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				ClientGUI.terminate();
+				parentGUI.terminate();
 			}
 		});
 		add(fileMenu);
