@@ -1,12 +1,10 @@
 package src.instantMessenger.client;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import src.instantMessenger.util.Constants;
@@ -26,18 +24,7 @@ public final class ClientGUI extends JFrame {
 
 	private final Client client;
 
-//	private JMenuBar clientMenuBar;
-	private ClientMenuBar clientMenuBar = new ClientMenuBar(this);
-
-	private JMenu fileMenu;
-
-	private JMenu editMenu;
-
-	private JMenu connectionMenu;
-
-	private JMenuItem exitItem;
-
-	private JMenuItem saveChatLogButton;
+	private ClientMenuBar clientMenuBar;
 
 	private JTextArea chatFeed;
 
@@ -48,8 +35,6 @@ public final class ClientGUI extends JFrame {
 	private JScrollPane messageFieldPane;
 
 	private JButton sendButton;
-	
-	private JFileChooser saveLogDialog;
 
 	ClientGUI() {
 		super("Instant Messenger Client");
@@ -58,36 +43,8 @@ public final class ClientGUI extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setLayout(null);
-
-		saveLogDialog = new JFileChooser();
+		clientMenuBar = new ClientMenuBar(this);
 		
-//		clientMenuBar = new JMenuBar();
-//
-//		fileMenu = new JMenu("File");
-//
-//		connectionMenu = new JMenu("Connection");
-//
-//		saveChatLogButton = new JMenuItem("Save Chat Log");
-//		saveChatLogButton.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent arg0) {
-//			}
-//		});
-//
-//		exitItem = new JMenuItem("Exit");
-//
-//		exitItem.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent a) {
-//				System.exit(0);
-//			}
-//		});
-//
-//		clientMenuBar.add(fileMenu);
-//		clientMenuBar.add(connectionMenu);
-//		clientMenuBar.add(exitItem);
-//		fileMenu.add(saveChatLogButton);
-
 		chatFeed = new JTextArea();
 		chatFeed.setEditable(false);
 		chatFeed.setLineWrap(true);
@@ -110,6 +67,7 @@ public final class ClientGUI extends JFrame {
 
 		sendButton = new JButton("Send");
 		sendButton.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				sendMessage();
@@ -129,22 +87,25 @@ public final class ClientGUI extends JFrame {
 	}
 
 	private void sendMessage() {
-		client.sendMessage(messageField.getText());
-		chatFeed.append(client.getUserName() + " " + Constants.getTime() + " - " + messageField.getText() + "\n");
-		messageField.setText(null);
-	}
-	
-	String getChatLog() {
-		return chatFeed.getText();
-	}
-	
-	void terminate() {
-		client.terminateConnection();
-		System.exit(0);
+		if (!(messageField.getText().equals(""))) {
+			String message = client.getUserName() + " " + Constants.getTime() + " - " + messageField.getText() + "\n";
+			client.sendMessage(message);
+			chatFeed.append(message);
+			messageField.setText(null);
+		}
 	}
 
 	void disconnect() {
 		client.terminateConnection();
 	}
-	
+
+	void terminate() {
+		disconnect();
+		System.exit(0);
+	}
+
+	String getChatLog() {
+		return chatFeed.getText();
+	}
+
 }

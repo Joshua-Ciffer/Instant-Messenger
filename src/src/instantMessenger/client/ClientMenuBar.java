@@ -2,6 +2,7 @@ package src.instantMessenger.client;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,7 +32,11 @@ public class ClientMenuBar extends JMenuBar {
 	ClientMenuBar(ClientGUI parentGUI) {
 		super();
 		fileMenu = new JMenu("File");
+		fileMenu.setVerticalAlignment(SwingConstants.CENTER);
+		fileMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		saveChatLogButton = new JMenuItem("Save Chat Log...");
+		saveChatLogButton.setVerticalAlignment(SwingConstants.CENTER);
+		saveChatLogButton.setHorizontalAlignment(SwingConstants.LEFT);
 		saveChatLogButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
@@ -40,8 +45,14 @@ public class ClientMenuBar extends JMenuBar {
 		});
 		fileMenu.add(saveChatLogButton);
 		editMenu = new JMenu("Edit");
+		editMenu.setVerticalAlignment(SwingConstants.CENTER);
+		editMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		connectionMenu = new JMenu("Connection");
+		connectionMenu.setVerticalAlignment(SwingConstants.CENTER);
+		connectionMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		connectToServerItem = new JMenuItem("Connect to Server...");
+		connectToServerItem.setVerticalAlignment(SwingConstants.CENTER);
+		connectToServerItem.setHorizontalAlignment(SwingConstants.LEFT);
 		connectToServerItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
@@ -49,6 +60,8 @@ public class ClientMenuBar extends JMenuBar {
 			}
 		});
 		disconnectItem = new JMenuItem("Disconnect");
+		disconnectItem.setVerticalAlignment(SwingConstants.CENTER);
+		disconnectItem.setHorizontalAlignment(SwingConstants.LEFT);
 		disconnectItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
@@ -58,6 +71,8 @@ public class ClientMenuBar extends JMenuBar {
 		connectionMenu.add(connectToServerItem);
 		connectionMenu.add(disconnectItem);
 		exitItem = new JMenuItem("Exit");
+		exitItem.setVerticalAlignment(SwingConstants.CENTER);
+		exitItem.setHorizontalAlignment(SwingConstants.LEFT);
 		exitItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
