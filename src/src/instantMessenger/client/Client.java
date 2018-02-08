@@ -24,7 +24,7 @@ public class Client {
 	
 	private int serverPort;
 
-	private String userName = "User" + ((int)Math.random() * 10);
+	private String userName = "User" + (int)(Math.random() * 1_000);
 
 	Client() {
 		serverIP = "192.168.1.1";
