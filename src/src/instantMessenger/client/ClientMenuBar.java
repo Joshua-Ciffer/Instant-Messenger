@@ -51,7 +51,9 @@ public class ClientMenuBar extends JMenuBar {
 		disconnectItem = new JMenuItem("Disconnect");
 		disconnectItem.addActionListener(new ActionListener() {
 			@Override
-			parrentGUI.disconnect();
+			public void actionPerformed(ActionEvent a) {
+				parentGUI.disconnect();
+			}
 		});
 		connectionMenu.add(connectToServerItem);
 		connectionMenu.add(disconnectItem);
