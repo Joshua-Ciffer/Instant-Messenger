@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Joshua Ciffer
  * @version 02/08/2018
  */
-public class SaveChatLogDialog extends JFileChooser {
+final class SaveChatLogDialog extends JFileChooser {
 
 	private static final long serialVersionUID = 1L;
 	
