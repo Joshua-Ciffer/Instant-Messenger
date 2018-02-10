@@ -47,13 +47,13 @@ final class SaveChatLogDialog extends JFileChooser {
 				while (chatLogParser.hasNext()) {
 					fileWriter.println(chatLogParser.next());
 				}
-				fileWriter.close();
-				chatLogParser.close();
 			} catch (FileNotFoundException e) {
 				JOptionPane.showMessageDialog(this, "The file you specefied could not be found. The chat log was not saved.", "", JOptionPane.ERROR_MESSAGE);
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(this, "An IO Exception occoured. The chat log was not saved.", "", JOptionPane.ERROR_MESSAGE);
 			} finally {
+				fileWriter.close();
+				chatLogParser.close();
 				chatLog = null;
 				textFile = null;
 				fileWriter = null;
