@@ -69,7 +69,7 @@ final class ClientMenuBar extends JMenuBar {
 		connectToServerItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				
+				new ConnectToServerDialog(parentFrame);
 			}
 		});
 		disconnectItem = new JMenuItem("Disconnect");

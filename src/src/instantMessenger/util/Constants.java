@@ -5,6 +5,7 @@ import java.awt.Font;
 
 public interface Constants {
 
+	
 	public static final DateTimeFormatter DATE_TIME = DateTimeFormatter.ofPattern("hh:mm a");
 	
 	public static final Font CHAT_FONT = new Font("Courier new", Font.PLAIN, 12);

@@ -38,7 +38,7 @@ public final class Client {
 //			outgoingTraffic.writeObject(userName + " " + Constants.getTime() + " - " + message + "\n");
 //			outgoingTraffic.flush();
 //		} catch (IOException e) {
-//			e.printStackTrace();
+//		.	e.printStackTrace();
 //		}
 	}
 
