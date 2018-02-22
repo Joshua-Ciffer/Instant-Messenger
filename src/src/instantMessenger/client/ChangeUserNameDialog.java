@@ -47,7 +47,6 @@ final class ChangeUserNameDialog extends JDialog {
 	 */
 	ChangeUserNameDialog(ClientFrame parentFrame) {
 		super(parentFrame, "Change User Name");
-		setLocationRelativeTo(parentFrame);
 		setResizable(false);
 		setLayout(null);
 		changeUserNameLabel = new JLabel("Enter your user name:");
