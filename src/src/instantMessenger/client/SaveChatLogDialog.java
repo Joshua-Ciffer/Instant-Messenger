@@ -9,22 +9,40 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
+ * A save chat log dialog is a file saver dialog box that the user can select a file or directory to save their chat history from the chat feed panel.
  * 
  * @author Joshua Ciffer
- * @version 02/08/2018
+ * @version 02/22/2018
  */
 final class SaveChatLogDialog extends JFileChooser {
-
+	
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * The text file that is written to with the chat log.
+	 */
 	private File chatLog;
 	
+	/**
+	 * The file extension of the chat log (.txt).
+	 */
 	private FileNameExtensionFilter textFile;
 	
+	/**
+	 * Writes to the chat log file.
+	 */
 	private PrintWriter fileWriter;
 	
+	/**
+	 * Reads in the chat log in the form of a string from the chat feed panel, and sends it to the file writer.
+	 */
 	private Scanner chatLogParser;
 	
+	/**
+	 * Constructs a new save chat dialog.
+	 * 
+	 * @param parentFrame - The parent frame that constructed this save chat log dialog. 
+	 */
 	SaveChatLogDialog(ClientFrame parentFrame) {
 		super();
 		setDialogTitle("Save Chat Log");

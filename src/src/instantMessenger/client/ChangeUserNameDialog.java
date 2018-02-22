@@ -7,22 +7,44 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * A change user name dialog allows the user to set their user name that identifies them in the chat server.
  * 
  * @author Joshua Ciffer
- * @version 02/08/2018
+ * @version 02/22/2018
  */
 final class ChangeUserNameDialog extends JDialog {
 
+	public static void main(String[] args) {
+		new ChangeUserNameDialog(null);
+	}
+	
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Labels the user name text field.
+	 */
 	private JLabel changeUserNameLabel;
 	
+	/**
+	 * Allows the user to enter their user name.
+	 */
 	private JTextField userNameTextField;
 	
+	/**
+	 * Closes the dialog box without saving the name entered in the dialog box.
+	 */
 	private JButton cancelButton;
 	
+	/**
+	 * Saves the current name entered in the text field.
+	 */
 	private JButton saveButton;
 	
+	/**
+	 * Constructs a new ChangeUserNameDialog window.
+	 * 
+	 * @param parentFrame - The parent frame that constructs this change user name dialog.
+	 */
 	ChangeUserNameDialog(ClientFrame parentFrame) {
 		super(parentFrame, "Change User Name");
 		setLocationRelativeTo(parentFrame);
