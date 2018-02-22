@@ -5,18 +5,28 @@ import javax.swing.JScrollPane;
 import src.instantMessenger.util.Constants;
 
 /**
+ * ChatFeedPanel is a container for the functionality that displays the chat feed and allows the user to scroll through that text area.
  * 
  * @author Joshua Ciffer
- * @version 02/08/2018
+ * @version 02/22/2018
  */
 final class ChatFeedPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * The area that displays the chat history.
+	 */
 	private JTextArea chatFeed;
 	
+	/**
+	 * Allows the chat feed text area to be scrollable.
+	 */
 	private JScrollPane chatFeedPane;
 	
+	/**
+	 * Constructs a new ChatFeedPanel container.
+	 */
 	ChatFeedPanel() {
 		super();
 		setLayout(null);
@@ -34,6 +44,11 @@ final class ChatFeedPanel extends JPanel {
 		setVisible(true);
 	}
 	
+	/**
+	 * Returns a reference to the chat feed text pane.
+	 * 
+	 * @return The chat feed text pane.
+	 */
 	JTextArea getChatFeed() {
 		return chatFeed;
 	}

@@ -8,20 +8,35 @@ import java.awt.event.ActionListener;
 import src.instantMessenger.util.Constants;
 
 /**
+ * MessageFieldPanel is a container for the functionality that allows the user to type and send messages.
  * 
  * @author Joshua Ciffer
- * @version 02/08/2018
+ * @version 02/22/2018
  */
 final class MessageFieldPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Allows the user to type their message.
+	 */
 	private JTextArea messageField;
 	
+	/**
+	 * Allows the message field text field to be scrollable.
+	 */
 	private JScrollPane messageFieldPane;
 	
+	/**
+	 * Sends the message that is entered in the message text field.
+	 */
 	private JButton sendButton;
 	
+	/**
+	 * Constructs a new MessageFieldPanel container.
+	 * 
+	 * @param parentFrame - The parent frame that this container is placed on.
+	 */
 	MessageFieldPanel(ClientFrame parentFrame) {
 		super();
 		setLayout(null);
@@ -44,10 +59,15 @@ final class MessageFieldPanel extends JPanel {
 		add(sendButton);
 		setSize(500, 100);
 		messageFieldPane.setBounds(0, 0, 410, 50);
-		sendButton.setBounds(410, 95, 75, 49);
+		sendButton.setBounds(410, 0, 75, 49);
 		setVisible(true);
 	}
 	
+	/**
+	 * Returns a reference to the message field text pane.
+	 * 
+	 * @return The message field text pane.
+	 */
 	JTextArea getMessageField() {
 		return messageField;
 	}
