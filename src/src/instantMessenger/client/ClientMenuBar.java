@@ -2,7 +2,6 @@ package src.instantMessenger.client;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -97,6 +96,38 @@ final class ClientMenuBar extends JMenuBar {
 		add(connectionMenu);
 		add(exitItem);
 		setBounds(0, 0, 500, 20);
+	}
+	
+	JMenu getFileMenu() {
+		return fileMenu;
+	}
+	
+	JMenuItem getChangeUserNameItem() {
+		return changeUserNameItem;
+	}
+	
+	JMenuItem getSaveChatLogItem() {
+		return saveChatLogItem;
+	}
+	
+	JMenu getEditMenu() {
+		return editMenu;
+	}
+	
+	JMenu getConnectionMenu() {
+		return connectionMenu;
+	}
+	
+	JMenuItem getConnectToServerItem() {
+		return connectToServerItem;
+	}
+	
+	JMenuItem getDisconnectItem() {
+		return disconnectItem;
+	}
+	
+	JMenuItem getExitItem() {
+		return exitItem;
 	}
 	
 }
