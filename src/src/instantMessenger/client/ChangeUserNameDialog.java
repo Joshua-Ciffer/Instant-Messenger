@@ -44,6 +44,7 @@ final class ChangeUserNameDialog extends JDialog {
 	ChangeUserNameDialog(ClientFrame parentFrame) {
 		super(parentFrame, "Change User Name");
 		setResizable(false);
+		setLocationRelativeTo(parentFrame);
 		setLayout(null);
 		changeUserNameLabel = new JLabel("Enter your user name:");
 		userNameTextField = new JTextField();
@@ -73,22 +74,6 @@ final class ChangeUserNameDialog extends JDialog {
 		saveButton.setBounds(170, 95, 100, 30);
 		setSize(315, 180);
 		setVisible(true);
-	}
-	
-	JLabel getChangeUserNameLabel() {
-		return changeUserNameLabel;
-	}
-	
-	JTextField getUserNameTextField() {
-		return userNameTextField;
-	}
-	
-	JButton getCancelButton() {
-		return cancelButton;
-	}
-	
-	JButton getSaveButton() {
-		return saveButton;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package src.instantMessenger.client;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
@@ -30,9 +31,10 @@ final class ConnectToServerDialog extends JDialog {
 	ConnectToServerDialog(ClientFrame parentFrame) {
 		super(parentFrame, "Conenct to Server");
 		setResizable(false);
-		setLayout(null);
+		setLocationRelativeTo(parentFrame);
+		getContentPane().setLayout(null);
 		serverIPLabel = new JLabel("Server IP:");
-		serverPortLabel = new JLabel("Serve Port:");
+		serverPortLabel = new JLabel("Server Port:");
 		serverIPTextField = new JTextField();
 		serverIPTextField.setText(parentFrame.getClient().getServerIP());
 		serverPortTextField = new JTextField();
@@ -49,17 +51,26 @@ final class ConnectToServerDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				parentFrame.getClient().setServerIP(serverIPTextField.getText());
-				parentFrame.getClient().setServerPort(Integer.parseInt(serverPortTextField.getText()));
-				dispose();
+				try {
+					parentFrame.getClient().setServerPort(Integer.parseInt(serverPortTextField.getText()));
+					dispose();
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(parentFrame, "The server port you entered is invalid.", "Invalid Server Port", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
-		add(serverIPLabel);
-		add(serverPortLabel);
-		add(serverIPTextField);
-		add(serverPortTextField);
-		add(cancelButton);
-		add(connectButton);
-		
+		getContentPane().add(serverIPLabel);
+		getContentPane().add(serverPortLabel);
+		getContentPane().add(serverIPTextField);
+		getContentPane().add(serverPortTextField);
+		getContentPane().add(cancelButton);
+		getContentPane().add(connectButton);
+		serverIPLabel.setBounds(36, 12, 75, 35);
+		serverPortLabel.setBounds(36, 53, 75, 35);
+		serverIPTextField.setBounds(137, 12, 150, 35);
+		serverPortTextField.setBounds(137, 53, 150, 35);
+		cancelButton.setBounds(36, 100, 100, 35);
+		connectButton.setBounds(176, 100, 100, 35);
 		setSize(315, 180);
 		setVisible(true);
 	}

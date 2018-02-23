@@ -46,12 +46,12 @@ final class ClientFrame extends JFrame {
 		setVisible(true);
 	}
 
-	void sendMessage() {
-		if (!(messageFieldPanel.getMessageField().getText().equals(""))) {
-			String message = client.getUserName() + " " + Constants.getTime() + " - " + messageFieldPanel.getMessageField().getText() + "\n";
+	void sendMessage(String message) {
+		if (!(messageFieldPanel.getMessageTextField().getText().equals(""))) {
+			String message1 = client.getUserName() + " " + Constants.getTime() + " - " + messageFieldPanel.getMessageTextField().getText() + "\n";
 			client.sendMessage(message);
-			chatFeedPanel.getChatFeed().append(message);
-			messageFieldPanel.getMessageField().setText(null);
+			chatFeedPanel.getChatFeedTextArea().append(message);
+			messageFieldPanel.getMessageTextField().setText(null);
 		}
 	}
 
@@ -65,7 +65,7 @@ final class ClientFrame extends JFrame {
 	}
 
 	String getChatLog() {
-		return chatFeedPanel.getChatFeed().getText();
+		return chatFeedPanel.getChatFeedTextArea().getText();
 	}
 	
 	Client getClient() {
