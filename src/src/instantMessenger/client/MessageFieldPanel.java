@@ -72,4 +72,12 @@ final class MessageFieldPanel extends JPanel {
 		return messageField;
 	}
 	
+	JScrollPane getMessageFieldPane() {
+		return messageFieldPane;
+	}
+	
+	JButton getSendButton() {
+		return sendButton;
+	}
+	
 }

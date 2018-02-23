@@ -53,4 +53,8 @@ final class ChatFeedPanel extends JPanel {
 		return chatFeed;
 	}
 	
+	JScrollPane getChatFeedPane() {
+		return chatFeedPane;
+	}
+	
 }

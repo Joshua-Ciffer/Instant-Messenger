@@ -14,10 +14,6 @@ import java.awt.event.ActionListener;
  */
 final class ChangeUserNameDialog extends JDialog {
 
-	public static void main(String[] args) {
-		new ChangeUserNameDialog(null);
-	}
-	
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -78,6 +74,22 @@ final class ChangeUserNameDialog extends JDialog {
 		saveButton.setBounds(170, 95, 100, 30);
 		setSize(315, 180);
 		setVisible(true);
+	}
+	
+	JLabel getChangeUserNameLabel() {
+		return changeUserNameLabel;
+	}
+	
+	JTextField getUserNameTextField() {
+		return userNameTextField;
+	}
+	
+	JButton getCancelButton() {
+		return cancelButton;
+	}
+	
+	JButton getSaveButton() {
+		return saveButton;
 	}
 	
 }

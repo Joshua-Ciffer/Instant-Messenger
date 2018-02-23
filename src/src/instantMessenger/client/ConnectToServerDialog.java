@@ -74,5 +74,29 @@ final class ConnectToServerDialog extends JDialog {
 		setSize(315, 180);
 		setVisible(true);
 	}
+	
+	JLabel getServerIPLabel() {
+		return serverIPLabel;
+	}
+	
+	JLabel getServerPortLabel() {
+		return serverPortLabel;
+	}
+	
+	JTextField getServerIPTextField() {
+		return serverIPTextField;
+	}
+	
+	JTextField getServerPortTextField() {
+		return serverPortTextField;
+	}
+	
+	JButton getCancelButton() {
+		return cancelButton;
+	}
+	
+	JButton getConnectButton() {
+		return connectButton;
+	}
 
 }
