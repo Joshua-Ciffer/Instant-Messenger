@@ -13,10 +13,6 @@ import java.awt.event.ActionListener;
  */
 final class ConnectToServerDialog extends JDialog {
 
-	public static void main(String[] args) {
-		new ConnectToServerDialog(null);
-	}
-
 	private static final long serialVersionUID = 1L;
 
 	private JLabel serverIPLabel;
