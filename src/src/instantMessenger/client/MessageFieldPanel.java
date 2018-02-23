@@ -20,7 +20,7 @@ final class MessageFieldPanel extends JPanel {
 	/**
 	 * Allows the user to type their message.
 	 */
-	private JTextArea messageField;
+	private JTextArea messageTextField;
 	
 	/**
 	 * Allows the message field text field to be scrollable.
@@ -40,19 +40,19 @@ final class MessageFieldPanel extends JPanel {
 	MessageFieldPanel(ClientFrame parentFrame) {
 		super();
 		setLayout(null);
-		messageField = new JTextArea();
-		messageField.setEditable(true);
-		messageField.setLineWrap(true);
-		messageField.setWrapStyleWord(true);
-		messageField.setFont(Constants.CHAT_FONT);
-		messageFieldPane = new JScrollPane(messageField);
+		messageTextField = new JTextArea();
+		messageTextField.setEditable(true);
+		messageTextField.setLineWrap(true);
+		messageTextField.setWrapStyleWord(true);
+		messageTextField.setFont(Constants.CHAT_FONT);
+		messageFieldPane = new JScrollPane(messageTextField);
 		messageFieldPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		messageFieldPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		sendButton = new JButton("Send");
 		sendButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				parentFrame.sendMessage();
+				parentFrame.sendMessage(messageTextField.getText());
 			}
 		});
 		add(messageFieldPane);
@@ -68,16 +68,8 @@ final class MessageFieldPanel extends JPanel {
 	 * 
 	 * @return The message field text pane.
 	 */
-	JTextArea getMessageField() {
-		return messageField;
-	}
-	
-	JScrollPane getMessageFieldPane() {
-		return messageFieldPane;
-	}
-	
-	JButton getSendButton() {
-		return sendButton;
+	JTextArea getMessageTextField() {
+		return messageTextField;
 	}
 	
 }

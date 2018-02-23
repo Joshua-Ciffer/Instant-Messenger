@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * 
  * @author Joshua Ciffer
- * @version 02/08/2018
+ * @version 02/22/2018
  */
 final class ClientMenuBar extends JMenuBar {
 
@@ -96,38 +96,6 @@ final class ClientMenuBar extends JMenuBar {
 		add(connectionMenu);
 		add(exitItem);
 		setBounds(0, 0, 500, 20);
-	}
-	
-	JMenu getFileMenu() {
-		return fileMenu;
-	}
-	
-	JMenuItem getChangeUserNameItem() {
-		return changeUserNameItem;
-	}
-	
-	JMenuItem getSaveChatLogItem() {
-		return saveChatLogItem;
-	}
-	
-	JMenu getEditMenu() {
-		return editMenu;
-	}
-	
-	JMenu getConnectionMenu() {
-		return connectionMenu;
-	}
-	
-	JMenuItem getConnectToServerItem() {
-		return connectToServerItem;
-	}
-	
-	JMenuItem getDisconnectItem() {
-		return disconnectItem;
-	}
-	
-	JMenuItem getExitItem() {
-		return exitItem;
 	}
 	
 }

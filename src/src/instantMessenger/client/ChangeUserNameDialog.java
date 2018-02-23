@@ -76,20 +76,4 @@ final class ChangeUserNameDialog extends JDialog {
 		setVisible(true);
 	}
 	
-	JLabel getChangeUserNameLabel() {
-		return changeUserNameLabel;
-	}
-	
-	JTextField getUserNameTextField() {
-		return userNameTextField;
-	}
-	
-	JButton getCancelButton() {
-		return cancelButton;
-	}
-	
-	JButton getSaveButton() {
-		return saveButton;
-	}
-	
 }

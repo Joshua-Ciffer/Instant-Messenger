@@ -17,7 +17,7 @@ final class ChatFeedPanel extends JPanel {
 	/**
 	 * The area that displays the chat history.
 	 */
-	private JTextArea chatFeed;
+	private JTextArea chatFeedTextArea;
 	
 	/**
 	 * Allows the chat feed text area to be scrollable.
@@ -30,12 +30,12 @@ final class ChatFeedPanel extends JPanel {
 	ChatFeedPanel() {
 		super();
 		setLayout(null);
-		chatFeed = new JTextArea();
-		chatFeed.setEditable(false);
-		chatFeed.setLineWrap(true);
-		chatFeed.setWrapStyleWord(true);
-		chatFeed.setFont(Constants.CHAT_FONT);
-		chatFeedPane = new JScrollPane(chatFeed);
+		chatFeedTextArea = new JTextArea();
+		chatFeedTextArea.setEditable(false);
+		chatFeedTextArea.setLineWrap(true);
+		chatFeedTextArea.setWrapStyleWord(true);
+		chatFeedTextArea.setFont(Constants.CHAT_FONT);
+		chatFeedPane = new JScrollPane(chatFeedTextArea);
 		chatFeedPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		chatFeedPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		add(chatFeedPane);
@@ -44,17 +44,8 @@ final class ChatFeedPanel extends JPanel {
 		setVisible(true);
 	}
 	
-	/**
-	 * Returns a reference to the chat feed text pane.
-	 * 
-	 * @return The chat feed text pane.
-	 */
-	JTextArea getChatFeed() {
-		return chatFeed;
-	}
-	
-	JScrollPane getChatFeedPane() {
-		return chatFeedPane;
+	JTextArea getChatFeedTextArea() {
+		return chatFeedTextArea;
 	}
 	
 }

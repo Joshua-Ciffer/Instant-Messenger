@@ -65,12 +65,12 @@ final class ConnectToServerDialog extends JDialog {
 		getContentPane().add(serverPortTextField);
 		getContentPane().add(cancelButton);
 		getContentPane().add(connectButton);
-		serverIPLabel.setBounds(0, -21, 139, 53);
-		serverPortLabel.setBounds(10, 28, 108, 45);
-		serverIPTextField.setBounds(148, 0, 156, 54);
-		serverPortTextField.setBounds(188, 45, 85, 45);
-		cancelButton.setBounds(36, 83, 103, 35);
-		connectButton.setBounds(176, 83, 75, 35);
+		serverIPLabel.setBounds(36, 12, 75, 35);
+		serverPortLabel.setBounds(36, 53, 75, 35);
+		serverIPTextField.setBounds(137, 12, 150, 35);
+		serverPortTextField.setBounds(137, 53, 150, 35);
+		cancelButton.setBounds(36, 100, 100, 35);
+		connectButton.setBounds(176, 100, 100, 35);
 		setSize(315, 180);
 		setVisible(true);
 	}
