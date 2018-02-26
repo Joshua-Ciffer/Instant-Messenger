@@ -81,20 +81,4 @@ final class SaveChatLogDialog extends JFileChooser {
 		setVisible(true);
 	}
 	
-	File getChatLog() {
-		return chatLog;
-	}
-	
-	FileNameExtensionFilter getTextFile() {
-		return textFile;
-	}
-	
-	PrintWriter getFileWriter() {
-		return fileWriter;
-	}
-	
-	Scanner getChatLogParser() {
-		return chatLogParser;
-	}
-	
 }

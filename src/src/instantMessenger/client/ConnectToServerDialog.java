@@ -32,7 +32,7 @@ final class ConnectToServerDialog extends JDialog {
 		super(parentFrame, "Conenct to Server");
 		setResizable(false);
 		setLocationRelativeTo(parentFrame);
-		getContentPane().setLayout(null);
+		setLayout(null);
 		serverIPLabel = new JLabel("Server IP:");
 		serverPortLabel = new JLabel("Server Port:");
 		serverIPTextField = new JTextField();
@@ -73,30 +73,6 @@ final class ConnectToServerDialog extends JDialog {
 		connectButton.setBounds(176, 100, 100, 35);
 		setSize(315, 180);
 		setVisible(true);
-	}
-	
-	JLabel getServerIPLabel() {
-		return serverIPLabel;
-	}
-	
-	JLabel getServerPortLabel() {
-		return serverPortLabel;
-	}
-	
-	JTextField getServerIPTextField() {
-		return serverIPTextField;
-	}
-	
-	JTextField getServerPortTextField() {
-		return serverPortTextField;
-	}
-	
-	JButton getCancelButton() {
-		return cancelButton;
-	}
-	
-	JButton getConnectButton() {
-		return connectButton;
 	}
 
 }

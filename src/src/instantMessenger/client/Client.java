@@ -20,15 +20,15 @@ public final class Client {
 
 	private ObjectOutputStream outgoingTraffic;
 
-	private String serverIP;
+	private InetAddress serverIP;
 	
 	private int serverPort;
 
-	private String userName = "User" + (int)(Math.random() * 1_000);
+	private String userName;
 
 	Client() {
-		serverIP = "192.168.1.1";
 		serverPort = 2075;
+		userName = "User" + (int)(Math.random() * 1_000);
 		//connectToServer();
 
 	}
@@ -44,7 +44,7 @@ public final class Client {
 
 	void connectToServer() {
 		try {
-			serverConnection = new Socket(InetAddress.getByName(serverIP), serverPort);
+			serverConnection = new Socket(serverIP, serverPort);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,27 +65,23 @@ public final class Client {
 	}
 
 	String getServerIP() {
-		return serverIP;
+		return serverIP.getHostAddress();
 	}
-
+	
 	int getServerPort() {
 		return serverPort;
 	}
-
+	
 	String getUserName() {
 		return userName;
 	}
-
-	void setServerIP(String serverIP) {
-		this.serverIP = serverIP;
+	
+	void setServerIP(String serverIP) throws UnknownHostException {
+		this.serverIP = InetAddress.getByName(serverIP);
 	}
-
+	
 	void setServerPort(int serverPort) {
 		this.serverPort = serverPort;
-	}
-
-	void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 }
