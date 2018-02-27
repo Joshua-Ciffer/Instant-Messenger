@@ -3,6 +3,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,11 +36,7 @@ final class ClientMenuBar extends JMenuBar {
 	ClientMenuBar(ClientFrame parentFrame) {
 		super();
 		fileMenu = new JMenu("File");
-		fileMenu.setVerticalAlignment(SwingConstants.CENTER);
-		fileMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		changeUserNameItem = new JMenuItem("Change User Name...");
-		changeUserNameItem.setVerticalAlignment(SwingConstants.CENTER);
-		changeUserNameItem.setHorizontalAlignment(SwingConstants.LEFT);
 		changeUserNameItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
@@ -46,8 +44,6 @@ final class ClientMenuBar extends JMenuBar {
 			}
 		});
 		saveChatLogItem = new JMenuItem("Save Chat Log...");
-		saveChatLogItem.setVerticalAlignment(SwingConstants.CENTER);
-		saveChatLogItem.setHorizontalAlignment(SwingConstants.LEFT);
 		saveChatLogItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
@@ -57,14 +53,8 @@ final class ClientMenuBar extends JMenuBar {
 		fileMenu.add(changeUserNameItem);
 		fileMenu.add(saveChatLogItem);
 		editMenu = new JMenu("Edit");
-		editMenu.setVerticalAlignment(SwingConstants.CENTER);
-		editMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		connectionMenu = new JMenu("Connection");
-		connectionMenu.setVerticalAlignment(SwingConstants.CENTER);
-		connectionMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		connectToServerItem = new JMenuItem("Connect to Server...");
-		connectToServerItem.setVerticalAlignment(SwingConstants.CENTER);
-		connectToServerItem.setHorizontalAlignment(SwingConstants.LEFT);
 		connectToServerItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
@@ -72,8 +62,6 @@ final class ClientMenuBar extends JMenuBar {
 			}
 		});
 		disconnectItem = new JMenuItem("Disconnect");
-		disconnectItem.setVerticalAlignment(SwingConstants.CENTER);
-		disconnectItem.setHorizontalAlignment(SwingConstants.LEFT);
 		disconnectItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
@@ -83,8 +71,6 @@ final class ClientMenuBar extends JMenuBar {
 		connectionMenu.add(connectToServerItem);
 		connectionMenu.add(disconnectItem);
 		exitItem = new JMenuItem("Exit");
-		exitItem.setVerticalAlignment(SwingConstants.CENTER);
-		exitItem.setHorizontalAlignment(SwingConstants.LEFT);
 		exitItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
