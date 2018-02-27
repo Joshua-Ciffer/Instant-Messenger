@@ -6,6 +6,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 /**
  * 
@@ -50,12 +52,17 @@ final class ConnectToServerDialog extends JDialog {
 		connectButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				parentFrame.getClient().setServerIP(serverIPTextField.getText());
 				try {
-					parentFrame.getClient().setServerPort(Integer.parseInt(serverPortTextField.getText()));
+					parentFrame.getClient().setServerIP(serverIPTextField.getText());
+					parentFrame.getClient().setServerPort(Short.parseShort(serverPortTextField.getText()));
+					parentFrame.getClient().connect();
 					dispose();
+				} catch (UnknownHostException e) {
+					JOptionPane.showMessageDialog(parentFrame, "The IP address you entered is invalid. Please enter a valid IPV4 address.", "Invalid IP Address", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(parentFrame, "The server port you entered is invalid.", "Invalid Server Port", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(parentFrame, "The server port you entered is invalid. Please enter a port from the range 0-65535.", "Invalid Server Port", JOptionPane.ERROR_MESSAGE);
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(parentFrame, "The connection could not be established. Please try again.", "Connection Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
