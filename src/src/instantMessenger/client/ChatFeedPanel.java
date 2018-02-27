@@ -38,6 +38,7 @@ final class ChatFeedPanel extends JPanel {
 		chatFeedPane = new JScrollPane(chatFeedTextArea);
 		chatFeedPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		chatFeedPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		chatFeedPane.getVerticalScrollBar().setAutoscrolls(true);
 		add(chatFeedPane);
 		setSize(485, 195);
 		chatFeedPane.setBounds(0, 0, 485, 195);
