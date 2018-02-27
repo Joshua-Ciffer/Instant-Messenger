@@ -1,16 +1,16 @@
 package src.instantMessenger.client;
-import java.io.IOException;
+import java.net.Socket;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.io.IOException;
 import src.instantMessenger.util.Constants;
 
 /**
  * 
  * @author Joshua Ciffer
- * @version 02/08/2018
+ * @version 02/26/2018
  */
 public final class Client {
 
@@ -20,68 +20,71 @@ public final class Client {
 
 	private ObjectOutputStream outgoingTraffic;
 
-	private InetAddress serverIP;
-	
-	private int serverPort;
+	private Inet4Address serverIP;
+
+	private short serverPort;
 
 	private String userName;
 
 	Client() {
-		serverPort = 2075;
 		userName = "User" + (int)(Math.random() * 1_000);
-		//connectToServer();
-
+		try {
+			serverIP = (Inet4Address)Inet4Address.getByName("192.168.1.1");
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		serverPort = 60;
 	}
 
 	void sendMessage(String message) {
-//		try {
-//			outgoingTraffic.writeObject(userName + " " + Constants.getTime() + " - " + message + "\n");
-//			outgoingTraffic.flush();
-//		} catch (IOException e) {
-//		.	e.printStackTrace();
-//		}
-	}
-
-	void connectToServer() {
 		try {
-			serverConnection = new Socket(serverIP, serverPort);
+			outgoingTraffic.writeObject(userName + " " + Constants.getTime() + " - " + message + "\n");
+			outgoingTraffic.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		initializeNetworkStreams();
-	}
-	
-	void terminateConnection() {
-		
 	}
 
-	private void initializeNetworkStreams() {
+	void connect() throws IOException {
+		serverConnection = new Socket(serverIP, serverPort);
+		incommingTraffic = (ObjectInputStream)serverConnection.getInputStream();
+		outgoingTraffic = (ObjectOutputStream)serverConnection.getOutputStream();
+	}
+
+	void disconnect() {
 		try {
-			incommingTraffic = new ObjectInputStream(serverConnection.getInputStream());
-			outgoingTraffic = new ObjectOutputStream(serverConnection.getOutputStream());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			serverConnection.close();
+			serverConnection = null;
+			incommingTraffic.close();
+			incommingTraffic = null;
+			outgoingTraffic.close();
+			outgoingTraffic = null;
+		} catch (IOException e) {}
 	}
 
 	String getServerIP() {
 		return serverIP.getHostAddress();
 	}
-	
+
 	int getServerPort() {
 		return serverPort;
 	}
-	
+
 	String getUserName() {
 		return userName;
 	}
-	
+
 	void setServerIP(String serverIP) throws UnknownHostException {
-		this.serverIP = InetAddress.getByName(serverIP);
+		this.serverIP = (Inet4Address)Inet4Address.getByName(serverIP);
 	}
-	
-	void setServerPort(int serverPort) {
+
+	void setServerPort(short serverPort) {
 		this.serverPort = serverPort;
+	}
+
+	void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 }
