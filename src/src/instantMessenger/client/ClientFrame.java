@@ -1,11 +1,13 @@
 package src.instantMessenger.client;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import src.instantMessenger.util.Constants;
 
 /**
  * 
  * @author Joshua Ciffer
- * @version 02/08/2018
+ * @version 02/26/2018
  */
 final class ClientFrame extends JFrame {
 
@@ -20,9 +22,9 @@ final class ClientFrame extends JFrame {
 	private ClientMenuBar clientMenuBar;
 
 	private ChatFeedPanel chatFeedPanel;
-	
+
 	private MessageFieldPanel messageFieldPanel;
-	
+
 	ClientFrame() {
 		super("Instant Messenger Client");
 		client = new Client();
@@ -33,7 +35,6 @@ final class ClientFrame extends JFrame {
 		clientMenuBar = new ClientMenuBar(this);
 		chatFeedPanel = new ChatFeedPanel();
 		messageFieldPanel = new MessageFieldPanel(this);
-
 		add(clientMenuBar);
 		add(chatFeedPanel);
 		add(messageFieldPanel);
@@ -41,14 +42,17 @@ final class ClientFrame extends JFrame {
 		clientMenuBar.setBounds(0, 0, 500, 20);
 		chatFeedPanel.setBounds(0, 20, 485, 195);
 		messageFieldPanel.setBounds(0, 215, 500, 100);
-//		messageFieldPane.setBounds(0, 215, 410, 50);
-//		sendButton.setBounds(410, 215, 75, 49);
 		setVisible(true);
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 	}
 
 	void sendMessage(String message) {
-		if (!(messageFieldPanel.getMessageTextField().getText().equals(""))) {
-			String message1 = client.getUserName() + " " + Constants.getTime() + " - " + messageFieldPanel.getMessageTextField().getText() + "\n";
+		if (!message.equalsIgnoreCase("")) {
+			message = client.getUserName() + " " + Constants.getTime() + " - " + message + "\n";
 			client.sendMessage(message);
 			chatFeedPanel.getChatFeedTextArea().append(message);
 			messageFieldPanel.getMessageTextField().setText(null);
@@ -56,7 +60,7 @@ final class ClientFrame extends JFrame {
 	}
 
 	void disconnect() {
-		client.terminateConnection();
+		client.disconnect();
 	}
 
 	void terminate() {
@@ -68,8 +72,12 @@ final class ClientFrame extends JFrame {
 		return chatFeedPanel.getChatFeedTextArea().getText();
 	}
 	
+	String getMessage() {
+		return messageFieldPanel.getMessageTextField().getText();
+	}
+
 	Client getClient() {
 		return client;
 	}
-	
+
 }
