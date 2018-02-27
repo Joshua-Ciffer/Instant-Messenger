@@ -71,7 +71,7 @@ public final class Client {
 		return serverIP.getHostAddress();
 	}
 
-	int getServerPort() {
+	short getServerPort() {
 		return serverPort;
 	}
 
