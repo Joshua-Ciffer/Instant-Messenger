@@ -48,18 +48,22 @@ public final class Client {
 
 	void connect() throws IOException {
 		serverConnection = new Socket(serverIP, serverPort);
-		incommingTraffic = (ObjectInputStream)serverConnection.getInputStream();
-		outgoingTraffic = (ObjectOutputStream)serverConnection.getOutputStream();
+		incommingTraffic = new ObjectInputStream(serverConnection.getInputStream());
+		outgoingTraffic = new ObjectOutputStream(serverConnection.getOutputStream());
 	}
 
 	void disconnect() {
 		try {
-			serverConnection.close();
-			serverConnection = null;
-			incommingTraffic.close();
-			incommingTraffic = null;
-			outgoingTraffic.close();
-			outgoingTraffic = null;
+			if (serverConnection != null) {
+				serverConnection.close();
+				serverConnection = null;
+			} else if (incommingTraffic != null) {
+				incommingTraffic.close();
+				incommingTraffic = null;
+			} else if (outgoingTraffic != null) {
+				outgoingTraffic.close();
+				outgoingTraffic = null;
+			}
 		} catch (IOException e) {}
 	}
 

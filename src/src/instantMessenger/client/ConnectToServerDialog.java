@@ -63,6 +63,7 @@ final class ConnectToServerDialog extends JDialog {
 					JOptionPane.showMessageDialog(parentFrame, "The server port you entered is invalid. Please enter a port from the range 0-65535.", "Invalid Server Port", JOptionPane.ERROR_MESSAGE);
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(parentFrame, "The connection could not be established. Please try again.", "Connection Error", JOptionPane.ERROR_MESSAGE);
+					e.printStackTrace();
 				}
 			}
 		});
