@@ -1,8 +1,8 @@
-package src.instantMessenger.app;
+package src.instantMessenger;
 
 import src.instantMessenger.client.ClientFrame;
 
-public class InstantMessengerClient {
+public class MainClient {
 
 	public static void main(String[] args) {
 		new ClientFrame();
