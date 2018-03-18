@@ -55,13 +55,14 @@ public class ConsChat {
 	protected BufferedReader cons;
 
 	protected ConsChat() throws IOException {
-		sock = new Socket("69.74.230.146", Chat.PORTNUM);
+		sock = new Socket("67.80.254.141", Chat.PORTNUM);
 		is = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		pw = new PrintWriter(sock.getOutputStream(), true);
 		cons = new BufferedReader(new InputStreamReader(System.in));
 
 		// Construct and start the reader: from server to stdout.
 		// Make a Thread to avoid lockups.
+
 		new Thread() {
 
 			public void run() {
@@ -126,7 +127,7 @@ class Chat {
 
 	// These are the first character of messages from client to server
 
-	public static final int PORTNUM = 80;
+	public static final int PORTNUM = 27015;
 	public static final int MAX_LOGIN_LENGTH = 20;
 	public static final char SEPARATOR = '\\';
 	public static final char COMMAND = '\\';
@@ -510,7 +511,7 @@ class ChatRoom extends Applet {
 		repaint();
 	}
 
-	protected String serverHost = "69.74.230.146";
+	protected String serverHost = "67.80.254.141";
 
 	/** LOG ME IN TO THE CHAT */
 	public void login() {
