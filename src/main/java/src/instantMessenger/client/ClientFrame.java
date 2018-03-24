@@ -12,7 +12,7 @@ import src.instantMessenger.util.Constants;
 public final class ClientFrame extends JFrame {
 
 	public static void main(String[] args) {
-		ClientFrame x = new ClientFrame();
+		new ClientFrame();
 	}
 
 	private static final long serialVersionUID = 1L;

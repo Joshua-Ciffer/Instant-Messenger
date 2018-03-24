@@ -35,7 +35,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
 import java.io.*;
-import java.net.*;
 import java.util.*;
 
 /**
@@ -181,6 +180,7 @@ class ChatServer {
 	/** The Server Socket */
 	protected ServerSocket servSock;
 	/** The list of my current clients */
+	@SuppressWarnings("rawtypes")
 	protected ArrayList clients;
 	/** Debugging state */
 	private static boolean DEBUG = false;
@@ -196,6 +196,7 @@ class ChatServer {
 	}
 
 	/** Construct (and run!) a Chat Service */
+	@SuppressWarnings("rawtypes")
 	ChatServer() {
 		clients = new ArrayList();
 		try {
@@ -207,6 +208,7 @@ class ChatServer {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void runServer() {
 		try {
 			while (true) {
@@ -396,8 +398,13 @@ class ChatServer {
  * @author Ian Darwin
  * @version $Id: ChatRoom.java,v 1.8 2004/03/09 03:59:37 ian Exp $
  */
+@SuppressWarnings("deprecation")
 class ChatRoom extends Applet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/** Whether we are being run as an Applet or an Application */
 	protected boolean inAnApplet = true;
 	/** The state of logged-in-ness */
@@ -447,6 +454,7 @@ class ChatRoom extends Applet {
 		cp.add(BorderLayout.NORTH, ta);
 
 		Panel p = new Panel();
+		@SuppressWarnings("unused")
 		Button b;
 
 		// The login button
