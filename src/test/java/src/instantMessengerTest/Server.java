@@ -1,7 +1,6 @@
 package src.instantMessengerTest;
 
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.net.ServerSocket;
 import java.io.ObjectInputStream;
