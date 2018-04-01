@@ -1,4 +1,5 @@
 package src.instantMessenger.client;
+
 import java.net.Socket;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
@@ -12,6 +13,7 @@ import src.instantMessenger.util.Constants;
  * @author Joshua Ciffer
  * @version 02/26/2018
  */
+@SuppressWarnings("javadoc")
 public final class Client {
 
 	private Socket serverConnection;

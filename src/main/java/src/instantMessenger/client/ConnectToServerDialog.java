@@ -14,6 +14,7 @@ import java.net.UnknownHostException;
  * @author Joshua Ciffer
  * @version 02/22/2018
  */
+@SuppressWarnings("javadoc")
 final class ConnectToServerDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;

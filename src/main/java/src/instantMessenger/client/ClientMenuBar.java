@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
  * @author Joshua Ciffer
  * @version 02/22/2018
  */
+@SuppressWarnings("javadoc")
 final class ClientMenuBar extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;

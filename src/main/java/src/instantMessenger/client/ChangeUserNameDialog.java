@@ -1,4 +1,5 @@
 package src.instantMessenger.client;
+
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -14,32 +15,36 @@ import java.awt.event.ActionListener;
  */
 final class ChangeUserNameDialog extends JDialog {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Labels the user name text field.
 	 */
 	private JLabel changeUserNameLabel;
-	
+
 	/**
 	 * Allows the user to enter their user name.
 	 */
 	private JTextField userNameTextField;
-	
+
 	/**
 	 * Closes the dialog box without saving the name entered in the dialog box.
 	 */
 	private JButton cancelButton;
-	
+
 	/**
 	 * Saves the current name entered in the text field.
 	 */
 	private JButton saveButton;
-	
+
 	/**
 	 * Constructs a new ChangeUserNameDialog window.
 	 * 
-	 * @param parentFrame - The parent frame that constructs this change user name dialog.
+	 * @param parentFrame
+	 *        - The parent frame that constructs this change user name dialog.
 	 */
 	ChangeUserNameDialog(ClientFrame parentFrame) {
 		super(parentFrame, "Change User Name");
@@ -51,6 +56,7 @@ final class ChangeUserNameDialog extends JDialog {
 		userNameTextField.setText(parentFrame.getClient().getUserName());
 		cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				dispose();
@@ -58,6 +64,7 @@ final class ChangeUserNameDialog extends JDialog {
 		});
 		saveButton = new JButton("Save");
 		saveButton.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				parentFrame.getClient().setUserName(userNameTextField.getText());
@@ -75,5 +82,5 @@ final class ChangeUserNameDialog extends JDialog {
 		setSize(315, 180);
 		setVisible(true);
 	}
-	
+
 }

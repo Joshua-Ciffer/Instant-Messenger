@@ -1,4 +1,5 @@
 package src.instantMessenger.client;
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -12,18 +13,21 @@ import src.instantMessenger.util.Constants;
  */
 final class ChatFeedPanel extends JPanel {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The area that displays the chat history.
 	 */
 	private JTextArea chatFeedTextArea;
-	
+
 	/**
 	 * Allows the chat feed text area to be scrollable.
 	 */
 	private JScrollPane chatFeedPane;
-	
+
 	/**
 	 * Constructs a new ChatFeedPanel container.
 	 */
@@ -44,9 +48,12 @@ final class ChatFeedPanel extends JPanel {
 		chatFeedPane.setBounds(0, 0, 485, 195);
 		setVisible(true);
 	}
-	
+
+	/**
+	 * @return The chat feed text area.
+	 */
 	JTextArea getChatFeedTextArea() {
 		return chatFeedTextArea;
 	}
-	
+
 }

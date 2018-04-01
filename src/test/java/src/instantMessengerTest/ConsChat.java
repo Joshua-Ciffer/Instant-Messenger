@@ -42,6 +42,7 @@ import java.util.*;
  * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id: ConsChat.java,v 1.6 2004/02/16 02:44:43 ian Exp $
  */
+@SuppressWarnings("javadoc")
 public class ConsChat {
 
 	public static void main(String[] args) throws IOException {
@@ -122,6 +123,7 @@ public class ConsChat {
  * @author Ian Darwin
  * @version $Id: Chat.java,v 1.3 2004/02/16 02:44:43 ian Exp $
  */
+@SuppressWarnings("javadoc")
 class Chat {
 
 	// These are the first character of messages from client to server
@@ -171,6 +173,7 @@ class Chat {
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id: ChatServer.java,v 1.10 2004/03/13 21:56:32 ian Exp $
  */
+@SuppressWarnings("javadoc")
 class ChatServer {
 
 	/** What I call myself in system messages */
@@ -398,7 +401,7 @@ class ChatServer {
  * @author Ian Darwin
  * @version $Id: ChatRoom.java,v 1.8 2004/03/09 03:59:37 ian Exp $
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"javadoc", "deprecation"})
 class ChatRoom extends Applet {
 
 	/**

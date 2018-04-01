@@ -9,6 +9,7 @@ import src.instantMessenger.util.Constants;
  * @author Joshua Ciffer
  * @version 02/26/2018
  */
+@SuppressWarnings("javadoc")
 public final class ClientFrame extends JFrame {
 
 	public static void main(String[] args) {

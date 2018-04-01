@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
+@SuppressWarnings("javadoc")
 public class Server {
 
 	public static void main(String[] args) throws IOException {
