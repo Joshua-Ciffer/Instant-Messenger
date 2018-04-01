@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"src.instantMessenger"},{"l":"src.instantMessenger.client"},{"l":"src.instantMessenger.util"}]
