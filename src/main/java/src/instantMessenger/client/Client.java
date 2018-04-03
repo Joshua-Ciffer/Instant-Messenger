@@ -18,7 +18,7 @@ public final class Client {
 
 	private Socket serverConnection;
 
-	private ObjectInputStream incommingTraffic;
+	private ObjectInputStream incomingTraffic;
 
 	private ObjectOutputStream outgoingTraffic;
 
@@ -50,7 +50,7 @@ public final class Client {
 
 	void connect() throws IOException {
 		serverConnection = new Socket(serverIP, serverPort);
-		incommingTraffic = new ObjectInputStream(serverConnection.getInputStream());
+		incomingTraffic = new ObjectInputStream(serverConnection.getInputStream());
 		outgoingTraffic = new ObjectOutputStream(serverConnection.getOutputStream());
 	}
 
@@ -59,9 +59,9 @@ public final class Client {
 			if (serverConnection != null) {
 				serverConnection.close();
 				serverConnection = null;
-			} else if (incommingTraffic != null) {
-				incommingTraffic.close();
-				incommingTraffic = null;
+			} else if (incomingTraffic != null) {
+				incomingTraffic.close();
+				incomingTraffic = null;
 			} else if (outgoingTraffic != null) {
 				outgoingTraffic.close();
 				outgoingTraffic = null;
