@@ -33,7 +33,6 @@ public final class Client {
 		try {
 			serverIP = (Inet4Address)Inet4Address.getByName("192.168.1.1");
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		serverPort = 60;

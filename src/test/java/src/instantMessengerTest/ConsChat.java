@@ -143,7 +143,6 @@ class Chat {
 	public static final char RESP_PRIVATE = 'M';
 	public static final char RESP_SYSTEM = 'S';
 
-	// TODO in main loop:
 	// if (text.charAt(0) == '/')
 	// send(text);
 	// else send("B"+text);
