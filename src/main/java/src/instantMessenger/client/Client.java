@@ -5,7 +5,10 @@ import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+
 import src.instantMessenger.util.Constants;
 
 /**
@@ -20,7 +23,7 @@ public final class Client {
 
 	private ObjectInputStream incomingTraffic;
 
-	private ObjectOutputStream outgoingTraffic;
+	private PrintWriter outgoingTraffic;
 
 	private Inet4Address serverIP;
 
@@ -28,29 +31,26 @@ public final class Client {
 
 	private String userName;
 
-	Client() {
+	Client() throws IOException {
 		userName = "User" + (int)(Math.random() * 1_000);
 		try {
 			serverIP = (Inet4Address)Inet4Address.getByName("192.168.1.1");
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		serverPort = 60;
+		serverPort = 123;
+		serverConnection = new Socket(serverIP, serverPort);
+		incomingTraffic = new ObjectInputStream(serverConnection.getInputStream());
+		outgoingTraffic = new PrintWriter(serverConnection.getOutputStream());
 	}
 
 	void sendMessage(String message) {
-		try {
-			outgoingTraffic.writeObject(userName + " " + Constants.getTime() + " - " + message + "\n");
-			outgoingTraffic.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		outgoingTraffic.println(userName + " " + Constants.getTime() + " - " + message + "\n");
+		outgoingTraffic.flush();
 	}
 
 	void connect() throws IOException {
-		serverConnection = new Socket(serverIP, serverPort);
-		incomingTraffic = new ObjectInputStream(serverConnection.getInputStream());
-		outgoingTraffic = new ObjectOutputStream(serverConnection.getOutputStream());
+
 	}
 
 	void disconnect() {

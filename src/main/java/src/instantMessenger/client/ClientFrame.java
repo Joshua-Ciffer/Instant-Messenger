@@ -1,4 +1,6 @@
 package src.instantMessenger.client;
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -12,7 +14,7 @@ import src.instantMessenger.util.Constants;
 @SuppressWarnings("javadoc")
 public final class ClientFrame extends JFrame {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		new ClientFrame();
 	}
 
@@ -26,7 +28,7 @@ public final class ClientFrame extends JFrame {
 
 	private MessageFieldPanel messageFieldPanel;
 
-	public ClientFrame() {
+	public ClientFrame() throws IOException {
 		super("Instant Messenger Client");
 		client = new Client();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
