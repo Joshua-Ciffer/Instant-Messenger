@@ -2,7 +2,7 @@ package src.instantMessenger;
 
 import java.io.IOException;
 
-import src.instantMessenger.client.ClientFrame;
+import src.instantMessenger.client.view.ClientFrame;
 
 @SuppressWarnings("javadoc")
 public class MainClient {

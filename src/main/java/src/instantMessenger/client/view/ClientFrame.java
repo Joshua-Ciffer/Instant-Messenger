@@ -1,9 +1,11 @@
-package src.instantMessenger.client;
+package src.instantMessenger.client.view;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import src.instantMessenger.client.model.Client;
 import src.instantMessenger.util.Constants;
 
 /**

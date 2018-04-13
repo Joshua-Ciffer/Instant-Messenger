@@ -1,4 +1,4 @@
-package src.instantMessenger.client;
+package src.instantMessenger.client.view;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;

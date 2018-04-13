@@ -1,29 +1,35 @@
-package src.instantMessenger.client;
+package src.instantMessenger.client.model;
 
 import java.net.Socket;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import src.instantMessenger.util.Constants;
 
 /**
  * 
  * @author Joshua Ciffer
- * @version 02/26/2018
+ * @version 04/12/2018
  */
-@SuppressWarnings("javadoc")
 public final class Client {
 
+	/**
+	 * The TCP connection to the chat messenger server.
+	 */
 	private Socket serverConnection;
 
-	private ObjectInputStream incomingTraffic;
+	/**
+	 * Incoming network traffic.
+	 */
+	private ObjectInputStream inboundTraffic;
 
-	private PrintWriter outgoingTraffic;
+	/**
+	 * Outgoing network traffic.
+	 */
+	private PrintWriter outboundTraffic;
 
 	private Inet4Address serverIP;
 
@@ -40,13 +46,13 @@ public final class Client {
 		}
 		serverPort = 123;
 		serverConnection = new Socket(serverIP, serverPort);
-		incomingTraffic = new ObjectInputStream(serverConnection.getInputStream());
-		outgoingTraffic = new PrintWriter(serverConnection.getOutputStream());
+		inboundTraffic = new ObjectInputStream(serverConnection.getInputStream());
+		outboundTraffic = new PrintWriter(serverConnection.getOutputStream());
 	}
 
 	void sendMessage(String message) {
-		outgoingTraffic.println(userName + " " + Constants.getTime() + " - " + message + "\n");
-		outgoingTraffic.flush();
+		outboundTraffic.println(userName + " " + Constants.getTime() + " - " + message + "\n");
+		outboundTraffic.flush();
 	}
 
 	void connect() throws IOException {
@@ -58,12 +64,12 @@ public final class Client {
 			if (serverConnection != null) {
 				serverConnection.close();
 				serverConnection = null;
-			} else if (incomingTraffic != null) {
-				incomingTraffic.close();
-				incomingTraffic = null;
-			} else if (outgoingTraffic != null) {
-				outgoingTraffic.close();
-				outgoingTraffic = null;
+			} else if (inboundTraffic != null) {
+				inboundTraffic.close();
+				inboundTraffic = null;
+			} else if (outboundTraffic != null) {
+				outboundTraffic.close();
+				outboundTraffic = null;
 			}
 		} catch (IOException e) {}
 	}

@@ -1,4 +1,4 @@
-package src.instantMessenger.client;
+package src.instantMessenger.client.view;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JOptionPane;
