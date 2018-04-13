@@ -3,6 +3,7 @@ package src.instantMessenger.client;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+
 import src.instantMessenger.util.Constants;
 
 /**

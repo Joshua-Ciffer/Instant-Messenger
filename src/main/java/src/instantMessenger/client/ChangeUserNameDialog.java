@@ -1,11 +1,12 @@
 package src.instantMessenger.client;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * A change user name dialog allows the user to set their user name that identifies them in the chat server.
@@ -44,7 +45,7 @@ final class ChangeUserNameDialog extends JDialog {
 	 * Constructs a new ChangeUserNameDialog window.
 	 * 
 	 * @param parentFrame
-	 *        - The parent frame that constructs this change user name dialog.
+	 *        The parent frame that constructs this change user name dialog.
 	 */
 	ChangeUserNameDialog(ClientFrame parentFrame) {
 		super(parentFrame, "Change User Name");
