@@ -1,7 +1,7 @@
 /**
- * Contains code for the client interface and related networking and back-end code.
+ * Contains code for the client model and related controller and UI view classes.
  * 
  * @author Joshua Ciffer
- * @version 02/07/2018
+ * @version 04/12/2018
  */
 package src.instantMessenger.client;
