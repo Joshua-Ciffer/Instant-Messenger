@@ -1,4 +1,4 @@
-package src.instantMessenger.client.view;
+package src.instantMessenger.client;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;

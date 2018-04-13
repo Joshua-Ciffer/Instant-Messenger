@@ -1,4 +1,4 @@
-package src.instantMessenger.client.model;
+package src.instantMessenger.client;
 
 import java.net.Socket;
 import java.net.Inet4Address;

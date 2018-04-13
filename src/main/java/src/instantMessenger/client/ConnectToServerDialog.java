@@ -1,4 +1,4 @@
-package src.instantMessenger.client.view;
+package src.instantMessenger.client;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
