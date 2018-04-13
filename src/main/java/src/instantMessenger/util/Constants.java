@@ -23,11 +23,6 @@ public interface Constants {
 	Font CHAT_FONT_BOLD = new Font("Courier new", Font.BOLD, 12);
 
 	/**
-	 * ASCII value for the enter key.
-	 */
-	int ENTER_KEY = 13;
-
-	/**
 	 * @return A randomly generated username.
 	 */
 	static String generateUserName() {
