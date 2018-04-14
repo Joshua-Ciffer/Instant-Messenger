@@ -52,7 +52,7 @@ public final class Client {
 	/**
 	 * Constructs a new client.
 	 */
-	Client() {
+	public Client() {
 		userName = generateUserName();
 	}
 

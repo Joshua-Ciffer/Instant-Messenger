@@ -9,30 +9,78 @@ import javax.swing.JMenuItem;
 
 /**
  * 
+ * 
  * @author Joshua Ciffer
- * @version 02/22/2018
+ * @version 04/13/2018
  */
-@SuppressWarnings("javadoc")
 final class ClientMenuBar extends JMenuBar {
 
+	/**
+	 * Default serial version UID.
+	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * File submenu.
+	 */
 	private JMenu fileMenu;
 
+	/**
+	 * Opens a change user name dialog.
+	 */
 	private JMenuItem changeUserNameItem;
 
+	/**
+	 * Opens a save chat log dialog.
+	 */
 	private JMenuItem saveChatLogItem;
 
+	/**
+	 * Edit submenu.
+	 */
 	private JMenu editMenu;
 
+	/**
+	 * Connection submenu.
+	 */
 	private JMenu connectionMenu;
 
+	/**
+	 * Opens a connect to server dialog.
+	 */
 	private JMenuItem connectToServerItem;
 
+	/**
+	 * Disconnects the client from the current server.
+	 */
 	private JMenuItem disconnectItem;
 
+	/**
+	 * Help submenu.
+	 */
+	private JMenu helpMenu;
+
+	/**
+	 * Opens a help dialog.
+	 */
+	private JMenuItem helpItem;
+
+	/**
+	 * Opens a about dialog.
+	 */
+	private JMenuItem aboutItem;
+
+	/**
+	 * Terminates the program.
+	 */
 	private JMenuItem exitItem;
 
+	/**
+	 * Constructs a new client menu bar.
+	 *
+	 * @param parentFrame
+	 *        The parent frame that this menu bar is placed on.
+	 */
 	ClientMenuBar(ClientFrame parentFrame) {
 		super();
 		fileMenu = new JMenu("File");
@@ -74,6 +122,25 @@ final class ClientMenuBar extends JMenuBar {
 		});
 		connectionMenu.add(connectToServerItem);
 		connectionMenu.add(disconnectItem);
+		helpMenu = new JMenu("Help");
+		helpItem = new JMenuItem("Help...");
+		helpItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent a) {
+				new HelpDialog();
+			}
+		});
+		aboutItem = new JMenuItem("About...");
+		aboutItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent a) {
+				new AboutDialog();
+			}
+		});
+		helpMenu.add(helpItem);
+		helpMenu.add(aboutItem);
 		exitItem = new JMenuItem("Exit");
 		exitItem.addActionListener(new ActionListener() {
 
@@ -85,6 +152,7 @@ final class ClientMenuBar extends JMenuBar {
 		add(fileMenu);
 		add(editMenu);
 		add(connectionMenu);
+		add(helpMenu);
 		add(exitItem);
 		setBounds(0, 0, 500, 20);
 	}

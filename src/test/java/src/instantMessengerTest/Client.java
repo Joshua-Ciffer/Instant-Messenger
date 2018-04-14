@@ -3,7 +3,7 @@ package src.instantMessengerTest;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 import static src.instantMessengerTest.Constants.SERVER_PORT;
@@ -13,20 +13,20 @@ public final class Client {
 
 	private Socket serverConnection;
 
-	private PrintWriter outboundTraffic;
+	private ObjectOutputStream outboundTraffic;
 
 	private Scanner userInput;
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		Client client = new Client("localhost", SERVER_PORT);
 		while (true) {
-			client.getOutboundTraffic().println("FUCK YEA");
+			client.getOutboundTraffic().writeObject("FUCK YEA");
 		}
 	}
 
 	public Client(String ip, int port) throws UnknownHostException, IOException {
 		serverConnection = new Socket(ip, port);
-		outboundTraffic = new PrintWriter(serverConnection.getOutputStream(), true);
+		outboundTraffic = new ObjectOutputStream(serverConnection.getOutputStream());
 		outboundTraffic.flush();
 		userInput = new Scanner(System.in);
 	}
@@ -35,7 +35,7 @@ public final class Client {
 		return serverConnection;
 	}
 
-	public PrintWriter getOutboundTraffic() {
+	public ObjectOutputStream getOutboundTraffic() {
 		return outboundTraffic;
 	}
 

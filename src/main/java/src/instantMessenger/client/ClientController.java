@@ -4,20 +4,29 @@ package src.instantMessenger.client;
 /**
  * 
  *
- * @author Joshua
+ * @author Joshua Ciffer
  * @version 04/12/2018
  */
 public class ClientController {
 
-	Client client;
+	/**
+	 * 
+	 */
+	Client model;
+	
+	/**
+	 * 
+	 */
+	ClientView view;
 	
 	/**
 	 *
 	 *
-	 * @param client
+	 * @param model
 	 */
-	ClientController(Client client) {
-		this.client = client;
+	public ClientController(Client model, ClientView view) {
+		this.model = model;
+		this.view = view;
 	}
 	
 }
