@@ -21,7 +21,7 @@ public final class ClientFrame extends JFrame {
 	 * @param args
 	 * @throws IOException
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		new ClientFrame();
 	}
 
@@ -35,7 +35,7 @@ public final class ClientFrame extends JFrame {
 
 	private MessageFieldPanel messageFieldPanel;
 
-	public ClientFrame() throws IOException {
+	public ClientFrame() {
 		super("Instant Messenger Client");
 		client = new Client();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -60,7 +60,7 @@ public final class ClientFrame extends JFrame {
 		}
 	}
 
-	void sendMessage(String message) {
+	void sendMessage(String message) throws IOException {
 		if (!message.equalsIgnoreCase("")) {
 			message = client.getUserName() + " " + Constants.getTime() + " - " + message + "\n";
 			client.sendMessage(message);

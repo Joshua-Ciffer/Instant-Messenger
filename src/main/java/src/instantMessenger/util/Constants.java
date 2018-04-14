@@ -28,6 +28,13 @@ public interface Constants {
 	static String generateUserName() {
 		return "User" + (int)(Math.random() * 1_000);
 	}
+	
+	/**
+	 * @return A randomly generated server name.
+	 */
+	static String generateServerName() {
+		return "Server" + (int)(Math.random() * 1_000);
+	}
 
 	/**
 	 * @return The current time.

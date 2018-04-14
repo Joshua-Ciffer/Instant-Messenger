@@ -21,11 +21,6 @@ public class MainServer {
 	 */
 	public static void main(String[] args) throws IOException {
 		Server server = new Server();
-		System.out.println(server.getClientConnection().getInetAddress());
-		while (server.getClientConnection().isConnected()) {
-			System.out.println(server.getInboundTraffic().readLine());
-		}
-
 	}
 
 }

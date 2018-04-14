@@ -5,6 +5,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import src.instantMessenger.util.Constants;
 
 /**
@@ -55,7 +57,11 @@ final class MessageFieldPanel extends JPanel {
 		sendButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				parentFrame.sendMessage(messageTextField.getText());
+				try {
+					parentFrame.sendMessage(messageTextField.getText());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		add(messageFieldPane);

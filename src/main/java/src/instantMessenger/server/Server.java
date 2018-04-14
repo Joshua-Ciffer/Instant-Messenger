@@ -1,61 +1,100 @@
 package src.instantMessenger.server;
 
-import java.io.BufferedReader;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import static src.instantMessenger.util.Constants.generateServerName;
+import static src.instantMessenger.util.Constants.getTime;
+
 /**
- * 
+ * This class represents a single chat server that has connections to multiple clients.
  *
- * @author Joshua
- * @version 04/12/2018
+ * @author Joshua Ciffer
+ * @version 04/13/2018
  */
-public class Server {
+public final class Server {
 
 	/**
 	 * 
 	 */
 	private ServerSocket clientListener;
-	
+
 	/**
 	 * 
 	 */
 	private Socket clientConnection;
-	
+
 	/**
-	 * 
+	 * Incoming network traffic.
 	 */
-	private BufferedReader inboundTraffic;
-	
+	private ObjectInputStream inboundTraffic;
+
+	/**
+	 * Outgoing network traffic.
+	 */
+	private ObjectOutputStream outboundTraffic;
+
+	/**
+	 * This server's port.
+	 */
+	private short serverPort;
+
+	/**
+	 * The name of this server.
+	 */
+	private String serverName;
+
 	/**
 	 *
 	 *
-	 * @throws IOException
 	 */
-	public Server() throws IOException {
-		clientListener = new ServerSocket(123);
-		clientConnection = clientListener.accept();
-		inboundTraffic = new BufferedReader(new InputStreamReader(clientConnection.getInputStream()));
+	public Server() {
+		serverName = generateServerName();
 	}
-	
+
 	/**
+	 * Broadcasts a message to everyone on the server.
 	 *
-	 *
-	 * @return df
+	 * @param message
+	 *        The message to broadcast.
+	 * @throws IOException 
 	 */
-	public Socket getClientConnection() {
-		return clientConnection;
+	void broadcastMessage(String message) throws IOException {
+		outboundTraffic.writeUTF("SERVER " + serverName + " " + getTime() + ": " + message);
+		outboundTraffic.flush();
 	}
-	
+
 	/**
-	 *
-	 *
-	 * @return jksdf
+	 * @return The server port.
 	 */
-	public BufferedReader getInboundTraffic() {
-		return inboundTraffic;
+	short getServerPort() {
+		return serverPort;
 	}
-	
+
+	/**
+	 * @return The server name.
+	 */
+	String getServerName() {
+		return serverName;
+	}
+
+	/**
+	 * @param serverPort
+	 *        The server port to set.
+	 */
+	void setServerPort(short serverPort) {
+		this.serverPort = serverPort;
+	}
+
+	/**
+	 * @param serverName
+	 *        The server name to set.
+	 */
+	void setServerName(String serverName) {
+		this.serverName = serverName;
+	}
+
 }

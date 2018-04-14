@@ -3,9 +3,8 @@ package src.instantMessenger.client;
 import java.net.Socket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.IOException;
 
 import static src.instantMessenger.util.Constants.generateUserName;
@@ -27,12 +26,12 @@ public final class Client {
 	/**
 	 * Incoming network traffic.
 	 */
-	private BufferedReader inboundTraffic;
+	private ObjectInputStream inboundTraffic;
 
 	/**
 	 * Outgoing network traffic.
 	 */
-	private PrintWriter outboundTraffic;
+	private ObjectOutputStream outboundTraffic;
 
 	/**
 	 * The server's IP address.
@@ -61,9 +60,10 @@ public final class Client {
 	 *
 	 * @param message
 	 *        The message to send.
+	 * @throws IOException 
 	 */
-	void sendMessage(String message) {
-		outboundTraffic.println(userName + " " + getTime() + " - " + message);
+	void sendMessage(String message) throws IOException {
+		outboundTraffic.writeUTF(userName + " " + getTime() + ": " + message);
 		outboundTraffic.flush();
 	}
 
@@ -75,8 +75,8 @@ public final class Client {
 	 */
 	void connect() throws IOException {
 		serverConnection = new Socket(serverIP, serverPort);
-		inboundTraffic = new BufferedReader(new InputStreamReader(serverConnection.getInputStream()));
-		outboundTraffic = new PrintWriter(serverConnection.getOutputStream());
+		inboundTraffic = new ObjectInputStream(serverConnection.getInputStream());
+		outboundTraffic = new ObjectOutputStream(serverConnection.getOutputStream());
 	}
 
 	/**
