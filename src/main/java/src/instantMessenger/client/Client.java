@@ -7,7 +7,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
 
-import static src.instantMessenger.util.Constants.generateUserName;
 import static src.instantMessenger.util.Constants.getTime;
 
 /**
@@ -52,7 +51,7 @@ public final class Client {
 	 * Constructs a new client.
 	 */
 	public Client() {
-		userName = generateUserName();
+		userName = "User" + (int)(Math.random() * 1_000);
 	}
 
 	/**

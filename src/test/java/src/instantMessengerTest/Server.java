@@ -1,7 +1,7 @@
 package src.instantMessengerTest;
 
+import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -20,19 +20,19 @@ public class Server {
 	
 	private Socket clientConnection;
 	
-	private ObjectInputStream inboundTraffic;
+	private DataInputStream inboundTraffic;
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Server server = new Server(SERVER_PORT);
 		while (server.getClientConnection().isConnected()) {
-			System.out.println(server.getInboundTraffic().readObject());
+			System.out.println(server.getInboundTraffic().readUTF());
 		}
 	}
 	
 	public Server(int port) throws IOException {
 		clientListener = new ServerSocket(port);
 		clientConnection = clientListener.accept();
-		inboundTraffic = new ObjectInputStream(clientConnection.getInputStream());
+		inboundTraffic = new DataInputStream(clientConnection.getInputStream());
 	}
 	
 	public ServerSocket getClientListener() {
@@ -42,7 +42,7 @@ public class Server {
 	public Socket getClientConnection() {
 		return clientConnection;
 	}
-	public ObjectInputStream getInboundTraffic() {
+	public DataInputStream getInboundTraffic() {
 		return inboundTraffic;
 	}
 	

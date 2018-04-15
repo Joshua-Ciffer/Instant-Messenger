@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static src.instantMessenger.util.Constants.generateServerName;
 import static src.instantMessenger.util.Constants.getTime;
 
 /**
@@ -52,7 +51,7 @@ public final class Server {
 	 *
 	 */
 	public Server() {
-		serverName = generateServerName();
+		serverName = "Server" + (int)(Math.random() * 1_000);
 	}
 
 	/**
@@ -64,7 +63,6 @@ public final class Server {
 	 */
 	void broadcastMessage(String message) throws IOException {
 		outboundTraffic.writeUTF("SERVER " + serverName + " " + getTime() + ": " + message);
-		outboundTraffic.flush();
 	}
 
 	/**

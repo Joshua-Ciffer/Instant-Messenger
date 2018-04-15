@@ -1,7 +1,7 @@
 package src.instantMessenger.client;
 
 import javax.swing.JDialog;
-
+import java.io.*;
 /**
  * 
  *

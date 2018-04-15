@@ -23,20 +23,6 @@ public interface Constants {
 	Font CHAT_FONT_BOLD = new Font("Courier new", Font.BOLD, 12);
 
 	/**
-	 * @return A randomly generated username.
-	 */
-	static String generateUserName() {
-		return "User" + (int)(Math.random() * 1_000);
-	}
-	
-	/**
-	 * @return A randomly generated server name.
-	 */
-	static String generateServerName() {
-		return "Server" + (int)(Math.random() * 1_000);
-	}
-
-	/**
 	 * @return The current time.
 	 */
 	static String getTime() {
