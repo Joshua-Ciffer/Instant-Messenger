@@ -1,5 +1,8 @@
 package src.instantMessenger.client;
 
+import src.instantMessenger.util.Constants;
+
+import static src.instantMessenger.util.Constants.LISTENER_THREAD;
 
 /**
  * 
@@ -19,6 +22,7 @@ public class ClientController {
 	 */
 	private ClientView view;
 	
+	
 	/**
 	 *
 	 *
@@ -27,6 +31,7 @@ public class ClientController {
 	public ClientController(Client model, ClientView view) {
 		this.model = model;
 		this.view = view;
+		Constants.LISTENER_THREAD.setController(this);
 	}
 	
 	Client getModel() {
@@ -36,5 +41,6 @@ public class ClientController {
 	ClientView getView() {
 		return view;
 	}
+	
 	
 }

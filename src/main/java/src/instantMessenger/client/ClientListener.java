@@ -10,25 +10,22 @@ import java.io.IOException;
  */
 public class ClientListener implements Runnable {
 
-	private Client model;
-	
 	private ClientController controller;
 	
 	/**
 	 *
 	 *
-	 * @param client
+	 * @param controller
 	 */
-	public ClientListener(Client model, ClientController controller) {
-		this.model = model;
+	void setController(ClientController controller) {
 		this.controller = controller;
 	}
 	
 	@Override
 	public void run() {
-		while (model.getServerConnection().isConnected()) {
+		while (controller.getModel().getServerConnection().isConnected()) {
 			try {
-				controller.getView().getClientFrame().appendToScreen(model.getInboundTraffic().readUTF());
+				controller.getView().getClientFrame().appendToScreen(controller.getModel().getInboundTraffic().readUTF());
 			} catch (IOException e) {}
 		}
 	}

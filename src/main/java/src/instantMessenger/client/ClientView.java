@@ -11,8 +11,8 @@ public class ClientView {
 
 	private ClientFrame frame;
 	
-	ClientView(ClientFrame frame) {
-		this.frame = frame;
+	public ClientView() {
+		frame = new ClientFrame();
 	}
 	
 	ClientFrame getClientFrame() {

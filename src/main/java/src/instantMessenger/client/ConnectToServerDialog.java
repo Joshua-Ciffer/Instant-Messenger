@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import static src.instantMessenger.util.Constants.LISTENER_THREAD;
+
 /**
  * 
  * @author Joshua Ciffer
@@ -32,16 +34,19 @@ final class ConnectToServerDialog extends JDialog {
 	private JButton cancelButton;
 
 	private JButton connectButton;
-
+	
+	
 	ConnectToServerDialog(ClientFrame parentFrame) {
-		super(parentFrame, "Conenct to Server");
+		super(parentFrame, "Connect to Server");
 		setResizable(false);
 		setLocationRelativeTo(parentFrame);
 		setLayout(null);
 		serverIPLabel = new JLabel("Server IP:");
 		serverPortLabel = new JLabel("Server Port:");
 		serverIPTextField = new JTextField();
-		serverIPTextField.setText(parentFrame.getClient().getServerIP());
+		try {
+			serverIPTextField.setText(parentFrame.getClient().getServerIP());
+		} catch (NullPointerException e) {}
 		serverPortTextField = new JTextField();
 		serverPortTextField.setText(Integer.toString(parentFrame.getClient().getServerPort()));
 		cancelButton = new JButton("Cancel");
@@ -60,6 +65,8 @@ final class ConnectToServerDialog extends JDialog {
 				try {
 					parentFrame.getClient().setServerIP(serverIPTextField.getText());
 					parentFrame.getClient().setServerPort(Short.parseShort(serverPortTextField.getText()));
+					parentFrame.getClient().connect();
+					LISTENER_THREAD.run();
 					dispose();
 				} catch (UnknownHostException e) {
 					JOptionPane.showMessageDialog(parentFrame, "The IP address you entered is invalid. Please enter a valid IPV4 address.", "Invalid IP Address",

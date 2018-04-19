@@ -2,6 +2,9 @@ package src.instantMessenger.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import src.instantMessenger.client.ClientListener;
+
 import java.awt.Font;
 
 /**
@@ -12,6 +15,8 @@ import java.awt.Font;
  */
 public interface Constants {
 
+	ClientListener LISTENER_THREAD = new ClientListener();
+	
 	/**
 	 * Font used in the chat screen.
 	 */

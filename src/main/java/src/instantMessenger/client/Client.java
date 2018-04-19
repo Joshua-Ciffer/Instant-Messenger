@@ -48,6 +48,7 @@ public final class Client {
 	 * The current user's name.
 	 */
 	private String userName;
+	
 
 	/**
 	 * Constructs a new client.
