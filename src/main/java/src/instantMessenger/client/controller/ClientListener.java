@@ -1,4 +1,4 @@
-package src.instantMessenger.client;
+package src.instantMessenger.client.controller;
 
 import java.io.IOException;
 

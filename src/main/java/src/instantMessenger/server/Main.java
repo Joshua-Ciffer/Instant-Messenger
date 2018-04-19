@@ -2,6 +2,8 @@ package src.instantMessenger.server;
 
 import java.io.IOException;
 
+import src.instantMessenger.server.model.Server;
+
 /**
  * The main entry point class for the instant messenger server.s
  *

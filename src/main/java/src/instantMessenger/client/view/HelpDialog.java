@@ -1,14 +1,14 @@
-package src.instantMessenger.client;
+package src.instantMessenger.client.view;
 
 import javax.swing.JDialog;
-import java.io.*;
+
 /**
  * 
  *
  * @author Joshua
  * @version 04/13/2018
  */
-final class AboutDialog extends JDialog {
+final class HelpDialog extends JDialog {
 
 	/**
 	 * 

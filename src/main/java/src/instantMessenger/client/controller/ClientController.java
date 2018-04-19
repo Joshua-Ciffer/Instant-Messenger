@@ -1,5 +1,7 @@
-package src.instantMessenger.client;
+package src.instantMessenger.client.controller;
 
+import src.instantMessenger.client.model.Client;
+import src.instantMessenger.client.view.ClientView;
 import src.instantMessenger.util.Constants;
 
 import static src.instantMessenger.util.Constants.LISTENER_THREAD;

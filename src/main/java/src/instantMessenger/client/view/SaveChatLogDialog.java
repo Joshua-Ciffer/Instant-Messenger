@@ -1,4 +1,4 @@
-package src.instantMessenger.client;
+package src.instantMessenger.client.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;

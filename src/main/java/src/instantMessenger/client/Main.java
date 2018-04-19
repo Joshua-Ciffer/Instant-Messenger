@@ -1,5 +1,9 @@
 package src.instantMessenger.client;
 
+import src.instantMessenger.client.controller.ClientController;
+import src.instantMessenger.client.model.Client;
+import src.instantMessenger.client.view.ClientView;
+
 @SuppressWarnings("javadoc")
 public class Main {
 

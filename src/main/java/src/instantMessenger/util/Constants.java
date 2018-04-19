@@ -3,7 +3,7 @@ package src.instantMessenger.util;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import src.instantMessenger.client.ClientListener;
+import src.instantMessenger.client.controller.ClientListener;
 
 import java.awt.Font;
 

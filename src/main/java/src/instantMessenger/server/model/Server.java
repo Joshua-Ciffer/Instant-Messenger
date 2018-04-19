@@ -1,4 +1,4 @@
-package src.instantMessenger.server;
+package src.instantMessenger.server.model;
 
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
