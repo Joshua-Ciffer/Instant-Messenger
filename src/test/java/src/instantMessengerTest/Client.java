@@ -7,6 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static src.instantMessenger.util.Constants.getTime;
 import static src.instantMessengerTest.Constants.TEST_SERVER_IP;
 import static src.instantMessengerTest.Constants.TEST_SERVER_PORT;
 
@@ -33,8 +34,10 @@ public final class Client {
 		String message;
 		while (client.getServerConnection().isConnected()) {
 			System.out.print("Enter message: ");
-			message = client.getUserInput().nextLine();
+			message = getTime() + ": " + client.getUserInput().nextLine();
 			client.getOutboundTraffic().writeUTF(message);
+			System.out.println(message);
+			System.out.println(client.getInboundTraffic().readUTF());
 		}
 	}
 
