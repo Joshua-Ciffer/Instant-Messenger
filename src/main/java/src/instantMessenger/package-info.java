@@ -1,7 +1,7 @@
 /**
- * This package contains main entry points for the program.
+ * This package contains respective sub-packages for client and server side code.
  * 
  * @author Joshua Ciffer
- * @version 03/13/2018
+ * @version 04/19/2018
  */
 package src.instantMessenger;
