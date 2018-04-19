@@ -1,8 +1,4 @@
-package src.instantMessenger;
-
-import src.instantMessenger.client.Client;
-import src.instantMessenger.client.ClientController;
-import src.instantMessenger.client.ClientView;
+package src.instantMessenger.client;
 
 @SuppressWarnings("javadoc")
 public class MainClient {
