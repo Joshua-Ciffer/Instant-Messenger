@@ -15,7 +15,7 @@ public class ClientView {
 		frame = new ClientFrame();
 	}
 	
-	ClientFrame getClientFrame() {
+	public ClientFrame getClientFrame() {
 		return frame;
 	}
 	

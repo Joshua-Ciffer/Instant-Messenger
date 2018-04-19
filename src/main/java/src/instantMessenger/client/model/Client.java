@@ -65,7 +65,7 @@ public final class Client {
 	 * @throws IOException
 	 *         Thrown if the network stream can't be written to.
 	 */
-	void sendMessage(String message) throws IOException {
+	public void sendMessage(String message) throws IOException {
 		outboundTraffic.writeUTF(userName + " " + getTime() + ": " + message);
 	}
 
@@ -75,7 +75,7 @@ public final class Client {
 	 * @throws IOException
 	 *         Thrown if a network or IO error occurs.
 	 */
-	void connect() throws IOException {
+	public void connect() throws IOException {
 		serverConnection = new Socket(serverIP, serverPort);
 		inboundTraffic = new DataInputStream(serverConnection.getInputStream());
 		outboundTraffic = new DataOutputStream(serverConnection.getOutputStream());
@@ -84,7 +84,7 @@ public final class Client {
 	/**
 	 * Terminates the server connection and closes network streams.
 	 */
-	void disconnect() {
+	public void disconnect() {
 		try {
 			if (serverConnection != null) {
 				serverConnection.close();
@@ -110,14 +110,14 @@ public final class Client {
 	/**
 	 * @return A reference to the server connection.
 	 */
-	Socket getServerConnection() {
+	public Socket getServerConnection() {
 		return serverConnection;
 	}
 
 	/**
 	 * @return A reference to the inbound traffic stream.
 	 */
-	DataInputStream getInboundTraffic() {
+	public DataInputStream getInboundTraffic() {
 		return inboundTraffic;
 	}
 
@@ -131,21 +131,21 @@ public final class Client {
 	/**
 	 * @return The server IP.
 	 */
-	String getServerIP() {
+	public String getServerIP() {
 		return serverIP.getHostAddress();
 	}
 
 	/**
 	 * @return The server port.
 	 */
-	short getServerPort() {
+	public short getServerPort() {
 		return serverPort;
 	}
 
 	/**
 	 * @return The user name.
 	 */
-	String getUserName() {
+	public String getUserName() {
 		return userName;
 	}
 
@@ -155,7 +155,7 @@ public final class Client {
 	 * @throws UnknownHostException
 	 *         Thrown if the IP is invalid.
 	 */
-	void setServerIP(String serverIP) throws UnknownHostException {
+	public void setServerIP(String serverIP) throws UnknownHostException {
 		this.serverIP = InetAddress.getByName(serverIP);
 	}
 
@@ -163,7 +163,7 @@ public final class Client {
 	 * @param serverPort
 	 *        The server port to set.
 	 */
-	void setServerPort(short serverPort) {
+	public void setServerPort(short serverPort) {
 		this.serverPort = serverPort;
 	}
 
@@ -171,7 +171,7 @@ public final class Client {
 	 * @param userName
 	 *        The user name to set.
 	 */
-	void setUserName(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 

@@ -70,7 +70,7 @@ public final class ClientFrame extends JFrame {
 		}
 	}
 	
-	void appendToScreen(String message) {
+	public void appendToScreen(String message) {
 		chatFeedPanel.getChatFeedTextArea().append(message);
 	}
 
