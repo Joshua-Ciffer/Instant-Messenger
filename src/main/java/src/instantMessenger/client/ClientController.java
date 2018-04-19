@@ -12,12 +12,12 @@ public class ClientController {
 	/**
 	 * 
 	 */
-	Client model;
+	private Client model;
 	
 	/**
 	 * 
 	 */
-	ClientView view;
+	private ClientView view;
 	
 	/**
 	 *
@@ -27,6 +27,14 @@ public class ClientController {
 	public ClientController(Client model, ClientView view) {
 		this.model = model;
 		this.view = view;
+	}
+	
+	Client getModel() {
+		return model;
+	}
+	
+	ClientView getView() {
+		return view;
 	}
 	
 }

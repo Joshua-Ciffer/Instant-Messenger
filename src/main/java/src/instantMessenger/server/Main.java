@@ -8,7 +8,7 @@ import java.io.IOException;
  * @author Joshua
  * @version 04/12/2018
  */
-public class MainServer {
+public class Main {
 
 	/**
 	 * The main entry point for the instant messenger server.

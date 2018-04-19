@@ -9,4 +9,14 @@ package src.instantMessenger.client;
  */
 public class ClientView {
 
+	private ClientFrame frame;
+	
+	ClientView(ClientFrame frame) {
+		this.frame = frame;
+	}
+	
+	ClientFrame getClientFrame() {
+		return frame;
+	}
+	
 }

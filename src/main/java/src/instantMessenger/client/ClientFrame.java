@@ -68,6 +68,10 @@ public final class ClientFrame extends JFrame {
 			messageFieldPanel.getMessageTextField().setText(null);
 		}
 	}
+	
+	void appendToScreen(String message) {
+		chatFeedPanel.getChatFeedTextArea().append(message);
+	}
 
 	void disconnect() {
 		client.disconnect();

@@ -1,7 +1,7 @@
 package src.instantMessenger.client;
 
 @SuppressWarnings("javadoc")
-public class MainClient {
+public class Main {
 
 	public static void main(String[] args) {
 		Client model = new Client();

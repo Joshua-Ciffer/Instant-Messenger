@@ -3,9 +3,11 @@ package src.instantMessenger.client;
 import java.net.Socket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+
+import static java.lang.Math.random;
 
 import static src.instantMessenger.util.Constants.getTime;
 
@@ -13,7 +15,7 @@ import static src.instantMessenger.util.Constants.getTime;
  * This class represents a single chat client that has a connection to the server.
  * 
  * @author Joshua Ciffer
- * @version 04/12/2018
+ * @version 04/19/2018
  */
 public final class Client {
 
@@ -25,12 +27,12 @@ public final class Client {
 	/**
 	 * Incoming network traffic.
 	 */
-	private ObjectInputStream inboundTraffic;
+	private DataInputStream inboundTraffic;
 
 	/**
 	 * Outgoing network traffic.
 	 */
-	private ObjectOutputStream outboundTraffic;
+	private DataOutputStream outboundTraffic;
 
 	/**
 	 * The server's IP address.
@@ -51,7 +53,7 @@ public final class Client {
 	 * Constructs a new client.
 	 */
 	public Client() {
-		userName = "User" + (int)(Math.random() * 1_000);
+		userName = "User" + (int)(random() * 1_000);
 	}
 
 	/**
@@ -59,11 +61,11 @@ public final class Client {
 	 *
 	 * @param message
 	 *        The message to send.
-	 * @throws IOException 
+	 * @throws IOException
+	 *         Thrown if the network stream can't be written to.
 	 */
 	void sendMessage(String message) throws IOException {
 		outboundTraffic.writeUTF(userName + " " + getTime() + ": " + message);
-		outboundTraffic.flush();
 	}
 
 	/**
@@ -74,8 +76,8 @@ public final class Client {
 	 */
 	void connect() throws IOException {
 		serverConnection = new Socket(serverIP, serverPort);
-		inboundTraffic = new ObjectInputStream(serverConnection.getInputStream());
-		outboundTraffic = new ObjectOutputStream(serverConnection.getOutputStream());
+		inboundTraffic = new DataInputStream(serverConnection.getInputStream());
+		outboundTraffic = new DataOutputStream(serverConnection.getOutputStream());
 	}
 
 	/**
@@ -102,6 +104,27 @@ public final class Client {
 				serverPort = 0;
 			}
 		} catch (IOException e) {}
+	}
+
+	/**
+	 * @return A reference to the server connection.
+	 */
+	Socket getServerConnection() {
+		return serverConnection;
+	}
+
+	/**
+	 * @return A reference to the inbound traffic stream.
+	 */
+	DataInputStream getInboundTraffic() {
+		return inboundTraffic;
+	}
+
+	/**
+	 * @return A reference to the outbound traffic stream.
+	 */
+	DataOutputStream getOutboundTraffic() {
+		return outboundTraffic;
 	}
 
 	/**
