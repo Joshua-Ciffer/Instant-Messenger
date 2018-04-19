@@ -27,10 +27,12 @@ public final class Server {
 	 */
 	public static void main(String[] args) throws IOException {
 		Server server = new Server(TEST_SERVER_PORT);
-		String message;
+		String message, response;
 		while ((message = server.getInboundTraffic().readUTF()) != null) {
 			System.out.println(getTime() + ": " + message);
-			server.getOutboundTraffic().writeUTF(getTime() + " SERVER ECHOED: " + message);
+			response = getTime() + " SERVER RESPONDED: " + message;
+			server.getOutboundTraffic().writeUTF(response);
+			System.out.println(response);
 		}
 	}
 
