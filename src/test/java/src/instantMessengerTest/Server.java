@@ -7,7 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import static src.instantMessenger.util.Constants.getTime;
-import static src.instantMessengerTest.Constants.SERVER_PORT;
+import static src.instantMessengerTest.Constants.TEST_SERVER_PORT;
 
 /**
  * Simple command line test server.
@@ -15,7 +15,7 @@ import static src.instantMessengerTest.Constants.SERVER_PORT;
  * @author Joshua Ciffer
  * @version 04/19/2018
  */
-public class Server {
+public final class Server {
 
 	/**
 	 * The main entry point of the server.
@@ -26,7 +26,7 @@ public class Server {
 	 *         Thrown if an error occurs with the network streams.
 	 */
 	public static void main(String[] args) throws IOException {
-		Server server = new Server(SERVER_PORT);
+		Server server = new Server(TEST_SERVER_PORT);
 		String message;
 		while ((message = server.getInboundTraffic().readUTF()) != null) {
 			System.out.println(getTime() + ": " + message);
@@ -55,15 +55,21 @@ public class Server {
 	private DataOutputStream outboundTraffic;
 
 	/**
+	 * The port that this server is hosting on.
+	 */
+	private short serverPort;
+
+	/**
 	 * Constructs a new instance of Server.
 	 *
-	 * @param port
+	 * @param serverPort
 	 *        The port this server is hosting on.
 	 * @throws IOException
 	 *         Thrown if there is an error setting up the network streams.
 	 */
-	public Server(int port) throws IOException {
-		clientListener = new ServerSocket(port);
+	public Server(short serverPort) throws IOException {
+		this.serverPort = serverPort;
+		clientListener = new ServerSocket(serverPort);
 		clientConnection = clientListener.accept();
 		inboundTraffic = new DataInputStream(clientConnection.getInputStream());
 		outboundTraffic = new DataOutputStream(clientConnection.getOutputStream());
@@ -98,6 +104,13 @@ public class Server {
 	}
 
 	/**
+	 * @return The port that this server is hosting on.
+	 */
+	public short getServerPort() {
+		return serverPort;
+	}
+
+	/**
 	 * @param clientListener
 	 *        The client listener to set.
 	 */
@@ -127,6 +140,14 @@ public class Server {
 	 */
 	public void setOutboundTraffic(DataOutputStream outboundTraffic) {
 		this.outboundTraffic = outboundTraffic;
+	}
+
+	/**
+	 * @param serverPort
+	 *        The server port to set.
+	 */
+	public void setServerPort(short serverPort) {
+		this.serverPort = serverPort;
 	}
 
 }
