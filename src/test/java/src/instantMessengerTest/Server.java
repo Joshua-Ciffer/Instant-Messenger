@@ -29,7 +29,7 @@ public final class Server {
 		Server server = new Server(TEST_SERVER_PORT);
 		String message, response;
 		while ((message = server.getInboundTraffic().readUTF()) != null) {
-			System.out.println(getTime() + ": " + message);
+			System.out.println(message);
 			response = getTime() + " SERVER RESPONDED: " + message;
 			server.getOutboundTraffic().writeUTF(response);
 			System.out.println(response);
