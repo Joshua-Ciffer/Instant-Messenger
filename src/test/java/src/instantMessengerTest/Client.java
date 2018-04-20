@@ -31,14 +31,44 @@ public final class Client {
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		Client client = new Client(TEST_SERVER_IP, TEST_SERVER_PORT);
-		String message;
-		while (client.getServerConnection().isConnected()) {
-			System.out.print("Enter message: ");
-			message = getTime() + ": " + client.getUserInput().nextLine();
-			client.getOutboundTraffic().writeUTF(message);
-			System.out.println(message);
-			System.out.println(client.getInboundTraffic().readUTF());
-		}
+		Thread i = new Thread() {
+
+			public void run() {
+				String incoming;
+				try {
+					while ((incoming = client.getInboundTraffic().readUTF()) != null) {
+						synchronized (System.out) {
+							System.out.flush();
+							System.out.println(incoming);
+							System.out.flush();
+						}
+					}
+				} catch (IOException e) {}
+			}
+
+		};
+		Thread o = new Thread() {
+
+			public void run() {
+				try {
+					String outgoing;
+					while (true) {
+						synchronized (System.out) {
+							System.out.flush();
+							System.out.print("Enter message: ");
+							outgoing = getTime() + " CLIENT: " + client.getUserInput().nextLine();
+							client.getOutboundTraffic().writeUTF(outgoing);
+							System.out.println(outgoing);
+							System.out.flush();
+							client.getOutboundTraffic().writeUTF(outgoing);
+						}
+					}
+				} catch (IOException e) {}
+			}
+
+		};
+		i.start();
+		o.start();
 	}
 
 	/**
