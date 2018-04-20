@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
 
 import static src.instantMessenger.util.Constants.getTime;
 import static src.instantMessengerTest.Constants.TEST_SERVER_PORT;
@@ -27,13 +28,42 @@ public final class Server {
 	 */
 	public static void main(String[] args) throws IOException {
 		Server server = new Server(TEST_SERVER_PORT);
-		String message, response;
-		while ((message = server.getInboundTraffic().readUTF()) != null) {
-			System.out.println(message);
-			response = getTime() + " SERVER RESPONDED: " + message;
-			server.getOutboundTraffic().writeUTF(response);
-			System.out.println(response);
-		}
+		Thread i = new Thread() {
+
+			public void run() {
+				String incoming;
+				try {
+					while ((incoming = server.getInboundTraffic().readUTF()) != null) {
+						synchronized (System.out) {
+							System.out.flush();
+							System.out.println(incoming);
+							System.out.flush();
+						}
+					}
+				} catch (IOException e) {}
+			}
+
+		};
+		Thread o = new Thread() {
+
+			public void run() {
+				String outgoing;
+				try {
+					while (true) {
+						synchronized (System.out) {
+							System.out.flush();
+							System.out.print("Enter message: ");
+							outgoing = getTime() + " SERVER: " + server.getUserInput().nextLine();
+							System.out.println(outgoing);
+							System.out.flush();
+							server.getOutboundTraffic().writeUTF(outgoing);
+						}
+					}
+				} catch (IOException e) {}
+			}
+		};
+		i.start();
+		o.start();
 	}
 
 	/**
@@ -57,6 +87,11 @@ public final class Server {
 	private DataOutputStream outboundTraffic;
 
 	/**
+	 * Gathers user input from the console.
+	 */
+	private Scanner userInput;
+
+	/**
 	 * The port that this server is hosting on.
 	 */
 	private short serverPort;
@@ -75,6 +110,7 @@ public final class Server {
 		clientConnection = clientListener.accept();
 		inboundTraffic = new DataInputStream(clientConnection.getInputStream());
 		outboundTraffic = new DataOutputStream(clientConnection.getOutputStream());
+		userInput = new Scanner(System.in);
 	}
 
 	/**
@@ -103,6 +139,13 @@ public final class Server {
 	 */
 	public DataOutputStream getOutboundTraffic() {
 		return outboundTraffic;
+	}
+
+	/**
+	 * @return A reference to the user input scanner object.
+	 */
+	public Scanner getUserInput() {
+		return userInput;
 	}
 
 	/**
@@ -142,6 +185,14 @@ public final class Server {
 	 */
 	public void setOutboundTraffic(DataOutputStream outboundTraffic) {
 		this.outboundTraffic = outboundTraffic;
+	}
+
+	/**
+	 * @param userInput
+	 *        The user input scanner to set.
+	 */
+	public void setUserInput(Scanner userInput) {
+		this.userInput = userInput;
 	}
 
 	/**
