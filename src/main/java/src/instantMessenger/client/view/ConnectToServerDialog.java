@@ -18,9 +18,11 @@ import static src.instantMessenger.util.Constants.LISTENER_THREAD;
  * @author Joshua Ciffer
  * @version 02/22/2018
  */
-@SuppressWarnings("javadoc")
 final class ConnectToServerDialog extends JDialog {
 
+	/**
+	 * Default serial version UID.
+	 */
 	private static final long serialVersionUID = 1L;
 
 	private JLabel serverIPLabel;

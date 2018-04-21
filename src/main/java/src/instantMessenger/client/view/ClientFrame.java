@@ -26,6 +26,9 @@ public final class ClientFrame extends JFrame {
 		new ClientFrame();
 	}
 
+	/**
+	 * Default serial version UID.
+	 */
 	private static final long serialVersionUID = 1L;
 
 	private Client client;

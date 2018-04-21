@@ -11,7 +11,7 @@ import javax.swing.JDialog;
 final class HelpDialog extends JDialog {
 
 	/**
-	 * 
+	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 

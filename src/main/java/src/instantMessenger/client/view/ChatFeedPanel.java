@@ -10,12 +10,12 @@ import src.instantMessenger.util.Constants;
  * ChatFeedPanel is a container for the functionality that displays the chat feed and allows the user to scroll through that text area.
  * 
  * @author Joshua Ciffer
- * @version 02/22/2018
+ * @version 04/21/2018
  */
 final class ChatFeedPanel extends JPanel {
 
 	/**
-	 * 
+	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 

@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  * A save chat log dialog is a file saver dialog box that the user can select a file or directory to save their chat history from the chat feed panel.
  * 
  * @author Joshua Ciffer
- * @version 02/22/2018
+ * @version 04/21/2018
  */
 final class SaveChatLogDialog extends JFileChooser {
 
 	/**
-	 * 
+	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 

@@ -1,17 +1,17 @@
 package src.instantMessenger.client.view;
 
 import javax.swing.JDialog;
-import java.io.*;
+
 /**
  * 
  *
- * @author Joshua
- * @version 04/13/2018
+ * @author Joshua Ciffer
+ * @version 04/21/2018
  */
 final class AboutDialog extends JDialog {
 
 	/**
-	 * 
+	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 

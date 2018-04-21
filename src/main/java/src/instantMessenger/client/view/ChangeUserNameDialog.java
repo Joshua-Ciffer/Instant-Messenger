@@ -12,12 +12,12 @@ import javax.swing.JButton;
  * A change user name dialog allows the user to set their user name that identifies them in the chat server.
  * 
  * @author Joshua Ciffer
- * @version 02/22/2018
+ * @version 04/21/2018
  */
 final class ChangeUserNameDialog extends JDialog {
 
 	/**
-	 * 
+	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 

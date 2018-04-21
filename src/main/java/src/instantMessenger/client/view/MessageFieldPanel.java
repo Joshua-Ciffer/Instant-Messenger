@@ -18,7 +18,7 @@ import src.instantMessenger.util.Constants;
 final class MessageFieldPanel extends JPanel {
 
 	/**
-	 * 
+	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 
