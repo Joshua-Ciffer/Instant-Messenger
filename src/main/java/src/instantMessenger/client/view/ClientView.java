@@ -1,22 +1,52 @@
 package src.instantMessenger.client.view;
 
+import src.instantMessenger.client.controller.ClientController;
 
 /**
- * 
+ * This class represents the visual aspect of the program that the user sees and interacts with.
  *
- * @author Joshua
- * @version 04/13/2018
+ * @author Joshua Ciffer
+ * @version 04/21/2018
  */
 public class ClientView {
 
-	private ClientFrame frame;
-	
+	/**
+	 * The main GUI frame.
+	 */
+	private ClientFrame clientFrame;
+
+	/**
+	 * The controller that bridges this view class with the client model.
+	 */
+	private ClientController controller;
+
+	/**
+	 * Constructs a new instance of <code>ClientView</code>.
+	 */
 	public ClientView() {
-		frame = new ClientFrame();
+		clientFrame = new ClientFrame();
 	}
-	
+
+	/**
+	 * @return The main GUI view frame.
+	 */
 	public ClientFrame getClientFrame() {
-		return frame;
+		return clientFrame;
 	}
 	
+	/**
+	 * @return The controller associated with this view.
+	 */
+	public ClientController getController() {
+		return controller;
+	}
+
+	/**
+	 * @param controller
+	 *        The controller to be set.
+	 */
+	public void setController(ClientController controller) {
+		this.controller = controller;
+	}
+
 }
