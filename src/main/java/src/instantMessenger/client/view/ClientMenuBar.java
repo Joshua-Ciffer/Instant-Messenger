@@ -136,7 +136,7 @@ final class ClientMenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				new AboutDialog();
+				new AboutDialog(parentFrame);
 			}
 		});
 		helpMenu.add(helpItem);
