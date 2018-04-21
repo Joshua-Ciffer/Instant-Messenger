@@ -1,6 +1,7 @@
 package src.instantMessenger.client.model;
 
 import java.net.Socket;
+import java.net.InetSocketAddress;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.io.DataInputStream;
@@ -15,7 +16,7 @@ import static src.instantMessenger.util.Constants.getTime;
  * This class represents a single chat client that has a connection to the server.
  * 
  * @author Joshua Ciffer
- * @version 04/19/2018
+ * @version 04/21/2018
  */
 public final class Client {
 
@@ -27,12 +28,12 @@ public final class Client {
 	/**
 	 * Incoming network traffic.
 	 */
-	private DataInputStream inboundTraffic;
+	private DataInputStream networkInput;
 
 	/**
 	 * Outgoing network traffic.
 	 */
-	private DataOutputStream outboundTraffic;
+	private DataOutputStream networkOutput;
 
 	/**
 	 * The server's IP address.
@@ -45,15 +46,18 @@ public final class Client {
 	private short serverPort;
 
 	/**
-	 * The current user's name.
+	 * The current client's name.
 	 */
 	private String userName;
-	
 
 	/**
-	 * Constructs a new client.
+	 * Constructs a new instance of <code>Client</code>. The socket is left unconnected at the time of construction, and a random user name is generated.
+	 * 
+	 * @throws IOException
+	 *         Thrown if there was an error instantiating the socket. Since the socket is unconnected at this time, this should never be thrown.
 	 */
-	public Client() {
+	public Client() throws IOException {
+		serverConnection = new Socket();
 		userName = "User" + (int)(random() * 1_000);
 	}
 
@@ -66,19 +70,27 @@ public final class Client {
 	 *         Thrown if the network stream can't be written to.
 	 */
 	public void sendMessage(String message) throws IOException {
-		outboundTraffic.writeUTF(userName + " " + getTime() + ": " + message);
+		if (serverConnection.isConnected() && (networkOutput != null)) {
+			networkOutput.writeUTF(getTime() + " - " + userName + ": " + message);
+		}
 	}
 
 	/**
 	 * Initializes the connection to the server and sets up network streams.
-	 *
+	 * 
+	 * @param serverIP
+	 *        The server's IP address.
+	 * @param serverPort
+	 *        The server's port.
+	 * @throws UnknownHostException
+	 *         Thrown if the IP address is invalid.
 	 * @throws IOException
-	 *         Thrown if a network or IO error occurs.
+	 *         Thrown if the connection to the server could not be established.
 	 */
-	public void connect() throws IOException {
-		serverConnection = new Socket(serverIP, serverPort);
-		inboundTraffic = new DataInputStream(serverConnection.getInputStream());
-		outboundTraffic = new DataOutputStream(serverConnection.getOutputStream());
+	public void connect(String serverIP, short serverPort) throws UnknownHostException, IOException {
+		setServerIP(serverIP);
+		setServerPort(serverPort);
+		serverConnection.connect(new InetSocketAddress(serverIP, serverPort));
 	}
 
 	/**
@@ -90,13 +102,13 @@ public final class Client {
 				serverConnection.close();
 				serverConnection = null;
 			}
-			if (inboundTraffic != null) {
-				inboundTraffic.close();
-				inboundTraffic = null;
+			if (networkInput != null) {
+				networkInput.close();
+				networkInput = null;
 			}
-			if (outboundTraffic != null) {
-				outboundTraffic.close();
-				outboundTraffic = null;
+			if (networkOutput != null) {
+				networkOutput.close();
+				networkOutput = null;
 			}
 			if (serverIP != null) {
 				serverIP = null;
@@ -105,27 +117,6 @@ public final class Client {
 				serverPort = 0;
 			}
 		} catch (IOException e) {}
-	}
-
-	/**
-	 * @return A reference to the server connection.
-	 */
-	public Socket getServerConnection() {
-		return serverConnection;
-	}
-
-	/**
-	 * @return A reference to the inbound traffic stream.
-	 */
-	public DataInputStream getInboundTraffic() {
-		return inboundTraffic;
-	}
-
-	/**
-	 * @return A reference to the outbound traffic stream.
-	 */
-	DataOutputStream getOutboundTraffic() {
-		return outboundTraffic;
 	}
 
 	/**
