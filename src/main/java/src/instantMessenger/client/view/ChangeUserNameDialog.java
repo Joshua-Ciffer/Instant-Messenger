@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import src.instantMessenger.client.controller.CancelListener;
+import src.instantMessenger.client.controller.CancelDialogListener;
 import src.instantMessenger.client.controller.ChangeUserNameListener;
 
 /**
@@ -16,10 +16,6 @@ import src.instantMessenger.client.controller.ChangeUserNameListener;
  */
 final class ChangeUserNameDialog extends JDialog {
 
-	public static void main(String[] args) {
-		new ChangeUserNameDialog(new ClientFrame(new ClientView()));
-	}
-	
 	/**
 	 * Default serial version UID.
 	 */
@@ -58,11 +54,11 @@ final class ChangeUserNameDialog extends JDialog {
 		setLayout(null);
 		changeUserNameLabel = new JLabel("Enter your user name:");
 		userNameTextField = new JTextField();
-		userNameTextField.setText(parentFrame.getView().getController().getUserName());
+		userNameTextField.setText(parentFrame.getParentView().getController().getUserName());
 		cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener(new CancelListener());
+		cancelButton.addActionListener(new CancelDialogListener());
 		saveButton = new JButton("Save");
-		saveButton.addActionListener(new ChangeUserNameListener(parentFrame.getView().getController()));
+		saveButton.addActionListener(new ChangeUserNameListener(parentFrame.getParentView().getController()));
 		add(changeUserNameLabel);
 		add(userNameTextField);
 		add(cancelButton);

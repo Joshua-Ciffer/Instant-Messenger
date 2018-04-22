@@ -45,10 +45,10 @@ final class ConnectToServerDialog extends JDialog {
 		serverPortLabel = new JLabel("Server Port:");
 		serverIPTextField = new JTextField();
 		try {
-			serverIPTextField.setText(parentFrame.getView().getController().getModel().getServerIP());
+			serverIPTextField.setText(parentFrame.getParentView().getController().getModel().getServerIP());
 		} catch (NullPointerException e) {}
 		serverPortTextField = new JTextField();
-		serverPortTextField.setText(Integer.toString(parentFrame.getView().getController().getModel().getServerPort()));
+		serverPortTextField.setText(Integer.toString(parentFrame.getParentView().getController().getModel().getServerPort()));
 		cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener() {
 
@@ -63,7 +63,7 @@ final class ConnectToServerDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				try {
-					parentFrame.getView().getController().getModel().connect(serverIPTextField.getText(), Short.parseShort(serverPortTextField.getText()));
+					parentFrame.getParentView().getController().getModel().connect(serverIPTextField.getText(), Short.parseShort(serverPortTextField.getText()));
 					dispose();
 				} catch (UnknownHostException e) {
 					JOptionPane.showMessageDialog(parentFrame, "The IP address you entered is invalid. Please enter a valid IPV4 address.", "Invalid IP Address",

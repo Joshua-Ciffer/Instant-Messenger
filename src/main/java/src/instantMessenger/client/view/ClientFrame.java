@@ -30,7 +30,7 @@ public final class ClientFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private ClientView view;
+	private ClientView parentView;
 	
 	private ClientMenuBar clientMenuBar;
 
@@ -40,7 +40,7 @@ public final class ClientFrame extends JFrame {
 
 	public ClientFrame(ClientView view) {
 		super("Instant Messenger Client");
-		this.view = view;
+		this.parentView = view;
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -71,8 +71,11 @@ public final class ClientFrame extends JFrame {
 		return messageFieldPanel.getMessageTextField().getText();
 	}
 	
-	ClientView getView() {
-		return view;
+	/**
+	 * @return The parent view.
+	 */
+	ClientView getParentView() {
+		return parentView;
 	}
 
 }
