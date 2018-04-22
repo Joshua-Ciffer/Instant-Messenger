@@ -8,8 +8,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import static java.lang.Math.random;
-
 import static src.instantMessenger.util.Constants.getTime;
 
 /**
@@ -55,7 +53,7 @@ public final class Client {
 	 */
 	public Client() {
 		serverConnection = new Socket();
-		userName = "User" + (int)(random() * 1_000);
+		userName = "User" + (int)(Math.random() * 1_000);
 	}
 
 	/**
