@@ -52,11 +52,8 @@ public final class Client {
 
 	/**
 	 * Constructs a new instance of <code>Client</code>. The socket is left unconnected at the time of construction, and a random user name is generated.
-	 * 
-	 * @throws IOException
-	 *         Thrown if there was an error instantiating the socket. Since the socket is unconnected at this time, this should never be thrown.
 	 */
-	public Client() throws IOException {
+	public Client() {
 		serverConnection = new Socket();
 		userName = "User" + (int)(random() * 1_000);
 	}

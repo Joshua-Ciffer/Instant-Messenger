@@ -4,8 +4,6 @@ import src.instantMessenger.client.model.Client;
 import src.instantMessenger.client.view.ClientView;
 import src.instantMessenger.util.Constants;
 
-import static src.instantMessenger.util.Constants.LISTENER_THREAD;
-
 /**
  * 
  *
@@ -18,31 +16,44 @@ public class ClientController {
 	 * 
 	 */
 	private Client model;
-	
+
 	/**
 	 * 
 	 */
 	private ClientView view;
-	
-	
+
 	/**
 	 *
 	 *
 	 * @param model
+	 * @param view 
 	 */
 	public ClientController(Client model, ClientView view) {
 		this.model = model;
 		this.view = view;
-		Constants.LISTENER_THREAD.setController(this);
+		this.view.setController(this);
 	}
-	
-	Client getModel() {
+
+	/**
+	 * Updates the user name saved in the client model.
+	 * 
+	 * @param userName
+	 *        The user name to set.
+	 */
+	public void changeUserName(String userName) {
+		model.setUserName(userName);
+	}
+
+	public Client getModel() {
 		return model;
 	}
-	
-	ClientView getView() {
+
+	public ClientView getView() {
 		return view;
 	}
 	
-	
+	public String getUserName() {
+		return model.getUserName();
+	}
+
 }

@@ -117,7 +117,7 @@ final class ClientMenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				parentFrame.disconnect();
+				parentFrame.getView().getController().getModel().disconnect();
 			}
 		});
 		connectionMenu.add(connectToServerItem);
@@ -146,7 +146,7 @@ final class ClientMenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				parentFrame.terminate();
+				parentFrame.getView().getController().getModel().disconnect();
 			}
 		});
 		add(fileMenu);

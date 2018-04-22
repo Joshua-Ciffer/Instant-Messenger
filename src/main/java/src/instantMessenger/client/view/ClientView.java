@@ -24,7 +24,7 @@ public class ClientView {
 	 * Constructs a new instance of <code>ClientView</code>.
 	 */
 	public ClientView() {
-		clientFrame = new ClientFrame();
+		clientFrame = new ClientFrame(this);
 	}
 
 	/**

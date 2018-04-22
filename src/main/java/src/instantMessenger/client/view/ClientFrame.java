@@ -23,7 +23,6 @@ public final class ClientFrame extends JFrame {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) {
-		new ClientFrame();
 	}
 
 	/**
@@ -31,17 +30,17 @@ public final class ClientFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Client client;
-
+	private ClientView view;
+	
 	private ClientMenuBar clientMenuBar;
 
 	private ChatFeedPanel chatFeedPanel;
 
 	private MessageFieldPanel messageFieldPanel;
 
-	public ClientFrame() {
+	public ClientFrame(ClientView view) {
 		super("Instant Messenger Client");
-		client = new Client();
+		this.view = view;
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -57,33 +56,11 @@ public final class ClientFrame extends JFrame {
 		chatFeedPanel.setBounds(0, 20, 485, 195);
 		messageFieldPanel.setBounds(0, 215, 500, 100);
 		setVisible(true);
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
 	}
 
-	void sendMessage(String message) throws IOException {
-		if (!message.equalsIgnoreCase("")) {
-			message = client.getUserName() + " " + Constants.getTime() + " - " + message + "\n";
-			client.sendMessage(message);
-			chatFeedPanel.getChatFeedTextArea().append(message);
-			messageFieldPanel.getMessageTextField().setText(null);
-		}
-	}
 	
 	public void appendToScreen(String message) {
 		chatFeedPanel.getChatFeedTextArea().append(message);
-	}
-
-	void disconnect() {
-		client.disconnect();
-	}
-
-	void terminate() {
-		disconnect();
-		System.exit(0);
 	}
 
 	String getChatLog() {
@@ -93,9 +70,9 @@ public final class ClientFrame extends JFrame {
 	String getMessage() {
 		return messageFieldPanel.getMessageTextField().getText();
 	}
-
-	Client getClient() {
-		return client;
+	
+	ClientView getView() {
+		return view;
 	}
 
 }

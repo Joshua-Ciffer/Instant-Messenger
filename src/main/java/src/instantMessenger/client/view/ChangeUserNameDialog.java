@@ -1,12 +1,12 @@
 package src.instantMessenger.client.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import src.instantMessenger.client.controller.CancelListener;
+import src.instantMessenger.client.controller.ChangeUserNameListener;
 
 /**
  * A change user name dialog allows the user to set their user name that identifies them in the chat server.
@@ -16,6 +16,10 @@ import javax.swing.JButton;
  */
 final class ChangeUserNameDialog extends JDialog {
 
+	public static void main(String[] args) {
+		new ChangeUserNameDialog(new ClientFrame(new ClientView()));
+	}
+	
 	/**
 	 * Default serial version UID.
 	 */
@@ -42,7 +46,7 @@ final class ChangeUserNameDialog extends JDialog {
 	private JButton saveButton;
 
 	/**
-	 * Constructs a new ChangeUserNameDialog window.
+	 * Constructs a new <code>ChangeUserNameDialog</code> window.
 	 * 
 	 * @param parentFrame
 	 *        The parent frame that constructs this change user name dialog.
@@ -54,24 +58,11 @@ final class ChangeUserNameDialog extends JDialog {
 		setLayout(null);
 		changeUserNameLabel = new JLabel("Enter your user name:");
 		userNameTextField = new JTextField();
-		userNameTextField.setText(parentFrame.getClient().getUserName());
+		userNameTextField.setText(parentFrame.getView().getController().getUserName());
 		cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent a) {
-				dispose();
-			}
-		});
+		cancelButton.addActionListener(new CancelListener());
 		saveButton = new JButton("Save");
-		saveButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent a) {
-				parentFrame.getClient().setUserName(userNameTextField.getText());
-				dispose();
-			}
-		});
+		saveButton.addActionListener(new ChangeUserNameListener(parentFrame.getView().getController()));
 		add(changeUserNameLabel);
 		add(userNameTextField);
 		add(cancelButton);
