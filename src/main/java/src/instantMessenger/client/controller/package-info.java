@@ -1,5 +1,5 @@
 /**
- * This package contains client controllers.
+ * This package contains client controllers and event handlers.
  *
  * @author Joshua Ciffer
  * @version 04/19/2018
