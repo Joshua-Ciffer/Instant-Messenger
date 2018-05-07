@@ -1,16 +1,48 @@
 package src.instantMessenger.client;
 
-import src.instantMessenger.client.controller.ClientController;
 import src.instantMessenger.client.model.Client;
+import src.instantMessenger.client.controller.ClientController;
 import src.instantMessenger.client.view.ClientView;
 
-@SuppressWarnings("javadoc")
-public class Main {
+/**
+ * The main client entry point.
+ *
+ * @author Joshua Ciffer
+ * @version 05/07/2018
+ */
+@SuppressWarnings("unused")
+public final class Main {
 
+	/**
+	 * Don't let anyone instantiate this class.
+	 */
+	private Main() {}
+
+	/**
+	 * The model represents a single chat client with its state and behavior.
+	 */
+	private static Client model;
+
+	/**
+	 * The view is the GUI that the user sees and interacts with.
+	 */
+	private static ClientView view;
+
+	/**
+	 * The controller bridges the model and the view and allows information to be updated and requested.
+	 */
+	private static ClientController controller;
+
+	/**
+	 * The main client entry point.
+	 *
+	 * @param args
+	 *        Command line arguments.
+	 */
 	public static void main(String[] args) {
-		Client model = new Client();
-		ClientView view = new ClientView();
-		ClientController controller = new ClientController(model, view);
+		model = new Client();
+		view = new ClientView();
+		controller = new ClientController(model, view);
 	}
-	
+
 }
