@@ -7,13 +7,16 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import src.instantMessenger.client.controller.DisconnectListener;
+import src.instantMessenger.client.controller.TerminateListener;
+
 /**
- * 
+ * This class represents the menu bar that contains drop down menus and options for the client program.
  * 
  * @author Joshua Ciffer
- * @version 04/21/2018
+ * @version 05/06/2018
  */
-final class ClientMenuBar extends JMenuBar {
+public final class ClientMenuBar extends JMenuBar {
 
 	/**
 	 * Default serial version UID.
@@ -113,13 +116,7 @@ final class ClientMenuBar extends JMenuBar {
 			}
 		});
 		disconnectItem = new JMenuItem("Disconnect");
-		disconnectItem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent a) {
-				parentFrame.getParentView().getController().getModel().disconnect();
-			}
-		});
+		disconnectItem.addActionListener(new DisconnectListener(parentFrame));
 		connectionMenu.add(connectToServerItem);
 		connectionMenu.add(disconnectItem);
 		helpMenu = new JMenu("Help");
@@ -142,13 +139,7 @@ final class ClientMenuBar extends JMenuBar {
 		helpMenu.add(helpItem);
 		helpMenu.add(aboutItem);
 		exitItem = new JMenuItem("Exit");
-		exitItem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent a) {
-				parentFrame.getParentView().getController().getModel().disconnect();
-			}
-		});
+		exitItem.addActionListener(new TerminateListener(parentFrame));
 		add(fileMenu);
 		add(editMenu);
 		add(connectionMenu);

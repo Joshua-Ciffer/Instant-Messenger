@@ -55,5 +55,13 @@ public class ClientController {
 	public String getUserName() {
 		return model.getUserName();
 	}
+	
+	public void disconnect() {
+		model.disconnect();
+	}
 
+	public void terminate() {
+		disconnect();
+	}
+	
 }
