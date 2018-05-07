@@ -1,8 +1,10 @@
 package src.instantMessenger.client.controller;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
+
 import src.instantMessenger.client.model.Client;
 import src.instantMessenger.client.view.ClientView;
-import src.instantMessenger.util.Constants;
 
 /**
  * 
@@ -43,25 +45,70 @@ public class ClientController {
 	public void changeUserName(String userName) {
 		model.setUserName(userName);
 	}
-
-	public Client getModel() {
-		return model;
-	}
-
-	public ClientView getView() {
-		return view;
+	
+	/**
+	 *
+	 *
+	 * @param serverIP
+	 * @param serverPort
+	 * @throws UnknownHostException
+	 * @throws IOException
+	 */
+	public void connect(String serverIP, short serverPort) throws UnknownHostException, IOException {
+		model.connect(serverIP, serverPort);
 	}
 	
+	/**
+	 *
+	 *
+	 * @return
+	 */
+	public String getServerIP() {
+		return model.getServerIP();
+	}
+	
+	/**
+	 *
+	 *
+	 * @return
+	 */
+	public short getServerPort() {
+		return model.getServerPort();
+	}
+
+	/**
+	 *
+	 *
+	 * @return
+	 */
 	public String getUserName() {
 		return model.getUserName();
 	}
 	
+	/**
+	 *
+	 *
+	 */
 	public void disconnect() {
 		model.disconnect();
 	}
 
+	/**
+	 *
+	 *
+	 */
 	public void terminate() {
 		disconnect();
+	}
+	
+	/**
+	 *
+	 *
+	 * @param message
+	 * @throws IOException
+	 */
+	public void sendMessage(String message) throws IOException {
+		model.sendMessage(message);
 	}
 	
 }

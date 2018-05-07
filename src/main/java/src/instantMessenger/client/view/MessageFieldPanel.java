@@ -58,7 +58,7 @@ final class MessageFieldPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				try {
-					parentFrame.getParentView().getController().getModel().sendMessage(messageTextField.getText());;
+					parentFrame.getParentView().getController().sendMessage(messageTextField.getText());;
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
