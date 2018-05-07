@@ -4,13 +4,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
-import src.instantMessenger.util.Constants;
+import static src.instantMessenger.util.Constants.CHAT_FONT;
 
 /**
- * ChatFeedPanel is a container for the functionality that displays the chat feed and allows the user to scroll through that text area.
+ * <code>ChatFeedPanel</code> is a panel that displays the chat feed and allows the user to scroll through the text area.
  * 
  * @author Joshua Ciffer
- * @version 04/21/2018
+ * @version 05/06/2018
  */
 final class ChatFeedPanel extends JPanel {
 
@@ -39,7 +39,7 @@ final class ChatFeedPanel extends JPanel {
 		chatFeedTextArea.setEditable(false);
 		chatFeedTextArea.setLineWrap(true);
 		chatFeedTextArea.setWrapStyleWord(true);
-		chatFeedTextArea.setFont(Constants.CHAT_FONT);
+		chatFeedTextArea.setFont(CHAT_FONT);
 		chatFeedPane = new JScrollPane(chatFeedTextArea);
 		chatFeedPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		chatFeedPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -51,10 +51,18 @@ final class ChatFeedPanel extends JPanel {
 	}
 
 	/**
-	 * @return The chat feed text area.
+	 * @return The text in the chat feed area.
 	 */
-	JTextArea getChatFeedTextArea() {
-		return chatFeedTextArea;
+	String getChatFeedText() {
+		return chatFeedTextArea.getText();
+	}
+
+	/**
+	 * @param message
+	 *        The message to append to the chat feed.
+	 */
+	void appendToChatFeed(String message) {
+		chatFeedTextArea.append(message);
 	}
 
 }

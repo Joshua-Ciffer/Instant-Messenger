@@ -66,7 +66,7 @@ final class SaveChatLogDialog extends JFileChooser {
 				fileWriter = new PrintWriter(chatLog);
 				chatLog.createNewFile();
 				chatLog.setWritable(true);
-				chatLogParser = new Scanner(parentFrame.getChatLog());
+				chatLogParser = new Scanner(parentFrame.getChatFeedText());
 				chatLogParser.useDelimiter("\n");
 				while (chatLogParser.hasNext()) {
 					fileWriter.println(chatLogParser.next());

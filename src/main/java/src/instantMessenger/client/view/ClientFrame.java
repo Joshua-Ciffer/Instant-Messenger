@@ -60,11 +60,11 @@ public final class ClientFrame extends JFrame {
 
 	
 	public void appendToScreen(String message) {
-		chatFeedPanel.getChatFeedTextArea().append(message);
+		chatFeedPanel.appendToChatFeed(message);
 	}
 
-	String getChatLog() {
-		return chatFeedPanel.getChatFeedTextArea().getText();
+	String getChatFeedText() {
+		return chatFeedPanel.getChatFeedText();
 	}
 	
 	String getMessage() {
