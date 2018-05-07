@@ -12,14 +12,19 @@ import src.instantMessenger.client.controller.ChangeUserNameListener;
  * A change user name dialog allows the user to set their user name that identifies them in the chat server.
  * 
  * @author Joshua Ciffer
- * @version 04/21/2018
+ * @version 05/06/2018
  */
-final class ChangeUserNameDialog extends JDialog {
+public class ChangeUserNameDialog extends JDialog {
 
 	/**
 	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The parent frame that constructs this change user name dialog.
+	 */
+	private ClientFrame parentFrame;
 
 	/**
 	 * Labels the user name text field.
@@ -49,6 +54,7 @@ final class ChangeUserNameDialog extends JDialog {
 	 */
 	ChangeUserNameDialog(ClientFrame parentFrame) {
 		super(parentFrame, "Change User Name");
+		this.parentFrame = parentFrame;
 		setResizable(false);
 		setLocationRelativeTo(parentFrame);
 		setLayout(null);
@@ -58,7 +64,7 @@ final class ChangeUserNameDialog extends JDialog {
 		cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new CancelDialogListener());
 		saveButton = new JButton("Save");
-		saveButton.addActionListener(new ChangeUserNameListener(parentFrame.getParentView().getController()));
+		saveButton.addActionListener(new ChangeUserNameListener(this));
 		add(changeUserNameLabel);
 		add(userNameTextField);
 		add(cancelButton);
@@ -69,6 +75,20 @@ final class ChangeUserNameDialog extends JDialog {
 		saveButton.setBounds(170, 95, 100, 30);
 		setSize(315, 180);
 		setVisible(true);
+	}
+
+	/**
+	 * @return The parent frame that constructed this dialog box.
+	 */
+	public ClientFrame getParentFrame() {
+		return parentFrame;
+	}
+
+	/**
+	 * @return The user name entered in the user name text field.
+	 */
+	public String getUserName() {
+		return userNameTextField.getText();
 	}
 
 }

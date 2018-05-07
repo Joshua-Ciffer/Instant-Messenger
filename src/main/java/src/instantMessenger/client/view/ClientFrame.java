@@ -74,7 +74,7 @@ public final class ClientFrame extends JFrame {
 	/**
 	 * @return The parent view.
 	 */
-	ClientView getParentView() {
+	public ClientView getParentView() {
 		return parentView;
 	}
 

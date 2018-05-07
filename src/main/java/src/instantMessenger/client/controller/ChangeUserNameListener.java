@@ -3,38 +3,37 @@ package src.instantMessenger.client.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JTextField;
+import src.instantMessenger.client.view.ChangeUserNameDialog;
 
 /**
  * Listens for an event created by the save button on a <code>ChangeUserNameDialog</code> window.
  *
  * @author Joshua Ciffer
- * @version 04/21/2018
+ * @version 05/06/2018
  */
 public class ChangeUserNameListener implements ActionListener {
 
 	/**
-	 * The controller associated with the current view.
+	 * The <code>ChangeUserNameDialog</code> object that contains this listener.
 	 */
-	private ClientController controller;
+	private ChangeUserNameDialog parentDialog;
 
 	/**
-	 * Constructs a new instance of <code>ChangeUserNameListener</code>. This listener needs a reference to the controller object to make user name changes to the client
-	 * model.
+	 * Constructs a new instance of <code>ChangeUserNameListener</code>.
 	 *
-	 * @param controller
-	 *        The controller associated with this view.
+	 * @param parentDialog
+	 *        The <code>ChangeUserNameDialog</code> object that contains this listener.
 	 */
-	public ChangeUserNameListener(ClientController controller) {
-		this.controller = controller;
+	public ChangeUserNameListener(ChangeUserNameDialog parentDialog) {
+		this.parentDialog = parentDialog;
 	}
 
 	/**
-	 * Updates the user name stored in the client model associated with this view.
+	 * Updates the user name stored in the client model with the user name entered in the dialog box.
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		controller.changeUserName(((JTextField)a.getSource()).getText());
+		parentDialog.getParentFrame().getParentView().getController().changeUserName(parentDialog.getUserName());
 	}
 
 }
