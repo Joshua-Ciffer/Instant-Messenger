@@ -14,6 +14,7 @@ import static src.instantMessenger.util.Constants.getTime;
  * @author Joshua Ciffer
  * @version 04/13/2018
  */
+@SuppressWarnings("unused")
 public final class Server {
 
 	/**
