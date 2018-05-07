@@ -8,7 +8,7 @@ import src.instantMessenger.client.controller.ClientController;
  * @author Joshua Ciffer
  * @version 04/21/2018
  */
-public class ClientView {
+public final class ClientView {
 
 	/**
 	 * The main GUI frame.

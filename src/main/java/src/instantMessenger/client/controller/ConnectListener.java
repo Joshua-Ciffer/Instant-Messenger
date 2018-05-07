@@ -16,7 +16,7 @@ import src.instantMessenger.client.view.ConnectToServerDialog;
  * @author Joshua Ciffer
  * @version 05/06/2018
  */
-public class ConnectListener extends JDialog implements ActionListener {
+public final class ConnectListener extends JDialog implements ActionListener {
 
 	/**
 	 * Default serial version UID.

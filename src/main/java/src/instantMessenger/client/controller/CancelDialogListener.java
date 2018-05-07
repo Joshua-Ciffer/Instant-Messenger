@@ -11,7 +11,7 @@ import javax.swing.JDialog;
  * @author Joshua Ciffer
  * @version 04/21/2018
  */
-public class CancelDialogListener extends JDialog implements ActionListener {
+public final class CancelDialogListener extends JDialog implements ActionListener {
 
 	/**
 	 * Default serial version UID.

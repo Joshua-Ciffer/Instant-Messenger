@@ -13,7 +13,7 @@ import src.instantMessenger.client.view.ClientFrame;
  * @author Joshua Ciffer
  * @version 05/06/2018
  */
-public class TerminateListener implements ActionListener, WindowListener {
+public final class TerminateListener implements ActionListener, WindowListener {
 
 	/**
 	 * The controller associated with the current program.

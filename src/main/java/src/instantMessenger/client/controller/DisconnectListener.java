@@ -11,7 +11,7 @@ import src.instantMessenger.client.view.ClientFrame;
  * @author Joshua Ciffer
  * @version 05/06/2018
  */
-public class DisconnectListener implements ActionListener {
+public final class DisconnectListener implements ActionListener {
 
 	/**
 	 * The parent component that has added this listener.
