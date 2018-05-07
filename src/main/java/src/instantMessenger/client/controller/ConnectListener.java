@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import src.instantMessenger.client.view.ConnectToServerDialog;
@@ -16,12 +15,7 @@ import src.instantMessenger.client.view.ConnectToServerDialog;
  * @author Joshua Ciffer
  * @version 05/06/2018
  */
-public final class ConnectListener extends JDialog implements ActionListener {
-
-	/**
-	 * Default serial version UID.
-	 */
-	private static final long serialVersionUID = 1L;
+public final class ConnectListener implements ActionListener {
 
 	/**
 	 * The dialog box that contains this listener.
@@ -45,7 +39,7 @@ public final class ConnectListener extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent a) {
 		try {
 			parentDialog.getParentFrame().getParentView().getController().connect(parentDialog.getServerIP(), parentDialog.getServerPort());
-			dispose();
+			parentDialog.dispose();
 		} catch (UnknownHostException e) {
 			JOptionPane.showMessageDialog(parentDialog, "The IP address you entered is invalid. Please enter a valid IP address.", "Invalid IP Address",
 					JOptionPane.ERROR_MESSAGE);

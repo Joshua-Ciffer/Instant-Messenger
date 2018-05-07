@@ -62,7 +62,7 @@ public final class ChangeUserNameDialog extends JDialog {
 		userNameTextField = new JTextField();
 		userNameTextField.setText(parentFrame.getParentView().getController().getUserName());
 		cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener(new CancelDialogListener());
+		cancelButton.addActionListener(new CancelDialogListener(this));
 		saveButton = new JButton("Save");
 		saveButton.addActionListener(new ChangeUserNameListener(this));
 		add(changeUserNameLabel);

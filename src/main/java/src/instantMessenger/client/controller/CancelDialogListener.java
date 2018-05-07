@@ -9,21 +9,31 @@ import javax.swing.JDialog;
  * Listens for an event created by a cancel button on a dialog box.
  *
  * @author Joshua Ciffer
- * @version 04/21/2018
+ * @version 05/07/2018
  */
-public final class CancelDialogListener extends JDialog implements ActionListener {
+public final class CancelDialogListener implements ActionListener {
 
 	/**
-	 * Default serial version UID.
+	 * The parent dialog that created this listener.
 	 */
-	private static final long serialVersionUID = 1L;
+	private JDialog parentDialog;
+
+	/**
+	 * Constructs a new <code>CancelDialogListener</code>.
+	 *
+	 * @param parentDialog
+	 *        The parent dialog that created this listener.
+	 */
+	public CancelDialogListener(JDialog parentDialog) {
+		this.parentDialog = parentDialog;
+	}
 
 	/**
 	 * Closes the current dialog without saving any changes.
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		dispose();
+		parentDialog.dispose();
 	}
 
 }

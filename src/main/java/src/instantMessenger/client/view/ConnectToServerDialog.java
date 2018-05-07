@@ -77,7 +77,7 @@ public final class ConnectToServerDialog extends JDialog {
 		serverPortTextField = new JTextField();
 		serverPortTextField.setText(Short.toString(parentFrame.getParentView().getController().getServerPort()));
 		cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener(new CancelDialogListener());
+		cancelButton.addActionListener(new CancelDialogListener(this));
 		connectButton = new JButton("Connect");
 		connectButton.addActionListener(new ConnectListener(this));
 		add(serverPortLabel);
