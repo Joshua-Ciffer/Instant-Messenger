@@ -3,6 +3,8 @@ package src.instantMessenger.client.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JDialog;
+
 import src.instantMessenger.client.view.ChangeUserNameDialog;
 
 /**
@@ -11,7 +13,12 @@ import src.instantMessenger.client.view.ChangeUserNameDialog;
  * @author Joshua Ciffer
  * @version 05/06/2018
  */
-public class ChangeUserNameListener implements ActionListener {
+public final class ChangeUserNameListener extends JDialog implements ActionListener {
+
+	/**
+	 * Default serial version UID.
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The <code>ChangeUserNameDialog</code> object that contains this listener.
@@ -34,6 +41,7 @@ public class ChangeUserNameListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		parentDialog.getParentFrame().getParentView().getController().changeUserName(parentDialog.getUserName());
+		dispose();
 	}
 
 }
