@@ -2,7 +2,6 @@ package src.instantMessenger.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import java.awt.Font;
 
 /**
@@ -16,17 +15,12 @@ public interface Constants {
 	/**
 	 * The version of this program.
 	 */
-	String PROGRAM_VERSION = "04.21.18";
+	String PROGRAM_VERSION = "05.07.18";
 	
 	/**
 	 * Font used in the chat screen.
 	 */
 	Font CHAT_FONT = new Font("Courier new", Font.PLAIN, 12);
-
-	/**
-	 * Bold font used in the chat screen.
-	 */
-	Font CHAT_FONT_BOLD = new Font("Courier new", Font.BOLD, 12);
 
 	/**
 	 * @return The current time.
