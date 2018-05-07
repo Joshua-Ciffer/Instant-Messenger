@@ -12,7 +12,7 @@ import src.instantMessenger.client.view.MessageFieldPanel;
  * @author Joshua Ciffer
  * @version 05/07/2018
  */
-public class SendMessageListener implements ActionListener {
+public final class SendMessageListener implements ActionListener {
 
 	/**
 	 * The component that this listener is added to.
