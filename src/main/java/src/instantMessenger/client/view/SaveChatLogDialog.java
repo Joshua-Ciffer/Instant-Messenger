@@ -4,17 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JOptionPane;
 
 /**
- * A save chat log dialog is a file saver dialog box that the user can select a file or directory to save their chat history from the chat feed panel.
+ * A <code>SaveChatLogDialog</code> is a file saver dialog box that the user can select a file or directory to save their chat history from the chat feed panel.
  * 
  * @author Joshua Ciffer
- * @version 04/21/2018
+ * @version 05/07/2018
  */
 final class SaveChatLogDialog extends JFileChooser {
 
@@ -39,11 +38,6 @@ final class SaveChatLogDialog extends JFileChooser {
 	private PrintWriter fileWriter;
 
 	/**
-	 * Reads in the chat log in the form of a string from the chat feed panel, and sends it to the file writer.
-	 */
-	private Scanner chatLogParser;
-
-	/**
 	 * Constructs a new save chat dialog.
 	 * 
 	 * @param parentFrame
@@ -66,22 +60,18 @@ final class SaveChatLogDialog extends JFileChooser {
 				fileWriter = new PrintWriter(chatLog);
 				chatLog.createNewFile();
 				chatLog.setWritable(true);
-				chatLogParser = new Scanner(parentFrame.getChatFeedText());
-				chatLogParser.useDelimiter("\n");
-				while (chatLogParser.hasNext()) {
-					fileWriter.println(chatLogParser.next());
-				}
+				fileWriter.write(parentFrame.getChatFeedText());
+				fileWriter.flush();
 			} catch (FileNotFoundException e) {
-				JOptionPane.showMessageDialog(this, "The file you specified could not be found. The chat log was not saved.", "", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "The file you specified could not be found. The chat log was not saved.", "File Not Found", JOptionPane.ERROR_MESSAGE);
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(this, "An IO Exception occurred. The chat log was not saved.", "", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "An IO Exception occurred. The chat log was not saved.", "IO Error", JOptionPane.ERROR_MESSAGE);
+				e.printStackTrace();
 			} finally {
 				fileWriter.close();
-				chatLogParser.close();
 				chatLog = null;
 				textFile = null;
 				fileWriter = null;
-				chatLogParser = null;
 			}
 		}
 		setVisible(true);
