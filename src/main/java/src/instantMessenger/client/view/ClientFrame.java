@@ -1,46 +1,51 @@
 package src.instantMessenger.client.view;
 
-import java.io.IOException;
-
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
-import src.instantMessenger.client.model.Client;
-import src.instantMessenger.util.Constants;
+import src.instantMessenger.client.controller.TerminateListener;
 
 /**
+ * The main GUI frame class that all other components are added to.
  * 
  * @author Joshua Ciffer
- * @version 02/26/2018
+ * @version 05/06/2018
  */
 public final class ClientFrame extends JFrame {
-
-	/**
-	 *
-	 *
-	 * @param args
-	 * @throws IOException
-	 */
-	public static void main(String[] args) {
-	}
 
 	/**
 	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * The view object that contains this frame object.
+	 */
 	private ClientView parentView;
-	
+
+	/**
+	 * The menu bar associated with this frame.
+	 */
 	private ClientMenuBar clientMenuBar;
 
+	/**
+	 * Panel that contains text areas for the chat feed.
+	 */
 	private ChatFeedPanel chatFeedPanel;
 
+	/**
+	 * Panel that contains the text field for sending messages.
+	 */
 	private MessageFieldPanel messageFieldPanel;
 
-	public ClientFrame(ClientView view) {
+	/**
+	 * Constructs a new <code>ClientFrame</code>.
+	 *
+	 * @param parentView
+	 *        The view object that contains this frame.
+	 */
+	public ClientFrame(ClientView parentView) {
 		super("Instant Messenger Client");
-		this.parentView = view;
+		this.parentView = parentView;
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -48,6 +53,7 @@ public final class ClientFrame extends JFrame {
 		clientMenuBar = new ClientMenuBar(this);
 		chatFeedPanel = new ChatFeedPanel();
 		messageFieldPanel = new MessageFieldPanel(this);
+		addWindowListener(new TerminateListener(this));
 		add(clientMenuBar);
 		add(chatFeedPanel);
 		add(messageFieldPanel);
@@ -58,24 +64,18 @@ public final class ClientFrame extends JFrame {
 		setVisible(true);
 	}
 
-	
-	public void appendToScreen(String message) {
-		chatFeedPanel.appendToChatFeed(message);
-	}
-
-	String getChatFeedText() {
-		return chatFeedPanel.getChatFeedText();
-	}
-	
-	String getMessage() {
-		return messageFieldPanel.getMessageTextField().getText();
-	}
-	
 	/**
 	 * @return The parent view.
 	 */
 	public ClientView getParentView() {
 		return parentView;
+	}
+
+	/**
+	 * @return The text contained in the chat feed panel.
+	 */
+	public String getChatFeedText() {
+		return chatFeedPanel.getChatFeedText();
 	}
 
 }

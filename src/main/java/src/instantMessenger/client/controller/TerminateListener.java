@@ -2,6 +2,8 @@ package src.instantMessenger.client.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import src.instantMessenger.client.view.ClientFrame;
 
@@ -11,7 +13,7 @@ import src.instantMessenger.client.view.ClientFrame;
  * @author Joshua Ciffer
  * @version 05/06/2018
  */
-public class TerminateListener implements ActionListener {
+public class TerminateListener implements ActionListener, WindowListener {
 
 	/**
 	 * The controller associated with the current program.
@@ -35,5 +37,36 @@ public class TerminateListener implements ActionListener {
 	public void actionPerformed(ActionEvent a) {
 		parentFrame.getParentView().getController().terminate();
 	}
+
+	/**
+	 * Terminates the program from closing the GUI window.
+	 */
+	@Override
+	public void windowClosing(WindowEvent a) {
+		parentFrame.getParentView().getController().terminate();
+	}
+
+	/**
+	 * Terminates the program from closing the GUI window.
+	 */
+	@Override
+	public void windowClosed(WindowEvent a) {
+		parentFrame.getParentView().getController().terminate();
+	}
+
+	@Override
+	public void windowActivated(WindowEvent a) {}
+
+	@Override
+	public void windowDeactivated(WindowEvent a) {}
+
+	@Override
+	public void windowDeiconified(WindowEvent a) {}
+
+	@Override
+	public void windowIconified(WindowEvent a) {}
+
+	@Override
+	public void windowOpened(WindowEvent a) {}
 
 }
