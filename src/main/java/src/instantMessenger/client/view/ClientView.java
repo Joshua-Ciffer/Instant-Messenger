@@ -33,7 +33,7 @@ public class ClientView {
 	public ClientFrame getClientFrame() {
 		return clientFrame;
 	}
-	
+
 	/**
 	 * @return The controller associated with this view.
 	 */
