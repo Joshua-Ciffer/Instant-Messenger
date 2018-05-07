@@ -7,13 +7,13 @@ import src.instantMessenger.client.model.Client;
 import src.instantMessenger.client.view.ClientView;
 
 /**
- * The controller acts as a bridge between the view and model. Essentially, the model servers as the client object and the view displays the information from that object.
+ * The controller acts as a bridge between the view and model. Essentially, the model serves as the client object and the view displays the information from that object.
  * Requests from the view to update data in the model pass through the controller, and information to be displayed from the model passes from the controller to the view.
  *
  * @author Joshua Ciffer
  * @version 05/06/2018
  */
-public class ClientController {
+public final class ClientController {
 
 	/**
 	 * The client model associated with this controller and the view.
@@ -21,7 +21,7 @@ public class ClientController {
 	private Client model;
 
 	/**
-	 * The view associated with this controller and model.
+	 * The view associated with this controller and the model.
 	 */
 	private ClientView view;
 

@@ -42,6 +42,7 @@ public final class ClientMenuBar extends JMenuBar {
 	 * Edit submenu.
 	 */
 	private JMenu editMenu;
+	// TODO: Write menu items for edit menu.
 
 	/**
 	 * Connection submenu.
@@ -79,7 +80,7 @@ public final class ClientMenuBar extends JMenuBar {
 	private JMenuItem exitItem;
 
 	/**
-	 * Constructs a new client menu bar.
+	 * Constructs a new <code>ClientMenuBar</code>.
 	 *
 	 * @param parentFrame
 	 *        The parent frame that this menu bar is placed on.

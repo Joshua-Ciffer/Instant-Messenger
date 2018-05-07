@@ -45,7 +45,7 @@ final class AboutDialog extends JDialog {
 		setLocationRelativeTo(parentFrame);
 		setLayout(null);
 		versionLabel = new JLabel("Instant Messenger Version: " + PROGRAM_VERSION);
-		authorLabel = new JLabel("Written By: Joshua Ciffer");
+		authorLabel = new JLabel("Written By: Joshua Ciffer");	// Thats right, I hard coded my name into here.
 		gitHubLabel = new JLabel("GitHub Repo: https://github.com/Joshua-Ciffer/Instant-Messenger");
 		add(versionLabel);
 		add(authorLabel);

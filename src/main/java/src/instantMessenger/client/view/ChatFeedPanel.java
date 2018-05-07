@@ -30,7 +30,7 @@ final class ChatFeedPanel extends JPanel {
 	private JScrollPane chatFeedPane;
 
 	/**
-	 * Constructs a new ChatFeedPanel container.
+	 * Constructs a new <code>ChatFeedPanel</code> container.
 	 */
 	ChatFeedPanel() {
 		super();

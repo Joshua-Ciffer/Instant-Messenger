@@ -5,7 +5,7 @@ import javax.swing.JDialog;
 /**
  * 
  *
- * @author Joshua
+ * @author Joshua Ciffer
  * @version 04/13/2018
  */
 final class HelpDialog extends JDialog {
@@ -14,5 +14,7 @@ final class HelpDialog extends JDialog {
 	 * Default serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	// TODO: Write help dialog.
 
 }

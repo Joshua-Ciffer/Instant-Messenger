@@ -22,7 +22,7 @@ public final class ChangeUserNameDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The parent frame that constructs this change user name dialog.
+	 * The parent frame that constructed this change user name dialog.
 	 */
 	private ClientFrame parentFrame;
 
