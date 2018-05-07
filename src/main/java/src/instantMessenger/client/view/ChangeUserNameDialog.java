@@ -14,7 +14,7 @@ import src.instantMessenger.client.controller.ChangeUserNameListener;
  * @author Joshua Ciffer
  * @version 05/06/2018
  */
-public class ChangeUserNameDialog extends JDialog {
+public final class ChangeUserNameDialog extends JDialog {
 
 	/**
 	 * Default serial version UID.
