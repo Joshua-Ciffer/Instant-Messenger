@@ -10,6 +10,7 @@ import src.instantMessenger.server.model.Server;
  * @author Joshua
  * @version 04/12/2018
  */
+@SuppressWarnings("unused")
 public class Main {
 
 	/**
