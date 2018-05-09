@@ -87,6 +87,9 @@ public final class ClientController {
 	 */
 	public void terminate() {
 		disconnect();
+		int exitCode = 0;
+		System.out.println("Program terminated with exit code: " + exitCode);
+		System.exit(exitCode);
 	}
 
 	/**
