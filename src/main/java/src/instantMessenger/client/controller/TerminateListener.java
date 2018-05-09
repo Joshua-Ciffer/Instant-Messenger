@@ -11,7 +11,7 @@ import src.instantMessenger.client.view.ClientFrame;
  * Listens for an event that terminates the program after clean up and disconnecting from the server.
  *
  * @author Joshua Ciffer
- * @version 05/06/2018
+ * @version 05/08/2018
  */
 public final class TerminateListener implements ActionListener, WindowListener {
 

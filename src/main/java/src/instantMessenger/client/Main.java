@@ -8,9 +8,8 @@ import src.instantMessenger.client.view.ClientView;
  * The main client entry point.
  *
  * @author Joshua Ciffer
- * @version 05/07/2018
+ * @version 05/08/2018
  */
-@SuppressWarnings("unused")
 public final class Main {
 
 	/**
@@ -43,6 +42,7 @@ public final class Main {
 		model = new Client();
 		view = new ClientView();
 		controller = new ClientController(model, view);
+		controller.init();
 	}
 
 }

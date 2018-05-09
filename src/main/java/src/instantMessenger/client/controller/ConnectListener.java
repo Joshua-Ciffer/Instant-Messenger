@@ -13,7 +13,7 @@ import src.instantMessenger.client.view.ConnectToServerDialog;
  * Listens for the connect button to be clicked on a <code>ConnectToServerDialog</code>.
  *
  * @author Joshua Ciffer
- * @version 05/06/2018
+ * @version 05/08/2018
  */
 public final class ConnectListener implements ActionListener {
 

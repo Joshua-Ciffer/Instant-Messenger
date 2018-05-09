@@ -1,7 +1,6 @@
 package src.instantMessenger.client.model;
 
 import java.net.Socket;
-import java.net.InetSocketAddress;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.io.DataInputStream;
@@ -53,7 +52,7 @@ public final class Client {
 	 */
 	public Client() {
 		serverConnection = new Socket();
-		userName = "User" + (int)((Math.random() * 1_000) + 100);	// Generates random user name.  Example: User(*random 3 digit number*)
+		userName = "User" + (int)((Math.random() * 1_000) + 100);	// Generates random user name. Example: User(*random 3 digit number*)
 	}
 
 	/**
@@ -83,9 +82,12 @@ public final class Client {
 	 *         Thrown if the connection to the server could not be established.
 	 */
 	public void connect(String serverIP, short serverPort) throws UnknownHostException, IOException {
+		disconnect();
 		setServerIP(serverIP);
 		setServerPort(serverPort);
-		serverConnection.connect(new InetSocketAddress(serverIP, serverPort));
+		serverConnection = new Socket(serverIP, serverPort);
+		networkInput = new DataInputStream(serverConnection.getInputStream());
+		networkOutput = new DataOutputStream(serverConnection.getOutputStream());
 	}
 
 	/**

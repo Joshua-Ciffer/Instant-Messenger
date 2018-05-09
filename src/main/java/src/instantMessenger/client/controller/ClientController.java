@@ -42,6 +42,13 @@ public final class ClientController {
 	}
 
 	/**
+	 * Starts running all client threads and prepares program to launch.
+	 */
+	public void init() {
+		view.getClientFrame().setVisible(true);
+	}
+
+	/**
 	 * Connects the client to the server with the IP address and port specified.
 	 *
 	 * @param serverIP

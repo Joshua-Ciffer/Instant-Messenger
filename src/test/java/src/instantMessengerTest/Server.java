@@ -7,7 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-//import static src.instantMessenger.util.Constants.getTime;
+// import static src.instantMessenger.util.Constants.getTime;
 import static src.instantMessengerTest.Constants.TEST_SERVER_PORT;
 
 /**
@@ -28,42 +28,42 @@ public final class Server {
 	 */
 	public static void main(String[] args) throws IOException {
 		Server server = new Server(TEST_SERVER_PORT);
-//		Thread i = new Thread() {
+		Thread i = new Thread() {
 
-//			public void run() {
+			public void run() {
 				String incoming = "";
 				try {
 					while ((incoming = server.getInboundTraffic().readUTF()) != null) {
-//						synchronized (System.out) {
+						synchronized (System.out) {
 							System.out.flush();
 							System.out.println(incoming);
 							System.out.flush();
-//						}
+						}
 					}
 				} catch (IOException e) {}
-//			}
+			}
 
-//		};
-//		Thread o = new Thread() {
-//
-//			public void run() {
-//				String outgoing;
-//				try {
-//					while (true) {
-//						synchronized (System.out) {
-//							System.out.flush();
-//							System.out.print("Enter message: ");
-//							outgoing = getTime() + " SERVER: " + server.getUserInput().nextLine();
-//							System.out.println(outgoing);
-//							System.out.flush();
-//							server.getOutboundTraffic().writeUTF(outgoing);
-//						}
-//					}
-//				} catch (IOException e) {}
-//			}
-//		};
-//		i.start();
-//		o.start();
+		};
+		// Thread o = new Thread() {
+		//
+		// public void run() {
+		// String outgoing;
+		// try {
+		// while (true) {
+		// synchronized (System.out) {
+		// System.out.flush();
+		// System.out.print("Enter message: ");
+		// outgoing = getTime() + " SERVER: " + server.getUserInput().nextLine();
+		// System.out.println(outgoing);
+		// System.out.flush();
+		// server.getOutboundTraffic().writeUTF(outgoing);
+		// }
+		// }
+		// } catch (IOException e) {}
+		// }
+		// };
+		i.start();
+		// o.start();
 	}
 
 	/**
