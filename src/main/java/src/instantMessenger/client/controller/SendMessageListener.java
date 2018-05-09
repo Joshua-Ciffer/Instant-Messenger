@@ -35,7 +35,11 @@ public final class SendMessageListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		try {
-			parentComponent.getParentFrame().getParentView().getController().sendMessage(parentComponent.getMessageFieldText());
+			String message = parentComponent.getMessageFieldText();
+			if ((message != null) && (message.length() >= 1)) {
+				parentComponent.getParentFrame().getParentView().getController().sendMessage(message);
+				parentComponent.clearMessageTextField();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -78,4 +78,25 @@ public final class ClientFrame extends JFrame {
 		return chatFeedPanel.getChatFeedText();
 	}
 
+	/**
+	 * @return The client menu bar.
+	 */
+	ClientMenuBar getClientMenuBar() {
+		return clientMenuBar;
+	}
+
+	/**
+	 * @return The chat feed panel.
+	 */
+	ChatFeedPanel getChatFeedPanel() {
+		return chatFeedPanel;
+	}
+
+	/**
+	 * @return The message field panel.
+	 */
+	MessageFieldPanel getMessageFieldPanel() {
+		return messageFieldPanel;
+	}
+
 }

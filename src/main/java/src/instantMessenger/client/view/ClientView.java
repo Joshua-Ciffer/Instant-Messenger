@@ -28,6 +28,14 @@ public final class ClientView {
 	}
 
 	/**
+	 * @param message
+	 *        The message to append to the chat feed.
+	 */
+	public void appendToChatFeed(String message) {
+		clientFrame.getChatFeedPanel().appendToChatFeed(message);
+	}
+	
+	/**
 	 * @return The main GUI view frame.
 	 */
 	public ClientFrame getClientFrame() {

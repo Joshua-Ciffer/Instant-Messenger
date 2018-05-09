@@ -84,4 +84,11 @@ public final class MessageFieldPanel extends JPanel {
 		return messageTextField.getText();
 	}
 
+	/**
+	 * Clears the current text entered in the message text field.
+	 */
+	public void clearMessageTextField() {
+		messageTextField.setText("");
+	}
+
 }

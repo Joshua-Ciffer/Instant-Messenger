@@ -53,7 +53,7 @@ public final class Client {
 	 */
 	public Client() {
 		serverConnection = new Socket();
-		userName = "User" + (int)(Math.random() * 1_000);
+		userName = "User" + (int)((Math.random() * 1_000) + 100);	// Generates random user name.  Example: User(*random 3 digit number*)
 	}
 
 	/**
@@ -112,6 +112,13 @@ public final class Client {
 				serverPort = 0;
 			}
 		} catch (IOException e) {}
+	}
+
+	/**
+	 * @return True if the client is connected to the server, false if disconnected.
+	 */
+	public boolean isConnected() {
+		return serverConnection.isConnected();
 	}
 
 	/**

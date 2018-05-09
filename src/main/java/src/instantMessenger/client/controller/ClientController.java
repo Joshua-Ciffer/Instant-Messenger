@@ -6,6 +6,8 @@ import java.net.UnknownHostException;
 import src.instantMessenger.client.model.Client;
 import src.instantMessenger.client.view.ClientView;
 
+import static src.instantMessenger.util.Constants.getTime;
+
 /**
  * The controller acts as a bridge between the view and model. Essentially, the model serves as the client object and the view displays the information from that object.
  * Requests from the view to update data in the model pass through the controller, and information to be displayed from the model passes from the controller to the view.
@@ -71,7 +73,13 @@ public final class ClientController {
 	 *         Thrown if there was an error writing to the network streams.
 	 */
 	public void sendMessage(String message) throws IOException {
-		model.sendMessage(message);
+		message = getTime() + " - " + getUserName() + ": " + message + "\n";
+		if (model.isConnected()) {
+			model.sendMessage(message);
+			view.appendToChatFeed(message);
+		} else {
+			view.appendToChatFeed(message + "Error! Message not sent, you are not connected to a server.\n");
+		}
 	}
 
 	/**
