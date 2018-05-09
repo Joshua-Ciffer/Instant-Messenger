@@ -34,6 +34,7 @@ public final class Server {
 				String incoming = "";
 				try {
 					while ((incoming = server.getInboundTraffic().readUTF()) != null) {
+						server.waitForConnection();
 						synchronized (System.out) {
 							System.out.flush();
 							System.out.println(incoming);
@@ -112,6 +113,17 @@ public final class Server {
 		inboundTraffic = new DataInputStream(clientConnection.getInputStream());
 		outboundTraffic = new DataOutputStream(clientConnection.getOutputStream());
 		userInput = new Scanner(System.in);
+	}
+
+	/**
+	 *
+	 *
+	 * @throws IOException
+	 */
+	public void waitForConnection() throws IOException {
+		if ((clientConnection == null) || !(clientConnection.isConnected())) {
+			clientConnection = clientListener.accept();
+		}
 	}
 
 	/**

@@ -65,7 +65,7 @@ public final class Client {
 	 */
 	public void sendMessage(String message) throws IOException {
 		if (serverConnection.isConnected() && (networkOutput != null)) {
-			networkOutput.writeUTF(getTime() + " - " + userName + ": " + message);
+			networkOutput.writeUTF(message);
 		}
 	}
 
@@ -120,7 +120,7 @@ public final class Client {
 	 * @return True if the client is connected to the server, false if disconnected.
 	 */
 	public boolean isConnected() {
-		return serverConnection.isConnected();
+		return (serverConnection == null) ? false : serverConnection.isConnected();
 	}
 
 	/**
