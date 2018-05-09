@@ -7,8 +7,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import static src.instantMessenger.util.Constants.getTime;
-
 /**
  * This class represents a single chat client that has a connection to the server.
  * 
