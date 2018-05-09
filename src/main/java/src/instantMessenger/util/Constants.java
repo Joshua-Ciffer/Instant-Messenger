@@ -44,4 +44,9 @@ public interface Constants {
 	 */
 	String UNCONNECTED_MESSAGE = getTime() + " - LOG: You are not connected to a server.\n";
 
+	/**
+	 * The message displayed to the client when they click disconnect, but they already are disconnected from the server.
+	 */
+	String ALREADY_DISCONNECTED = getTime() + " - LOG: You are already disconnected from the server.\n";
+
 }

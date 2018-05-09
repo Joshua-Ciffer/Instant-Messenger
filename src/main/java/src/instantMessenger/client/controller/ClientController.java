@@ -9,6 +9,7 @@ import src.instantMessenger.client.view.ClientView;
 import static src.instantMessenger.util.Constants.getTime;
 import static src.instantMessenger.util.Constants.SERVER_DISCONNECTED;
 import static src.instantMessenger.util.Constants.MESSAGE_NOT_SENT;
+import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED;
 
 /**
  * The controller acts as a bridge between the view and model. Essentially, the model serves as the client object and the view displays the information from that object.
@@ -70,8 +71,12 @@ public final class ClientController {
 	 * Disconnects the client from the current server.
 	 */
 	public void disconnect() {
-		model.disconnect();
-		view.appendToChatFeed(SERVER_DISCONNECTED);
+		if (model.isConnected()) {
+			model.disconnect();
+			view.appendToChatFeed(SERVER_DISCONNECTED);
+		} else {
+			view.appendToChatFeed(ALREADY_DISCONNECTED);
+		}
 	}
 
 	/**
