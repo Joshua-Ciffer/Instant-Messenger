@@ -75,11 +75,13 @@ public final class ConnectToServerDialog extends JDialog {
 			serverIPTextField.setText(parentFrame.getParentView().getController().getServerIP());
 		} catch (NullPointerException e) {}
 		serverPortTextField = new JTextField();
-		serverPortTextField.setText(Short.toString(parentFrame.getParentView().getController().getServerPort()));
+		short tempPort = parentFrame.getParentView().getController().getServerPort();
+		serverPortTextField.setText(tempPort != 0 ? Short.toString(tempPort) : "");
 		cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new CancelDialogListener(this));
 		connectButton = new JButton("Connect");
 		connectButton.addActionListener(new ConnectListener(this));
+		add(serverIPLabel);
 		add(serverPortLabel);
 		add(serverIPTextField);
 		add(serverPortTextField);
