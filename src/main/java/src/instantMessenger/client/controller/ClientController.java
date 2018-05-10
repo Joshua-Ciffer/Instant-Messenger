@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 
 import src.instantMessenger.client.model.Client;
+import src.instantMessenger.client.model.NetworkTrafficHandler;
 import src.instantMessenger.client.view.ClientView;
 
 import static src.instantMessenger.util.Constants.getTime;
@@ -31,6 +32,11 @@ public final class ClientController {
 	private ClientView view;
 
 	/**
+	 * Handler thread that processes incoming network traffic.
+	 */
+	private NetworkTrafficHandler trafficHandler;
+
+	/**
 	 * Constructs a new <code>ClientController</code>.
 	 *
 	 * @param model
@@ -42,6 +48,7 @@ public final class ClientController {
 		this.model = model;
 		this.view = view;
 		this.view.setController(this);	// The view needs a reference to the controller so it can make requests for information from the model.
+		trafficHandler = new NetworkTrafficHandler(this);
 	}
 
 	/**
@@ -49,6 +56,7 @@ public final class ClientController {
 	 */
 	public void init() {
 		view.getClientFrame().setVisible(true);
+		trafficHandler.run();
 	}
 
 	/**
@@ -98,6 +106,21 @@ public final class ClientController {
 	}
 
 	/**
+	 * Reads a text based message over the network sent from the server.
+	 *
+	 * @return The message read from the server. Null, if no message.
+	 * @throws IOException
+	 *         Thrown if there was an error reading from the network stream.
+	 */
+	public String readMessage() throws IOException {
+		if (model.isConnected()) {
+			return model.readMessage();
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * Terminates the program.
 	 */
 	public void terminate() {
@@ -108,6 +131,16 @@ public final class ClientController {
 	}
 
 	/**
+	 * Appends a message to the chat feed.
+	 *
+	 * @param message
+	 *        The message to append.
+	 */
+	public synchronized void appendToChatFeed(String message) {
+		view.appendToChatFeed(message);
+	}
+
+	/**
 	 * Updates the user name saved in the client model.
 	 * 
 	 * @param userName
@@ -115,6 +148,13 @@ public final class ClientController {
 	 */
 	public void changeUserName(String userName) {
 		model.setUserName(userName);
+	}
+
+	/**
+	 * @return True if the client is connected to a server, false if not connected.
+	 */
+	public boolean isConnected() {
+		return model.isConnected();
 	}
 
 	/**

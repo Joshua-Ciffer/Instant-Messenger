@@ -62,8 +62,23 @@ public final class Client {
 	 *         Thrown if the network stream can't be written to.
 	 */
 	public void sendMessage(String message) throws IOException {
-		if (serverConnection.isConnected() && (networkOutput != null)) {
+		if (isConnected() && (networkOutput != null)) {
 			networkOutput.writeUTF(message);
+		}
+	}
+
+	/**
+	 * Reads a text based message over the network sent from the server.
+	 *
+	 * @return The message read from the server. Null, if no message.
+	 * @throws IOException
+	 *         Thrown if there was an error reading from the network stream.
+	 */
+	public String readMessage() throws IOException {
+		if (isConnected() && (networkInput != null)) {
+			return networkInput.readUTF();
+		} else {
+			return null;
 		}
 	}
 

@@ -28,43 +28,19 @@ public final class Server {
 	 */
 	public static void main(String[] args) throws IOException {
 		Server server = new Server(TEST_SERVER_PORT);
-		Thread i = new Thread() {
-
-			public void run() {
 				String incoming = "";
 				try {
-					while ((incoming = server.getInboundTraffic().readUTF()) != null) {
-						server.waitForConnection();
-						synchronized (System.out) {
-							System.out.flush();
-							System.out.println(incoming);
-							System.out.flush();
-						}
+//					while ((incoming = server.getInboundTraffic().readUTF()) != null) {
+//							System.out.flush();
+//							System.out.println(incoming);
+//							server.getOutboundTraffic().writeUTF("SERVER ECHOED: " + incoming);
+//							System.out.flush();
+//					}
+					while (true) {
+						server.getOutboundTraffic().writeUTF("HI");
+						System.out.println("HI");
 					}
 				} catch (IOException e) {}
-			}
-
-		};
-		// Thread o = new Thread() {
-		//
-		// public void run() {
-		// String outgoing;
-		// try {
-		// while (true) {
-		// synchronized (System.out) {
-		// System.out.flush();
-		// System.out.print("Enter message: ");
-		// outgoing = getTime() + " SERVER: " + server.getUserInput().nextLine();
-		// System.out.println(outgoing);
-		// System.out.flush();
-		// server.getOutboundTraffic().writeUTF(outgoing);
-		// }
-		// }
-		// } catch (IOException e) {}
-		// }
-		// };
-		i.start();
-		// o.start();
 	}
 
 	/**

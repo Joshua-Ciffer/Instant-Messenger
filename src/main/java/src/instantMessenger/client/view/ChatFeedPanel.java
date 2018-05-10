@@ -61,8 +61,10 @@ final class ChatFeedPanel extends JPanel {
 	 * @param message
 	 *        The message to append to the chat feed.
 	 */
-	void appendToChatFeed(String message) {
-		chatFeedTextArea.append(message);
+	synchronized void appendToChatFeed(String message) {
+		synchronized (chatFeedTextArea) {
+			chatFeedTextArea.append(message);
+		}
 	}
 
 	/**
