@@ -34,7 +34,14 @@ public final class ClientView {
 	public void appendToChatFeed(String message) {
 		clientFrame.getChatFeedPanel().appendToChatFeed(message);
 	}
-	
+
+	/**
+	 * Clears the text in the chat feed.
+	 */
+	public void clearChatFeed() {
+		clientFrame.getChatFeedPanel().clearChatFeed();
+	}
+
 	/**
 	 * @return The main GUI view frame.
 	 */

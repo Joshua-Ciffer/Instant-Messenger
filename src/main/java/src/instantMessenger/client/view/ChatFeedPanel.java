@@ -65,4 +65,11 @@ final class ChatFeedPanel extends JPanel {
 		chatFeedTextArea.append(message);
 	}
 
+	/**
+	 * Clears the text in the chat feed.
+	 */
+	void clearChatFeed() {
+		chatFeedTextArea.setText("");
+	}
+
 }
