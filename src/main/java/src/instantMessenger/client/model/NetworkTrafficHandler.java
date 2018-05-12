@@ -10,7 +10,7 @@ import src.instantMessenger.client.controller.ClientController;
  * @author Joshua Ciffer
  * @version 05/09/2018
  */
-public class NetworkTrafficHandler implements Runnable {
+public final class NetworkTrafficHandler implements Runnable {
 
 	/**
 	 * The controller associated with the current client.
@@ -32,9 +32,10 @@ public class NetworkTrafficHandler implements Runnable {
 	 */
 	@Override
 	public void run() {
-		String message;
+		String message = "";
 		try {
 			while (true) {
+				System.out.print("");	// For some god unknown reason to me, without this line of code messages are not read from the socket.
 				if ((message = controller.readMessage()) != null) {
 					controller.appendToChatFeed(message);
 				}

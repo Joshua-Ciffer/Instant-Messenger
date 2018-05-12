@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 
 import src.instantMessenger.client.view.ClientFrame;
 
+import static src.instantMessenger.util.Constants.serverDisconnectedMessage;
+import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED;
+
 /**
  * Listens for an event created by a disconnect button to disconnect the client from the current server.
  *
@@ -33,7 +36,13 @@ public final class DisconnectListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		parentFrame.getParentView().getController().disconnect();
+		if (parentFrame.getParentView().getController().isConnected()) {
+			parentFrame.getParentView().getController().appendToChatFeed(
+					serverDisconnectedMessage(parentFrame.getParentView().getController().getServerIP(), parentFrame.getParentView().getController().getServerPort()));
+			parentFrame.getParentView().getController().disconnect();
+		} else {
+			parentFrame.getParentView().getController().appendToChatFeed(ALREADY_DISCONNECTED);
+		}
 	}
 
 }

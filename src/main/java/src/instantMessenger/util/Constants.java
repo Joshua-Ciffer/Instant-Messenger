@@ -30,9 +30,25 @@ public interface Constants {
 	Font CHAT_FONT = new Font("Courier new", Font.PLAIN, 12);
 
 	/**
-	 * The message displayed to the client when they are disconnected from the server.
+	 * @param serverIP
+	 *        The server IP that the client connected to.
+	 * @param serverPort
+	 *        The server port that the client connected to.
+	 * @return A message that displays when the client connects to a server.
 	 */
-	String SERVER_DISCONNECTED = getTime() + " - LOG: Disconnected from server.\n";
+	static String connectedMessage(String serverIP, short serverPort) {
+		return getTime() + " - LOG: Connected to server " + serverIP + " on port " + serverPort + ".\n";
+	}
+
+	/**
+	 * The message displayed to the client when they are disconnected from the server.
+	 * @param serverIP 
+	 * @param serverPort 
+	 * @return 
+	 */
+	static String serverDisconnectedMessage(String serverIP, short serverPort) {
+		return getTime() + " - LOG: Disconnected from server " + serverIP + " on port " + serverPort + ".\n";
+	}
 
 	/**
 	 * The message displayed to the client when their message is not sent because they are not connected to a server.

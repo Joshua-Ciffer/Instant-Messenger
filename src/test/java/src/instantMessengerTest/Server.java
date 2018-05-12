@@ -33,6 +33,7 @@ public final class Server {
 			String message = "";
 			while ((message = server.getInboundTraffic().readUTF()) != null) {
 				server.getOutboundTraffic().writeUTF("SERVER ECHOED: " + message);
+				server.getOutboundTraffic().flush();
 			}
 		} catch (IOException e) {}
 	}
