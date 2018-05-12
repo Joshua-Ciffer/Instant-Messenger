@@ -28,19 +28,13 @@ public final class Server {
 	 */
 	public static void main(String[] args) throws IOException {
 		Server server = new Server(TEST_SERVER_PORT);
-				String incoming = "";
-				try {
-//					while ((incoming = server.getInboundTraffic().readUTF()) != null) {
-//							System.out.flush();
-//							System.out.println(incoming);
-//							server.getOutboundTraffic().writeUTF("SERVER ECHOED: " + incoming);
-//							System.out.flush();
-//					}
-					while (true) {
-						server.getOutboundTraffic().writeUTF("HI");
-						System.out.println("HI");
-					}
-				} catch (IOException e) {}
+		String incoming = "";
+		try {
+			String message = "";
+			while ((message = server.getInboundTraffic().readUTF()) != null) {
+				server.getOutboundTraffic().writeUTF("SERVER ECHOED: " + message);
+			}
+		} catch (IOException e) {}
 	}
 
 	/**
