@@ -32,10 +32,12 @@ public class NetworkTrafficHandler implements Runnable {
 	 */
 	@Override
 	public void run() {
-		String message = "";
+		String message;
 		try {
-			while (((message = controller.readMessage()) != null)) {
-				controller.appendToChatFeed(message);
+			while (true) {
+				if ((message = controller.readMessage()) != null) {
+					controller.appendToChatFeed(message);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
