@@ -50,42 +50,6 @@ public final class ClientMenuBar extends JMenuBar {
 	private JMenuItem clearChatFeedItem;
 
 	/**
-	 * Edit submenu.
-	 */
-	private JMenu editMenu;
-
-	/**
-	 * Reverts the last change the user typed in the message text field.
-	 */
-	private JMenuItem undoItem;
-
-	/**
-	 * Un-reverts the last change the user typed in the message text field.
-	 */
-	private JMenuItem redoItem;
-
-	/**
-	 * Cuts the selected text to the system clip board.
-	 */
-	private JMenuItem cutItem;
-
-	/**
-	 * Copies the selected text to the system clip board.
-	 */
-	private JMenuItem copyItem;
-
-	/**
-	 * Pastes the current text from the system clip board.
-	 */
-	private JMenuItem pasteItem;
-
-	/**
-	 * Clears the current text typed in the message text field.
-	 */
-	private JMenuItem deleteItem;
-	// TODO: Write menu items for edit menu.
-
-	/**
 	 * Connection submenu.
 	 */
 	private JMenu connectionMenu;
@@ -151,25 +115,6 @@ public final class ClientMenuBar extends JMenuBar {
 		fileMenu.add(changeUserNameItem);
 		fileMenu.add(saveChatLogItem);
 		fileMenu.add(clearChatFeedItem);
-		editMenu = new JMenu("Edit");
-		undoItem = new JMenuItem("Undo");
-		undoItem.addActionListener(null);
-		redoItem = new JMenuItem("Redo");
-		redoItem.addActionListener(null);
-		cutItem = new JMenuItem("Cut");
-		cutItem.addActionListener(null);
-		copyItem = new JMenuItem("Copy");
-		copyItem.addActionListener(null);
-		pasteItem = new JMenuItem("Paste");
-		pasteItem.addActionListener(null);
-		deleteItem = new JMenuItem("Delete");
-		deleteItem.addActionListener(null);
-		editMenu.add(undoItem);
-		editMenu.add(redoItem);
-		editMenu.add(cutItem);
-		editMenu.add(copyItem);
-		editMenu.add(pasteItem);
-		editMenu.add(deleteItem);
 		connectionMenu = new JMenu("Connection");
 		connectToServerItem = new JMenuItem("Connect to Server...");
 		connectToServerItem.addActionListener(new ActionListener() {
@@ -205,7 +150,6 @@ public final class ClientMenuBar extends JMenuBar {
 		exitItem = new JMenuItem("Exit");
 		exitItem.addActionListener(new TerminateListener(parentFrame));
 		add(fileMenu);
-		add(editMenu);
 		add(connectionMenu);
 		add(helpMenu);
 		add(exitItem);
