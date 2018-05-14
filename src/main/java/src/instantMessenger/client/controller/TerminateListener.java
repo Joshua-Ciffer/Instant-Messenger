@@ -8,7 +8,9 @@ import java.awt.event.WindowListener;
 import src.instantMessenger.client.view.ClientFrame;
 
 /**
- * Listens for an event that terminates the program after clean up and disconnecting from the server.
+ * Listens for an event that terminates the program after clean up and disconnecting from the server. This is listener is added to both the exit button on the
+ * menu bar and the native close button in the upper corner of the window. When the action is performed, the client is disconnected from the server, all threads
+ * are stopped and the program terminates.
  *
  * @author Joshua Ciffer
  * @version 05/08/2018
@@ -16,7 +18,7 @@ import src.instantMessenger.client.view.ClientFrame;
 public final class TerminateListener implements ActionListener, WindowListener {
 
 	/**
-	 * The controller associated with the current program.
+	 * The parent frame that added this listener.
 	 */
 	private ClientFrame parentFrame;
 
@@ -24,14 +26,14 @@ public final class TerminateListener implements ActionListener, WindowListener {
 	 * Constructs a new <code>TerminateListener</code>.
 	 *
 	 * @param parentFrame
-	 *        The parent frame associated with this listener.
+	 *        The parent frame that added this listener.
 	 */
 	public TerminateListener(ClientFrame parentFrame) {
 		this.parentFrame = parentFrame;
 	}
 
 	/**
-	 * Terminates the program after clean up and disconnection.
+	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program termiantes.
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
@@ -39,7 +41,7 @@ public final class TerminateListener implements ActionListener, WindowListener {
 	}
 
 	/**
-	 * Terminates the program from closing the GUI window.
+	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program termiantes.
 	 */
 	@Override
 	public void windowClosing(WindowEvent a) {
@@ -47,7 +49,7 @@ public final class TerminateListener implements ActionListener, WindowListener {
 	}
 
 	/**
-	 * Terminates the program from closing the GUI window.
+	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program termiantes.
 	 */
 	@Override
 	public void windowClosed(WindowEvent a) {

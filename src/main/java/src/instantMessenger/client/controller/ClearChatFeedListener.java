@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import src.instantMessenger.client.view.ClientFrame;
 
 /**
- * Listens for a button press that clears the text in the chat feed.
+ * Listens for an action event that clears the text in the chat feed. This listener is added to the "Clear Chat Feed" button on the file sub-menu of the menu
+ * bar.
  *
  * @author Joshua Ciffer
  * @version 05/09/2018
@@ -19,7 +20,7 @@ public final class ClearChatFeedListener implements ActionListener {
 	private ClientFrame parentFrame;
 
 	/**
-	 * Constructs a new instance of <code>ClearChatFeedListener</code>.
+	 * Constructs a new <code>ClearChatFeedListener</code>.
 	 *
 	 * @param parentFrame
 	 *        The parent component that added this listener.

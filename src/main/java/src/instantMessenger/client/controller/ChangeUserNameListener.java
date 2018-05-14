@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import src.instantMessenger.client.view.ChangeUserNameDialog;
 
 /**
- * Listens for an event created by the save button on a <code>ChangeUserNameDialog</code> window.
+ * This listener waits for an event created by the save button on a <code>ChangeUserNameDialog</code> window. When the save button is pressed, the user name
+ * entered in the text field of the dialog is passed to the controller to then be saved in the model.
  *
  * @author Joshua Ciffer
  * @version 05/06/2018
@@ -14,15 +15,15 @@ import src.instantMessenger.client.view.ChangeUserNameDialog;
 public final class ChangeUserNameListener implements ActionListener {
 
 	/**
-	 * The <code>ChangeUserNameDialog</code> object that contains this listener.
+	 * The <code>ChangeUserNameDialog</code> object that added this listener.
 	 */
 	private ChangeUserNameDialog parentDialog;
 
 	/**
-	 * Constructs a new instance of <code>ChangeUserNameListener</code>.
+	 * Constructs a new <code>ChangeUserNameListener</code>.
 	 *
 	 * @param parentDialog
-	 *        The <code>ChangeUserNameDialog</code> object that contains this listener.
+	 *        The <code>ChangeUserNameDialog</code> object that added this listener.
 	 */
 	public ChangeUserNameListener(ChangeUserNameDialog parentDialog) {
 		this.parentDialog = parentDialog;

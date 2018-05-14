@@ -12,7 +12,9 @@ import src.instantMessenger.client.view.ConnectToServerDialog;
 import static src.instantMessenger.util.Constants.connectedMessage;
 
 /**
- * Listens for the connect button to be clicked on a <code>ConnectToServerDialog</code>.
+ * Listens for the connect button to be clicked on a <code>ConnectToServerDialog</code>. When the connect button is clicked, the IP address and port entered
+ * in the dialog box are passed to the controller. They are then saved in the client model, and a socket is created and bound to that address. A connection
+ * is then attempted to be established.
  *
  * @author Joshua Ciffer
  * @version 05/08/2018
@@ -20,7 +22,7 @@ import static src.instantMessenger.util.Constants.connectedMessage;
 public final class ConnectListener implements ActionListener {
 
 	/**
-	 * The dialog box that contains this listener.
+	 * The dialog box that added this listener.
 	 */
 	private ConnectToServerDialog parentDialog;
 
@@ -28,7 +30,7 @@ public final class ConnectListener implements ActionListener {
 	 * Constructs a new <code>ConnectListener</code>.
 	 *
 	 * @param parentDialog
-	 *        The dialog box that created this listener.
+	 *        The dialog box that added this listener.
 	 */
 	public ConnectListener(ConnectToServerDialog parentDialog) {
 		this.parentDialog = parentDialog;
@@ -49,7 +51,7 @@ public final class ConnectListener implements ActionListener {
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(parentDialog, "The server port you entered is invalid. Please enter a port from the range 0-65535.", "Invalid Server Port",
 					JOptionPane.ERROR_MESSAGE);
-		} catch (IOException e) {
+		} catch (IOException e) {	// TODO: Add catch blocks for more specific network exceptions.
 			JOptionPane.showMessageDialog(parentDialog, "The connection could not be established. Please try again.", "Connection Error", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
