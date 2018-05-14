@@ -41,7 +41,6 @@ public interface Constants {
 	}
 
 	/**
-	 * The message displayed to the client when they are disconnected from the server.
 	 * @param serverIP 
 	 * @param serverPort 
 	 * @return 
