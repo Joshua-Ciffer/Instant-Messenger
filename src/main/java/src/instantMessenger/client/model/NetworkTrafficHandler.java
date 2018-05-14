@@ -10,7 +10,7 @@ import src.instantMessenger.client.controller.ClientController;
  * @author Joshua Ciffer
  * @version 05/09/2018
  */
-public final class NetworkTrafficHandler implements Runnable {
+public final class NetworkTrafficHandler extends Thread {
 
 	/**
 	 * The controller associated with the current client.
