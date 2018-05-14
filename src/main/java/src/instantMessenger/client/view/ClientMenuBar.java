@@ -12,7 +12,13 @@ import src.instantMessenger.client.controller.DisconnectListener;
 import src.instantMessenger.client.controller.TerminateListener;
 
 /**
- * This class represents the menu bar that contains drop down menus and options for the client program.
+ * This class represents the menu bar that contains drop down menus and options for the client program. The file sub-menu contains a change user name, save
+ * chat log, and clear chat feed buttons. The change user name button displays a <code>ChangeUserNameDialog</code> where the user can enter a new user name.
+ * The save chat log button displays a new <code>SaveChatLogDialog</code> where the user specifies a file to save their chat log. The clear chat feed button
+ * clears the chat feed. The connection sub-menu contains a connect to server, and disconnect button. The connect to server button displays a new
+ * <code>ConnectToServerDialog</code> where the user enters an IP and port of a server to connect to. The disconnect button terminates the connection with
+ * the current server. The help sub-menu contains a help and about button. The help menu displays a <code>HelpDialog</code> and the about button displays a
+ * <code>AboutDialog</code>. The exit button gracefully terminates the program.
  * 
  * @author Joshua Ciffer
  * @version 05/09/2018
@@ -25,17 +31,17 @@ public final class ClientMenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * File submenu.
+	 * File submenu. Contains the change user name, save chat log, and clear chat feed buttons.
 	 */
 	private JMenu fileMenu;
 
 	/**
-	 * Opens a change user name dialog.
+	 * Displays a <code>ChangeUserNameDialog</code>.
 	 */
 	private JMenuItem changeUserNameItem;
 
 	/**
-	 * Opens a save chat log dialog.
+	 * Displays a <code>SaveChatLogDialog</code>.
 	 */
 	private JMenuItem saveChatLogItem;
 
@@ -45,12 +51,12 @@ public final class ClientMenuBar extends JMenuBar {
 	private JMenuItem clearChatFeedItem;
 
 	/**
-	 * Connection submenu.
+	 * Connection submenu. Contains the connect to server button and disconnect buttons.
 	 */
 	private JMenu connectionMenu;
 
 	/**
-	 * Opens a connect to server dialog.
+	 * Displays a <code>ConnectToServerDialog</code>.
 	 */
 	private JMenuItem connectToServerItem;
 
@@ -60,17 +66,17 @@ public final class ClientMenuBar extends JMenuBar {
 	private JMenuItem disconnectItem;
 
 	/**
-	 * Help submenu.
+	 * Help submenu. Contains the help and about buttons.
 	 */
 	private JMenu helpMenu;
 
 	/**
-	 * Opens a help dialog.
+	 * Displays a <code>HelpDialog</code>.
 	 */
 	private JMenuItem helpItem;
 
 	/**
-	 * Opens a about dialog.
+	 * Displays a <code>AboutDialog</code>.
 	 */
 	private JMenuItem aboutItem;
 

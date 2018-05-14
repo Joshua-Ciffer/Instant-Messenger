@@ -10,7 +10,8 @@ import src.instantMessenger.client.controller.SendMessageListener;
 import static src.instantMessenger.util.Constants.CHAT_FONT;
 
 /**
- * <code>MessageFieldPanel</code> is a panel that contains functionality that allows the user to type and send messages.
+ * <code>MessageFieldPanel</code> is a panel that contains functionality that allows the user to type and send messages. The user can enter their message in
+ * the text field, and then send it by pressing the send button.
  * 
  * @author Joshua Ciffer
  * @version 05/07/2018
@@ -43,7 +44,7 @@ public final class MessageFieldPanel extends JPanel {
 	private JButton sendButton;
 
 	/**
-	 * Constructs a new <code>MessageFieldPanel</code> container.
+	 * Constructs a new <code>MessageFieldPanel</code> panel.
 	 * 
 	 * @param parentFrame
 	 *        The parent frame that this panel is placed on.

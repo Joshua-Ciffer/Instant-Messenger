@@ -38,10 +38,10 @@ final class SaveChatLogDialog extends JFileChooser {
 	private PrintWriter fileWriter;
 
 	/**
-	 * Constructs a new save chat dialog.
+	 * Constructs a new <code>SaveChatLogDialog</code>.
 	 * 
 	 * @param parentFrame
-	 *        The parent frame that constructed this save chat log dialog.
+	 *        The parent frame that constructed this instance.
 	 */
 	SaveChatLogDialog(ClientFrame parentFrame) {
 		super();
@@ -65,7 +65,7 @@ final class SaveChatLogDialog extends JFileChooser {
 			} catch (FileNotFoundException e) {
 				JOptionPane.showMessageDialog(this, "The file you specified could not be found. The chat log was not saved.", "File Not Found", JOptionPane.ERROR_MESSAGE);
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(this, "An IO Exception occurred. The chat log was not saved.", "IO Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "The file you specified could not be written to.", "IO Error", JOptionPane.ERROR_MESSAGE);
 				e.printStackTrace();
 			} finally {
 				fileWriter.close();

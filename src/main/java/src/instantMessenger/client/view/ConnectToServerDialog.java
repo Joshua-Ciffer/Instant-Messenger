@@ -9,7 +9,8 @@ import src.instantMessenger.client.controller.CancelDialogListener;
 import src.instantMessenger.client.controller.ConnectListener;
 
 /**
- * Dialog box that allows the user to enter the server IP address and port.
+ * Dialog box that allows the user to enter the server IP address and port. Upon clicking connect, the IP and port entered in the dialog are passed to the
+ * controller and saved in the model if the input is valid. The model then creates a new socket with the given input and attempts a connection to the server.
  * 
  * @author Joshua Ciffer
  * @version 05/06/2018
@@ -75,8 +76,8 @@ public final class ConnectToServerDialog extends JDialog {
 			serverIPTextField.setText(parentFrame.getParentView().getController().getServerIP());
 		} catch (NullPointerException e) {}
 		serverPortTextField = new JTextField();
-		short tempPort = parentFrame.getParentView().getController().getServerPort();
-		serverPortTextField.setText(tempPort != 0 ? Short.toString(tempPort) : "");
+		serverPortTextField.setText(
+				(parentFrame.getParentView().getController().getServerPort() != 0) ? Short.toString(parentFrame.getParentView().getController().getServerPort()) : "");
 		cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new CancelDialogListener(this));
 		connectButton = new JButton("Connect");

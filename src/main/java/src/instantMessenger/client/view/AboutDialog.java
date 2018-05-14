@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import static src.instantMessenger.util.Constants.PROGRAM_VERSION;
 
 /**
- * Simple dialog box showing the program version, author, and GitHub repo.
+ * Simple dialog box that displays the program version, author, and GitHub repo.
  *
  * @author Joshua Ciffer
  * @version 04/21/2018
@@ -34,7 +34,7 @@ final class AboutDialog extends JDialog {
 	private JLabel gitHubLabel;
 
 	/**
-	 * Constructs a new instance of <code>AboutDialog</code>.
+	 * Constructs a new <code>AboutDialog</code>.
 	 *
 	 * @param parentFrame
 	 *        The parent frame that this instance was created from.

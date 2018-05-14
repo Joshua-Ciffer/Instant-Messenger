@@ -5,7 +5,9 @@ import javax.swing.JFrame;
 import src.instantMessenger.client.controller.TerminateListener;
 
 /**
- * The main GUI frame class that all other components are added to.
+ * The main GUI frame class that all other components are added to. The components of the interface are grouped into panels which are placed upon this frame.
+ * The chat feed panel contains the scrollable text area for the chat feed, and the message field panel contains the text feed for sending message and the
+ * send button. The menu bar contains the sub-menus and menu buttons for opening different dialog boxes and such.
  * 
  * @author Joshua Ciffer
  * @version 05/06/2018
@@ -23,7 +25,7 @@ public final class ClientFrame extends JFrame {
 	private ClientView parentView;
 
 	/**
-	 * The menu bar associated with this frame.
+	 * The menu bar placed on this frame.
 	 */
 	private ClientMenuBar clientMenuBar;
 

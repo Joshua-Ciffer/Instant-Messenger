@@ -1,7 +1,7 @@
 /**
- * This package contains client GUI view classes.
+ * This package contains client GUI view classes and swing components.
  *
  * @author Joshua Ciffer
- * @version 04/19/2018
+ * @version 05/13/2018
  */
 package src.instantMessenger.client.view;

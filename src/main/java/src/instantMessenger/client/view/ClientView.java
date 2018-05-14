@@ -3,7 +3,11 @@ package src.instantMessenger.client.view;
 import src.instantMessenger.client.controller.ClientController;
 
 /**
- * This class represents the visual aspect of the program that the user sees and interacts with.
+ * This class represents the visual aspect of the program that the user sees and interacts with. The view consists of the client frame, which is an instance of
+ * <code>JFrame</code>. The client frame is broken down into the chat feed panel, message field panel, menu bar, and its necessary dialogs. The chat feed panel
+ * contains a scrollable text area that displays the chat history. The message field panel contains a text field for the user to type their message, and a send
+ * button to send their message. The menu bar contains sub-menus for connections options and additional features, like saving the chat log, changing the user
+ * name, etc.
  *
  * @author Joshua Ciffer
  * @version 04/21/2018
@@ -11,17 +15,17 @@ import src.instantMessenger.client.controller.ClientController;
 public final class ClientView {
 
 	/**
-	 * The main GUI frame.
+	 * The main GUI frame. This frame contains the major sub-panels and menu bar.
 	 */
 	private ClientFrame clientFrame;
 
 	/**
-	 * The controller that bridges this view class with the client model.
+	 * The controller that bridges this view with the client model.
 	 */
 	private ClientController controller;
 
 	/**
-	 * Constructs a new instance of <code>ClientView</code>.
+	 * Constructs a new <code>ClientView</code>.
 	 */
 	public ClientView() {
 		clientFrame = new ClientFrame(this);
