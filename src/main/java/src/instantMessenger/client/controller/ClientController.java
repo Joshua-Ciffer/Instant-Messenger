@@ -8,9 +8,9 @@ import src.instantMessenger.client.model.NetworkTrafficHandler;
 import src.instantMessenger.client.view.ClientView;
 
 import static src.instantMessenger.util.Constants.getTime;
-import static src.instantMessenger.util.Constants.MESSAGE_NOT_SENT;
-import static src.instantMessenger.util.Constants.serverDisconnectedMessage;
-import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED;
+import static src.instantMessenger.util.Constants.disconnectedFromServerMessage;
+import static src.instantMessenger.util.Constants.MESSAGE_NOT_SENT_MESSAGE;
+import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED_MESSAGE;
 
 /**
  * The controller acts as a bridge between the view and model. Essentially, the model serves as the client object and the view displays the information from
@@ -84,10 +84,10 @@ public final class ClientController {
 	 */
 	public void disconnect() {
 		if (model.isConnected()) {
-			view.appendToChatFeed(serverDisconnectedMessage(getServerIP(), getServerPort()));
+			view.appendToChatFeed(disconnectedFromServerMessage(getServerIP(), getServerPort()));
 			model.disconnect();
 		} else {
-			view.appendToChatFeed(ALREADY_DISCONNECTED);
+			view.appendToChatFeed(ALREADY_DISCONNECTED_MESSAGE);
 		}
 	}
 
@@ -112,7 +112,7 @@ public final class ClientController {
 			model.sendMessage(message);
 			view.appendToChatFeed(message);
 		} else {
-			view.appendToChatFeed(MESSAGE_NOT_SENT);
+			view.appendToChatFeed(MESSAGE_NOT_SENT_MESSAGE);
 		}
 	}
 
