@@ -25,11 +25,6 @@ public final class ClientMenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The parent frame that this menu bar is placed on.
-	 */
-	private ClientFrame parentFrame;
-
-	/**
 	 * File submenu.
 	 */
 	private JMenu fileMenu;
@@ -92,7 +87,6 @@ public final class ClientMenuBar extends JMenuBar {
 	 */
 	ClientMenuBar(ClientFrame parentFrame) {
 		super();
-		this.parentFrame = parentFrame;
 		fileMenu = new JMenu("File");
 		changeUserNameItem = new JMenuItem("Change User Name...");
 		changeUserNameItem.addActionListener(new ActionListener() {
@@ -154,13 +148,6 @@ public final class ClientMenuBar extends JMenuBar {
 		add(helpMenu);
 		add(exitItem);
 		setBounds(0, 0, 500, 20);
-	}
-
-	/**
-	 * @return A reference to this menu bar's parent frame.
-	 */
-	public ClientFrame getParentFrame() {
-		return parentFrame;
 	}
 
 }
