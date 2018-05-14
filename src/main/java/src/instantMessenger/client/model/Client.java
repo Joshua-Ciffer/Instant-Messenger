@@ -8,15 +8,17 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 /**
- * This class represents a single chat client that has a connection to the server.
+ * This class represents a single chat client that has a connection to the server. This object acts as the model of the program. The controller requests
+ * information from this object and performs actions based on user input from the view. This class provides network streams to allow text based messages to
+ * be sent over the network to a server.
  * 
  * @author Joshua Ciffer
- * @version 04/21/2018
+ * @version 05/13/2018
  */
 public final class Client {
 
 	/**
-	 * The TCP connection to the chat messenger server.
+	 * The TCP connection to the chat message server.
 	 */
 	private Socket serverConnection;
 
@@ -46,40 +48,11 @@ public final class Client {
 	private String userName;
 
 	/**
-	 * Constructs a new instance of <code>Client</code>. The socket is left unconnected at the time of construction, and a random user name is generated.
+	 * Constructs a new <code>Client</code>. The socket is left unconnected at the time of construction, and a random user name is generated.
 	 */
 	public Client() {
-		serverConnection = new Socket();
-		userName = "User" + (int)((Math.random() * 1_000) + 100);	// Generates random user name. Example: User(*random 3 digit number*)
-	}
-
-	/**
-	 * Sends a text based message over the network through the server connection.
-	 *
-	 * @param message
-	 *        The message to send.
-	 * @throws IOException
-	 *         Thrown if the network stream can't be written to.
-	 */
-	public void sendMessage(String message) throws IOException {
-		if (isConnected() && (networkOutput != null)) {
-			networkOutput.writeUTF(message);
-		}
-	}
-
-	/**
-	 * Reads a text based message over the network sent from the server.
-	 *
-	 * @return The message read from the server. Null, if no message.
-	 * @throws IOException
-	 *         Thrown if there was an error reading from the network stream.
-	 */
-	public String readMessage() throws IOException {
-		if (isConnected() && (networkInput != null)) {
-			return networkInput.readUTF();
-		} else {
-			return null;
-		}
+		serverConnection = new Socket();	// Unconnected socket.
+		userName = "User" + (int)((Math.random() * 1_000) + 100);	// Generates random user name. Example: User(*random 3 digit number*).
 	}
 
 	/**
@@ -130,11 +103,40 @@ public final class Client {
 	}
 
 	/**
-	 * @return True if the client is connected to the server, false if disconnected.
+	 * Writes a text based message to the outgoing network stream and is sent to the server.
+	 *
+	 * @param message
+	 *        The message to send.
+	 * @throws IOException
+	 *         Thrown if the network stream can't be written to.
+	 */
+	public void sendMessage(String message) throws IOException {
+		if (isConnected() && (networkOutput != null)) {
+			networkOutput.writeUTF(message);
+		}
+	}
+
+	/**
+	 * Reads a text based message from the incoming network stream that was sent from the server.
+	 *
+	 * @return The message read from the server. Null, if no message.
+	 * @throws IOException
+	 *         Thrown if there was an error reading from the network stream.
+	 */
+	public String readMessage() throws IOException {
+		if (isConnected() && (networkInput != null)) {
+			return networkInput.readUTF();
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * @return True if the client is connected to a server, false if disconnected.
 	 */
 	public boolean isConnected() {
-		return (serverConnection == null) ? false : serverConnection.isConnected();
-	}
+		return (serverConnection == null) ? false : serverConnection.isConnected();		// If the socket equals null, return false. Otherwise return the
+	}																					// connection state of the socket.
 
 	/**
 	 * @return The server IP.
