@@ -9,7 +9,8 @@ import src.instantMessenger.client.controller.CancelDialogListener;
 import src.instantMessenger.client.controller.ChangeUserNameListener;
 
 /**
- * A change user name dialog allows the user to set their user name that identifies them in the chat server.
+ * A change user name dialog allows the user to set their user name that identifies them in the chat server. Clicking save passes the user name entered in the
+ * text field to the controller to be saved in the model. Clicking cancel disposes the dialog without saving any changes.
  * 
  * @author Joshua Ciffer
  * @version 05/06/2018
@@ -22,7 +23,7 @@ public final class ChangeUserNameDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The parent frame that constructed this change user name dialog.
+	 * The parent frame that constructed this dialog.
 	 */
 	private ClientFrame parentFrame;
 

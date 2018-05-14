@@ -87,7 +87,7 @@ public final class ClientFrame extends JFrame {
 	 * @return The text contained in the chat feed.
 	 */
 	String getChatFeed() {
-		return chatFeedPanel.getChatFeedText();
+		return chatFeedPanel.getChatFeed();
 	}
 
 	/**

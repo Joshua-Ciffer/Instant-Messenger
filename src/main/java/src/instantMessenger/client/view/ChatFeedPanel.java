@@ -7,7 +7,8 @@ import javax.swing.JScrollPane;
 import static src.instantMessenger.util.Constants.CHAT_FONT;
 
 /**
- * <code>ChatFeedPanel</code> is a panel that displays the chat feed and allows the user to scroll through the text area.
+ * <code>ChatFeedPanel</code> is a panel that displays the chat feed and allows the user to scroll through the text area. The chat feed text area is not editable
+ * and it auto-scrolls when new messages arrive.
  * 
  * @author Joshua Ciffer
  * @version 05/06/2018
@@ -30,7 +31,7 @@ final class ChatFeedPanel extends JPanel {
 	private JScrollPane chatFeedPane;
 
 	/**
-	 * Constructs a new <code>ChatFeedPanel</code> container.
+	 * Constructs a new <code>ChatFeedPanel</code> panel.
 	 */
 	ChatFeedPanel() {
 		super();
@@ -51,20 +52,22 @@ final class ChatFeedPanel extends JPanel {
 	}
 
 	/**
-	 * @return The text in the chat feed area.
-	 */
-	String getChatFeedText() {
-		return chatFeedTextArea.getText();
-	}
-
-	/**
+	 * Appends a message to the chat feed.
+	 * 
 	 * @param message
-	 *        The message to append to the chat feed.
+	 *        The message to append.
 	 */
 	synchronized void appendToChatFeed(String message) {
 		synchronized (chatFeedTextArea) {
 			chatFeedTextArea.append(message);
 		}
+	}
+
+	/**
+	 * @return The text in the chat feed area.
+	 */
+	String getChatFeed() {
+		return chatFeedTextArea.getText();
 	}
 
 	/**
