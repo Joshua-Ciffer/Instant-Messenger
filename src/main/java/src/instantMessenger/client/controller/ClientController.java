@@ -35,7 +35,7 @@ public final class ClientController {
 	/**
 	 * Handler thread that processes incoming network traffic using the model.
 	 */
-	private NetworkTrafficHandler trafficHandler;
+	private NetworkTrafficHandler trafficHandler; // TODO: Move to model?
 
 	/**
 	 * Constructs a new <code>ClientController</code>.

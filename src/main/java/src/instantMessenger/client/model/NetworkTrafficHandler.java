@@ -35,7 +35,7 @@ public final class NetworkTrafficHandler extends Thread {
 		String message = "";
 		try {
 			while (true) {
-				System.out.print("");	// For some god unknown reason to me, without this line of code messages are not read from the socket.
+				System.out.print("");	// TODO: For some god unknown reason to me, without this line of code messages are not read from the socket.
 				if ((message = controller.readMessage()) != null) {
 					controller.appendToChatFeed(message);
 				}
