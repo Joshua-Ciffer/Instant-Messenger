@@ -7,7 +7,8 @@ import java.io.IOException;
 import src.instantMessenger.client.view.MessageFieldPanel;
 
 /**
- * Listens for an event to send a message to the server.
+ * Listens for an event to send a message to the server. When the send button of the message field panel is pressed, any text entered in the message field is
+ * written to the outgoing network stream and sent to the server, if connected.
  *
  * @author Joshua Ciffer
  * @version 05/07/2018
@@ -35,9 +36,8 @@ public final class SendMessageListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		try {
-			String message = parentComponent.getMessageFieldText();
-			if ((message != null) && (message.length() >= 1)) {
-				parentComponent.getParentFrame().getParentView().getController().sendMessage(message);
+			if ((parentComponent.getMessageFieldText() != null) && (parentComponent.getMessageFieldText().length() >= 1)) {
+				parentComponent.getParentFrame().getParentView().getController().sendMessage(parentComponent.getMessageFieldText());
 				parentComponent.clearMessageTextField();
 			}
 		} catch (IOException e) {
