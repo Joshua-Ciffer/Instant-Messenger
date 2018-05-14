@@ -10,7 +10,7 @@ import src.instantMessenger.client.controller.TerminateListener;
  * send button. The menu bar contains the sub-menus and menu buttons for opening different dialog boxes and such.
  * 
  * @author Joshua Ciffer
- * @version 05/06/2018
+ * @version 05/13/2018
  */
 public final class ClientFrame extends JFrame {
 
@@ -67,38 +67,34 @@ public final class ClientFrame extends JFrame {
 	}
 
 	/**
-	 * @return The parent view.
+	 * @return The parent view that contains this frame.
 	 */
 	public ClientView getParentView() {
 		return parentView;
 	}
 
 	/**
-	 * @return The text contained in the chat feed panel.
+	 * Appends a message to the chat feed.
+	 *
+	 * @param message
+	 *        The message to append.
 	 */
-	public String getChatFeedText() {
+	void appendToChatFeed(String message) {
+		chatFeedPanel.appendToChatFeed(message);
+	}
+
+	/**
+	 * @return The text contained in the chat feed.
+	 */
+	String getChatFeed() {
 		return chatFeedPanel.getChatFeedText();
 	}
 
 	/**
-	 * @return The client menu bar.
+	 * Clears the text in the chat feed text area.
 	 */
-	ClientMenuBar getClientMenuBar() {
-		return clientMenuBar;
-	}
-
-	/**
-	 * @return The chat feed panel.
-	 */
-	ChatFeedPanel getChatFeedPanel() {
-		return chatFeedPanel;
-	}
-
-	/**
-	 * @return The message field panel.
-	 */
-	MessageFieldPanel getMessageFieldPanel() {
-		return messageFieldPanel;
+	void clearChatFeed() {
+		chatFeedPanel.clearChatFeed();
 	}
 
 }

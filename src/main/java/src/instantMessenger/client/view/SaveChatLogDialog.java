@@ -60,7 +60,7 @@ final class SaveChatLogDialog extends JFileChooser {
 				fileWriter = new PrintWriter(chatLog);
 				chatLog.createNewFile();
 				chatLog.setWritable(true);
-				fileWriter.write(parentFrame.getChatFeedText());
+				fileWriter.write(parentFrame.getChatFeed());
 				fileWriter.flush();
 			} catch (FileNotFoundException e) {
 				JOptionPane.showMessageDialog(this, "The file you specified could not be found. The chat log was not saved.", "File Not Found", JOptionPane.ERROR_MESSAGE);

@@ -36,14 +36,14 @@ public final class ClientView {
 	 *        The message to append to the chat feed.
 	 */
 	public synchronized void appendToChatFeed(String message) {
-		clientFrame.getChatFeedPanel().appendToChatFeed(message);
+		clientFrame.appendToChatFeed(message);
 	}
 
 	/**
 	 * Clears the text in the chat feed.
 	 */
 	public void clearChatFeed() {
-		clientFrame.getChatFeedPanel().clearChatFeed();
+		clientFrame.clearChatFeed();
 	}
 
 	/**
