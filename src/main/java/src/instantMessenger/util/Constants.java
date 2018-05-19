@@ -8,7 +8,7 @@ import java.awt.Font;
  * Values and objects used globally in different parts of the project.
  *
  * @author Joshua Ciffer
- * @version 05/13/2018
+ * @version 05/18/2018
  */
 public interface Constants {
 
@@ -55,6 +55,17 @@ public interface Constants {
 	 */
 	static String disconnectedFromServerMessage(String serverIP, short serverPort) {
 		return getTime() + " - LOG: Disconnected from server " + serverIP + " on port " + serverPort + ".\n";
+	}
+
+	/**
+	 * Returns a formatted message that displays when the client changes their user name.
+	 *
+	 * @param userName
+	 *        The user name the client changed.
+	 * @return A message that displays when the client changes their user name.
+	 */
+	static String changedUserNameMessage(String userName) {
+		return getTime() + " - LOG: Changed user name to \"" + userName + "\".\n";
 	}
 
 	/**
