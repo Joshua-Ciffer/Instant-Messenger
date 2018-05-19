@@ -42,8 +42,8 @@ public final class ConnectListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		try {
-			parentDialog.getParentFrame().getParentView().getController().connect(parentDialog.getServerIP(), parentDialog.getServerPort());
-			parentDialog.getParentFrame().getParentView().getController().appendToChatFeed(connectedToServerMessage(parentDialog.getServerIP(), parentDialog.getServerPort()));
+			parentDialog.getParentFrame().getController().connect(parentDialog.getServerIP(), parentDialog.getServerPort());
+			parentDialog.getParentFrame().getController().appendToChatFeed(connectedToServerMessage(parentDialog.getServerIP(), parentDialog.getServerPort()));
 			parentDialog.dispose();
 		} catch (UnknownHostException e) {
 			JOptionPane.showMessageDialog(parentDialog, "The IP address you entered is invalid. Please enter a valid IP address.", "Invalid IP Address",

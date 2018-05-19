@@ -34,7 +34,7 @@ public final class DisconnectListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		parentFrame.getParentView().getController().disconnect();
+		parentFrame.getController().disconnect();
 	}
 
 }

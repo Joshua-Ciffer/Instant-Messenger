@@ -2,6 +2,7 @@ package src.instantMessenger.client.view;
 
 import javax.swing.JFrame;
 
+import src.instantMessenger.client.controller.ClientController;
 import src.instantMessenger.client.controller.TerminateListener;
 
 /**
@@ -69,8 +70,12 @@ public final class ClientFrame extends JFrame {
 	/**
 	 * @return The parent view that contains this frame.
 	 */
-	public ClientView getParentView() {
+	ClientView getParentView() {
 		return parentView;
+	}
+
+	public ClientController getController() {
+		return parentView.getController();
 	}
 
 	/**

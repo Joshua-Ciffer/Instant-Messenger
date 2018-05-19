@@ -33,19 +33,19 @@ public final class TerminateListener implements ActionListener, WindowListener {
 	}
 
 	/**
-	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program termiantes.
+	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program terminates.
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		parentFrame.getParentView().getController().terminate();
+		parentFrame.getController().terminate();
 	}
 
 	/**
-	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program termiantes.
+	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program terminates.
 	 */
 	@Override
 	public void windowClosing(WindowEvent a) {
-		parentFrame.getParentView().getController().terminate();
+		parentFrame.getController().terminate();
 	}
 
 	/**
@@ -53,7 +53,7 @@ public final class TerminateListener implements ActionListener, WindowListener {
 	 */
 	@Override
 	public void windowClosed(WindowEvent a) {
-		parentFrame.getParentView().getController().terminate();
+		parentFrame.getController().terminate();
 	}
 
 	@Override

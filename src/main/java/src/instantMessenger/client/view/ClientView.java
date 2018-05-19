@@ -56,7 +56,7 @@ public final class ClientView {
 	/**
 	 * @return The controller associated with this view.
 	 */
-	public ClientController getController() {
+	ClientController getController() {
 		return controller;
 	}
 

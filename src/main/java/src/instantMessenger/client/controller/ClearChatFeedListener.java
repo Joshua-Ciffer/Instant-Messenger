@@ -34,7 +34,7 @@ public final class ClearChatFeedListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		parentFrame.getParentView().clearChatFeed();
+		parentFrame.getController().clearChatFeed();
 	}
 
 }

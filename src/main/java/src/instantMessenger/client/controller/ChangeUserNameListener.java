@@ -36,8 +36,8 @@ public final class ChangeUserNameListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		parentDialog.getParentFrame().getParentView().getController().changeUserName(parentDialog.getUserName());
-		parentDialog.getParentFrame().getParentView().getController().appendToChatFeed(changedUserNameMessage(parentDialog.getUserName()));
+		parentDialog.getParentFrame().getController().changeUserName(parentDialog.getUserName());
+		parentDialog.getParentFrame().getController().appendToChatFeed(changedUserNameMessage(parentDialog.getUserName()));
 		parentDialog.dispose();
 	}
 

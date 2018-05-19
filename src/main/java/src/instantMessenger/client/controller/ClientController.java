@@ -184,4 +184,12 @@ public final class ClientController {
 		return model.getServerPort();
 	}
 
+	/**
+	 *
+	 *
+	 */
+	public void clearChatFeed() {
+		view.clearChatFeed();
+	}
+
 }
