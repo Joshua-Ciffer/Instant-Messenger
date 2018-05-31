@@ -3,6 +3,8 @@ package src.instantMessenger.client.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import src.instantMessenger.client.view.ChangeUserNameDialog;
 
 import static src.instantMessenger.util.Constants.changedUserNameMessage;;
@@ -36,9 +38,16 @@ public final class ChangeUserNameListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		parentDialog.getParentFrame().getController().changeUserName(parentDialog.getUserName());
-		parentDialog.getParentFrame().getController().appendToChatFeed(changedUserNameMessage(parentDialog.getUserName()));
-		parentDialog.dispose();
+		switch (((JButton)a.getSource()).getText()) {
+			case "Save": {
+				parentDialog.getParentFrame().getController().changeUserName(parentDialog.getUserName());
+				parentDialog.getParentFrame().getController().appendToChatFeed(changedUserNameMessage(parentDialog.getUserName()));
+			}
+			case "Cancel": {
+				parentDialog.dispose();
+				break;
+			}
+		}
 	}
 
 }
