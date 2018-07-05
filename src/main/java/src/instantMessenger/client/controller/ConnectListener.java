@@ -9,8 +9,6 @@ import javax.swing.JOptionPane;
 
 import src.instantMessenger.client.view.ConnectToServerDialog;
 
-import static src.instantMessenger.util.Constants.connectedToServerMessage;
-
 /**
  * Listens for the connect button to be clicked on a <code>ConnectToServerDialog</code>. When the connect button is clicked, the IP address and port entered
  * in the dialog box are passed to the controller. They are then saved in the client model, and a socket is created and bound to that address. A connection
@@ -43,7 +41,6 @@ public final class ConnectListener implements ActionListener {
 	public void actionPerformed(ActionEvent a) {
 		try {
 			parentDialog.getParentFrame().getController().connect(parentDialog.getServerIP(), parentDialog.getServerPort());
-			parentDialog.getParentFrame().getController().appendToChatFeed(connectedToServerMessage(parentDialog.getServerIP(), parentDialog.getServerPort()));
 			parentDialog.dispose();
 		} catch (UnknownHostException e) {
 			JOptionPane.showMessageDialog(parentDialog, "The IP address you entered is invalid. Please enter a valid IP address.", "Invalid IP Address",
