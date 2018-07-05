@@ -17,11 +17,10 @@ import src.instantMessenger.client.controller.TerminateListener;
  * The save chat log button displays a new <code>SaveChatLogDialog</code> where the user specifies a file to save their chat log. The clear chat feed button
  * clears the chat feed. The connection sub-menu contains a connect to server, and disconnect button. The connect to server button displays a new
  * <code>ConnectToServerDialog</code> where the user enters an IP and port of a server to connect to. The disconnect button terminates the connection with
- * the current server. The help sub-menu contains a help and about button. The help menu displays a <code>HelpDialog</code> and the about button displays a
- * <code>AboutDialog</code>. The exit button gracefully terminates the program.
+ * the current server. The about button displays a <code>AboutDialog</code>. The exit button gracefully terminates the program.
  * 
  * @author Joshua Ciffer
- * @version 05/09/2018
+ * @version 07/04/2018
  */
 public final class ClientMenuBar extends JMenuBar {
 
@@ -64,16 +63,6 @@ public final class ClientMenuBar extends JMenuBar {
 	 * Disconnects the client from the current server.
 	 */
 	private JMenuItem disconnectItem;
-
-	/**
-	 * Help submenu. Contains the help and about buttons.
-	 */
-	private JMenu helpMenu;
-
-	/**
-	 * Displays a <code>HelpDialog</code>.
-	 */
-	private JMenuItem helpItem;
 
 	/**
 	 * Displays a <code>AboutDialog</code>.
@@ -128,16 +117,7 @@ public final class ClientMenuBar extends JMenuBar {
 		disconnectItem.addActionListener(new DisconnectListener(parentFrame));
 		connectionMenu.add(connectToServerItem);
 		connectionMenu.add(disconnectItem);
-		helpMenu = new JMenu("Help");
-		helpItem = new JMenuItem("Help...");
-		helpItem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent a) {
-				new HelpDialog();
-			}
-		});
-		aboutItem = new JMenuItem("About...");
+		aboutItem = new JMenuItem("About");
 		aboutItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -145,13 +125,11 @@ public final class ClientMenuBar extends JMenuBar {
 				new AboutDialog(parentFrame);
 			}
 		});
-		helpMenu.add(helpItem);
-		helpMenu.add(aboutItem);
 		exitItem = new JMenuItem("Exit");
 		exitItem.addActionListener(new TerminateListener(parentFrame));
 		add(fileMenu);
 		add(connectionMenu);
-		add(helpMenu);
+		add(aboutItem);
 		add(exitItem);	// TODO: Fix exit item bounds
 		setBounds(0, 0, 500, 20);
 	}
