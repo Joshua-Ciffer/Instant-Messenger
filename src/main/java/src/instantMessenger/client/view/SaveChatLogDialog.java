@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.LookAndFeel;
 
 /**
  * A <code>SaveChatLogDialog</code> is a file saver dialog box that the user can select a file or directory to save their chat history from the chat feed panel.
@@ -45,6 +47,14 @@ final class SaveChatLogDialog extends JFileChooser {
 	 */
 	SaveChatLogDialog(ClientFrame parentFrame) {
 		super();
+		try {
+			LookAndFeel temp = UIManager.getLookAndFeel();
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			updateUI();
+			UIManager.setLookAndFeel(temp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		setDialogTitle("Save Chat Log");
 		setDialogType(JFileChooser.SAVE_DIALOG);
 		setFileSelectionMode(JFileChooser.FILES_ONLY);
