@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
 
 import src.instantMessenger.client.controller.ClearChatFeedListener;
 import src.instantMessenger.client.controller.DisconnectListener;
@@ -82,7 +83,9 @@ public final class ClientMenuBar extends JMenuBar {
 	 */
 	ClientMenuBar(ClientFrame parentFrame) {
 		super();
+		setLayout(null);
 		fileMenu = new JMenu("File");
+		fileMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		changeUserNameItem = new JMenuItem("Change User Name...");
 		changeUserNameItem.addActionListener(new ActionListener() {
 
@@ -105,6 +108,7 @@ public final class ClientMenuBar extends JMenuBar {
 		fileMenu.add(saveChatLogItem);
 		fileMenu.add(clearChatFeedItem);
 		connectionMenu = new JMenu("Connection");
+		connectionMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		connectToServerItem = new JMenuItem("Connect to Server...");
 		connectToServerItem.addActionListener(new ActionListener() {
 
@@ -118,6 +122,7 @@ public final class ClientMenuBar extends JMenuBar {
 		connectionMenu.add(connectToServerItem);
 		connectionMenu.add(disconnectItem);
 		aboutItem = new JMenuItem("About");
+		aboutItem.setHorizontalAlignment(SwingConstants.LEFT);
 		aboutItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -126,11 +131,16 @@ public final class ClientMenuBar extends JMenuBar {
 			}
 		});
 		exitItem = new JMenuItem("Exit");
+		exitItem.setHorizontalAlignment(SwingConstants.LEFT);
 		exitItem.addActionListener(new TerminateListener(parentFrame));
 		add(fileMenu);
 		add(connectionMenu);
 		add(aboutItem);
-		add(exitItem);	// TODO: Fix exit item bounds
+		add(exitItem);
+		fileMenu.setBounds(0, 0, 35, 20);
+		connectionMenu.setBounds(35, 0, 80, 20);
+		aboutItem.setBounds(115, 0, 45, 20);
+		exitItem.setBounds(160, 0, 35, 20);
 		setBounds(0, 0, 500, 20);
 	}
 
