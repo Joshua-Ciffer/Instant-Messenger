@@ -9,6 +9,7 @@ import src.instantMessenger.client.view.ClientView;
 
 import static src.instantMessenger.util.Constants.getTime;
 import static src.instantMessenger.util.Constants.disconnectedFromServerMessage;
+import static src.instantMessenger.util.Constants.connectedToServerMessage;
 import static src.instantMessenger.util.Constants.MESSAGE_NOT_SENT_MESSAGE;
 import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED_MESSAGE;
 
@@ -18,7 +19,7 @@ import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED_MESSAGE;
  * the controller to the view.
  *
  * @author Joshua Ciffer
- * @version 05/13/2018
+ * @version 07/04/2018
  */
 public final class ClientController {
 
@@ -73,9 +74,10 @@ public final class ClientController {
 	 *         Thrown if there was an error connecting to the server.
 	 */
 	public void connect(String serverIP, short serverPort) throws UnknownHostException, IOException {
-		if (model.isConnected()) {
+		if (isConnected()) {
 			disconnect();
 		}
+		appendToChatFeed(connectedToServerMessage(serverIP, serverPort));
 		model.connect(serverIP, serverPort);
 	}
 
@@ -83,11 +85,11 @@ public final class ClientController {
 	 * Disconnects the client from the current server.
 	 */
 	public void disconnect() {
-		if (model.isConnected()) {
-			view.appendToChatFeed(disconnectedFromServerMessage(getServerIP(), getServerPort()));
+		if (isConnected()) {
+			appendToChatFeed(disconnectedFromServerMessage(getServerIP(), getServerPort()));
 			model.disconnect();
 		} else {
-			view.appendToChatFeed(ALREADY_DISCONNECTED_MESSAGE);
+			appendToChatFeed(ALREADY_DISCONNECTED_MESSAGE);
 		}
 	}
 
@@ -107,12 +109,12 @@ public final class ClientController {
 	 *         Thrown if there was an error writing to the network streams.
 	 */
 	public void sendMessage(String message) throws IOException {
-		if (model.isConnected()) {
+		if (isConnected()) {
 			message = getTime() + " - " + getUserName() + ": " + message + "\n";
 			model.sendMessage(message);
-			view.appendToChatFeed(message);
+			appendToChatFeed(message);
 		} else {
-			view.appendToChatFeed(MESSAGE_NOT_SENT_MESSAGE);
+			appendToChatFeed(MESSAGE_NOT_SENT_MESSAGE);
 		}
 	}
 
@@ -124,7 +126,7 @@ public final class ClientController {
 	 *         Thrown if there was an error reading from the network stream.
 	 */
 	public String readMessage() throws IOException {
-		if (model.isConnected()) {
+		if (isConnected()) {
 			return model.readMessage();
 		} else {
 			return null;
@@ -139,6 +141,13 @@ public final class ClientController {
 	 */
 	public synchronized void appendToChatFeed(String message) {
 		view.appendToChatFeed(message);
+	}
+
+	/**
+	 * Clears the text in the chat feed panel of the view.
+	 */
+	public void clearChatFeed() {
+		view.clearChatFeed();
 	}
 
 	/**
@@ -182,14 +191,6 @@ public final class ClientController {
 	 */
 	public short getServerPort() {
 		return model.getServerPort();
-	}
-
-	/**
-	 *
-	 *
-	 */
-	public void clearChatFeed() {
-		view.clearChatFeed();
 	}
 
 }
