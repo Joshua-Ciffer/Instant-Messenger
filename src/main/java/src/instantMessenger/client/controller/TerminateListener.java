@@ -49,7 +49,7 @@ public final class TerminateListener implements ActionListener, WindowListener {
 	}
 
 	/**
-	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program termiantes.
+	 * If the client is connected to a server, they are disconnected. All threads are stopped and the program terminates.
 	 */
 	@Override
 	public void windowClosed(WindowEvent a) {
