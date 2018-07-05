@@ -68,14 +68,17 @@ public final class ClientFrame extends JFrame {
 	}
 
 	/**
+	 * @return The controller associated with this view.
+	 */
+	public ClientController getController() {
+		return parentView.getController();
+	}
+
+	/**
 	 * @return The parent view that contains this frame.
 	 */
 	ClientView getParentView() {
 		return parentView;
-	}
-
-	public ClientController getController() {
-		return parentView.getController();
 	}
 
 	/**
