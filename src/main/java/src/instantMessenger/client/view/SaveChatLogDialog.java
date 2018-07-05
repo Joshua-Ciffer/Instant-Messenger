@@ -15,7 +15,7 @@ import javax.swing.LookAndFeel;
  * A <code>SaveChatLogDialog</code> is a file saver dialog box that the user can select a file or directory to save their chat history from the chat feed panel.
  * 
  * @author Joshua Ciffer
- * @version 05/07/2018
+ * @version 07/04/2018
  */
 final class SaveChatLogDialog extends JFileChooser {
 
