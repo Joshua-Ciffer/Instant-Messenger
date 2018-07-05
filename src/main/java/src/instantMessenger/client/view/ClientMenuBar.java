@@ -152,7 +152,7 @@ public final class ClientMenuBar extends JMenuBar {
 		add(fileMenu);
 		add(connectionMenu);
 		add(helpMenu);
-		add(exitItem);
+		add(exitItem);	// TODO: Fix exit item bounds
 		setBounds(0, 0, 500, 20);
 	}
 
