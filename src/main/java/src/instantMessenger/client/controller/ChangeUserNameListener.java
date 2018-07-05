@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 
 import src.instantMessenger.client.view.ChangeUserNameDialog;
 
-import static src.instantMessenger.util.Constants.changedUserNameMessage;
-
 /**
  * This listener waits for an event created by the save button on a <code>ChangeUserNameDialog</code> window. When the save button is pressed, the user name
  * entered in the text field of the dialog is passed to the controller to then be saved in the model.
@@ -37,7 +35,6 @@ public final class ChangeUserNameListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		parentDialog.getParentFrame().getController().changeUserName(parentDialog.getUserName());
-		parentDialog.getParentFrame().getController().appendToChatFeed(changedUserNameMessage(parentDialog.getUserName()));
 		parentDialog.dispose();
 	}
 

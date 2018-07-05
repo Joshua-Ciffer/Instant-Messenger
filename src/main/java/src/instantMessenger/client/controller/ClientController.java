@@ -12,6 +12,7 @@ import static src.instantMessenger.util.Constants.disconnectedFromServerMessage;
 import static src.instantMessenger.util.Constants.connectedToServerMessage;
 import static src.instantMessenger.util.Constants.MESSAGE_NOT_SENT_MESSAGE;
 import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED_MESSAGE;
+import static src.instantMessenger.util.Constants.changedUserNameMessage;
 
 /**
  * The controller acts as a bridge between the view and model. Essentially, the model serves as the client object and the view displays the information from
@@ -169,6 +170,7 @@ public final class ClientController {
 	 *        The user name to set.
 	 */
 	public void changeUserName(String userName) {
+		appendToChatFeed(changedUserNameMessage(userName));
 		model.setUserName(userName);
 	}
 
