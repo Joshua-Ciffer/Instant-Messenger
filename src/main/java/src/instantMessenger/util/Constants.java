@@ -8,14 +8,14 @@ import java.awt.Font;
  * Values and objects used globally in different parts of the project.
  *
  * @author Joshua Ciffer
- * @version 05/18/2018
+ * @version 07/04/2018
  */
 public interface Constants {
 
 	/**
 	 * The version of this program.
 	 */
-	String PROGRAM_VERSION = "05.13.18";
+	String PROGRAM_VERSION = "07.04.18";
 
 	/**
 	 * Font used in the chat screen.
