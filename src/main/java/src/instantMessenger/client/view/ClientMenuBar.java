@@ -6,11 +6,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import src.instantMessenger.client.controller.ClearChatFeedListener;
 import src.instantMessenger.client.controller.DisconnectListener;
 import src.instantMessenger.client.controller.TerminateListener;
+
+import static src.instantMessenger.util.Constants.PROGRAM_VERSION;
 
 /**
  * This class represents the menu bar that contains drop down menus and options for the client program. The file sub-menu contains a change user name, save
@@ -18,10 +21,10 @@ import src.instantMessenger.client.controller.TerminateListener;
  * The save chat log button displays a new <code>SaveChatLogDialog</code> where the user specifies a file to save their chat log. The clear chat feed button
  * clears the chat feed. The connection sub-menu contains a connect to server, and disconnect button. The connect to server button displays a new
  * <code>ConnectToServerDialog</code> where the user enters an IP and port of a server to connect to. The disconnect button terminates the connection with
- * the current server. The about button displays a <code>AboutDialog</code>. The exit button gracefully terminates the program.
+ * the current server. The about button displays an information dialog. The exit button gracefully terminates the program.
  * 
  * @author Joshua Ciffer
- * @version 07/04/2018
+ * @version 08/16/2018
  */
 public final class ClientMenuBar extends JMenuBar {
 
@@ -127,7 +130,8 @@ public final class ClientMenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				new AboutDialog(parentFrame);
+				JOptionPane.showMessageDialog(parentFrame, ("Instant Messenger Version: " + PROGRAM_VERSION + "\nWritten By: Joshua Ciffer"
+						+ "\nGitHub Repo: https://github.com/Joshua-Ciffer/Instant-Messenger"), "About", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		exitItem = new JMenuItem("Exit");
