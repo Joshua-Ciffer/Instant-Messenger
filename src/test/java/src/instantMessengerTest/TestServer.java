@@ -7,8 +7,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-// import static src.instantMessenger.util.Constants.getTime;
 import static src.instantMessengerTest.Constants.TEST_SERVER_PORT;
+import static src.instantMessengerTest.Constants.getTime;
 
 /**
  * Simple command line test server.
@@ -28,12 +28,11 @@ public final class TestServer {
 	 */
 	public static void main(String[] args) throws IOException {
 		TestServer server = new TestServer(TEST_SERVER_PORT);
-		String incoming = "";
 		try {
 			String message = "";
 			while ((message = server.getInboundTraffic().readUTF()) != null) {
 				System.out.println(message);
-				server.getOutboundTraffic().writeUTF("SERVER ECHOED: " + message);
+				server.getOutboundTraffic().writeUTF("TEST SERVER ECHOED: " + message);
 				server.getOutboundTraffic().flush();
 			}
 		} catch (IOException e) {}
@@ -81,7 +80,7 @@ public final class TestServer {
 		this.serverPort = serverPort;
 		clientListener = new ServerSocket(serverPort);
 		clientConnection = clientListener.accept();
-		System.out.println("Client Connected: " + clientConnection.getInetAddress().getHostAddress());
+		System.out.println(getTime() + " - LOG: Client \"" + clientConnection.getInetAddress().getHostAddress() + "\" Connected.");
 		inboundTraffic = new DataInputStream(clientConnection.getInputStream());
 		outboundTraffic = new DataOutputStream(clientConnection.getOutputStream());
 		userInput = new Scanner(System.in);
