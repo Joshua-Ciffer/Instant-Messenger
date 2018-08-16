@@ -14,7 +14,7 @@ public interface Constants {
 	/**
 	 * The IP address the test server is hosting on.
 	 */
-	String TEST_SERVER_IP = "192.168.50.151";
+	String TEST_SERVER_IP = "127.0.0.1";
 
 	/**
 	 * The port the test server is hosting on.
