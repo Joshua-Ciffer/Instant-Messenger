@@ -17,7 +17,7 @@ import static src.instantMessengerTest.Constants.TEST_SERVER_PORT;
  * @author Joshua Ciffer
  * @version 04/19/2018
  */
-public final class Client {
+public final class TestClient {
 
 	/**
 	 * The main entry point of the client.
@@ -30,7 +30,7 @@ public final class Client {
 	 *         Thrown if the server IP address is invalid.
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		Client client = new Client(TEST_SERVER_IP, TEST_SERVER_PORT);
+		TestClient client = new TestClient(TEST_SERVER_IP, TEST_SERVER_PORT);
 		Thread i = new Thread() {
 
 			public void run() {
@@ -113,7 +113,7 @@ public final class Client {
 	 * @throws UnknownHostException
 	 *         Thrown if the server IP address is invalid.
 	 */
-	public Client(String serverIP, short serverPort) throws UnknownHostException, IOException {
+	public TestClient(String serverIP, short serverPort) throws UnknownHostException, IOException {
 		this.serverIP = serverIP;
 		this.serverPort = serverPort;
 		serverConnection = new Socket(serverIP, serverPort);
