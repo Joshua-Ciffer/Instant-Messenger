@@ -1,14 +1,17 @@
 package src.instantMessenger.client.model;
 
 import java.io.IOException;
+import java.net.SocketException;
 
 import src.instantMessenger.client.controller.ClientController;
+
+import static src.instantMessenger.util.Constants.SERVER_CONNECTION_LOST_MESSAGE;
 
 /**
  * Handles incoming network traffic from the server.
  *
  * @author Joshua Ciffer
- * @version 05/09/2018
+ * @version 08/16/2018
  */
 public final class NetworkTrafficHandler extends Thread {
 
@@ -40,6 +43,9 @@ public final class NetworkTrafficHandler extends Thread {
 					controller.appendToChatFeed(message);
 				}
 			}
+		} catch (SocketException e) {
+			controller.disconnect();
+			controller.appendToChatFeed(SERVER_CONNECTION_LOST_MESSAGE);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
