@@ -8,14 +8,14 @@ import java.awt.Font;
  * Values and objects used globally in different parts of the project.
  *
  * @author Joshua Ciffer
- * @version 07/04/2018
+ * @version 08/16/2018
  */
 public interface Constants {
 
 	/**
 	 * The version of this program.
 	 */
-	String PROGRAM_VERSION = "07.04.18";
+	String PROGRAM_VERSION = "08.16.18";
 
 	/**
 	 * Font used in the chat screen.
@@ -69,18 +69,24 @@ public interface Constants {
 	}
 
 	/**
-	 * The message displayed to the client when their message is not sent because they are not connected to a server.
+	 * @return The message displayed to the client when their message is not sent because they are not connected to a server.
 	 */
-	String MESSAGE_NOT_SENT_MESSAGE = getTime() + " - LOG: Message not sent, you are not connected to a server.\n";
+	static String messageNotSentMessage() {
+		return getTime() + " - LOG: Message not sent, you are not connected to a server.\n";
+	}
 
 	/**
-	 * The message displayed to the client when they click disconnect, but they already are disconnected from the server.
+	 * @return The message displayed to the client when they click disconnect, but they already are disconnected from the server.
 	 */
-	String ALREADY_DISCONNECTED_MESSAGE = getTime() + " - LOG: You are already disconnected from the server.\n";
+	static String alreadyDisconnectedMessage() {
+		return getTime() + " - LOG: You are already disconnected from the server.\n";
+	}
 
 	/**
-	 * The message displayed to the client when the connection between them and the server becomes interrupted.
+	 * @return The message displayed to the client when the connection between them and the server becomes interrupted.
 	 */
-	String SERVER_CONNECTION_LOST_MESSAGE = getTime() + " - LOG: The connection to the server has been lost.\n";
+	static String serverConnectionLostMessage() {
+		return getTime() + " - LOG: The connection to the server has been lost.\n";
+	}
 
 }
