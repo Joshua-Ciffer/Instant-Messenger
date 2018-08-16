@@ -5,7 +5,7 @@ import java.net.SocketException;
 
 import src.instantMessenger.client.controller.ClientController;
 
-import static src.instantMessenger.util.Constants.SERVER_CONNECTION_LOST_MESSAGE;
+import static src.instantMessenger.util.Constants.serverConnectionLostMessage;
 
 /**
  * Handles incoming network traffic from the server.
@@ -45,7 +45,7 @@ public final class NetworkTrafficHandler extends Thread {
 			}
 		} catch (SocketException e) {
 			controller.disconnect();
-			controller.appendToChatFeed(SERVER_CONNECTION_LOST_MESSAGE);
+			controller.appendToChatFeed(serverConnectionLostMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

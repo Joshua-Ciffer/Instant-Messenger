@@ -10,8 +10,8 @@ import src.instantMessenger.client.view.ClientView;
 import static src.instantMessenger.util.Constants.getTime;
 import static src.instantMessenger.util.Constants.disconnectedFromServerMessage;
 import static src.instantMessenger.util.Constants.connectedToServerMessage;
-import static src.instantMessenger.util.Constants.MESSAGE_NOT_SENT_MESSAGE;
-import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED_MESSAGE;
+import static src.instantMessenger.util.Constants.messageNotSentMessage;
+import static src.instantMessenger.util.Constants.alreadyDisconnectedMessage;
 import static src.instantMessenger.util.Constants.changedUserNameMessage;
 
 /**
@@ -90,7 +90,7 @@ public final class ClientController {
 			appendToChatFeed(disconnectedFromServerMessage(getServerIP(), getServerPort()));
 			model.disconnect();
 		} else {
-			appendToChatFeed(ALREADY_DISCONNECTED_MESSAGE);
+			appendToChatFeed(alreadyDisconnectedMessage());
 		}
 	}
 
@@ -115,7 +115,7 @@ public final class ClientController {
 			model.sendMessage(message);
 			appendToChatFeed(message);
 		} else {
-			appendToChatFeed(MESSAGE_NOT_SENT_MESSAGE);
+			appendToChatFeed(messageNotSentMessage());
 		}
 	}
 
