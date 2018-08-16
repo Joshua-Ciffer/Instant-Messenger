@@ -14,9 +14,9 @@ import static src.instantMessengerTest.Constants.TEST_SERVER_PORT;
  * Simple command line test server.
  *
  * @author Joshua Ciffer
- * @version 04/19/2018
+ * @version 08/16/2018
  */
-public final class Server {
+public final class TestServer {
 
 	/**
 	 * The main entry point of the server.
@@ -27,7 +27,7 @@ public final class Server {
 	 *         Thrown if an error occurs with the network streams.
 	 */
 	public static void main(String[] args) throws IOException {
-		Server server = new Server(TEST_SERVER_PORT);
+		TestServer server = new TestServer(TEST_SERVER_PORT);
 		String incoming = "";
 		try {
 			String message = "";
@@ -77,25 +77,14 @@ public final class Server {
 	 * @throws IOException
 	 *         Thrown if there is an error setting up the network streams.
 	 */
-	public Server(short serverPort) throws IOException {
+	public TestServer(short serverPort) throws IOException {
 		this.serverPort = serverPort;
 		clientListener = new ServerSocket(serverPort);
 		clientConnection = clientListener.accept();
-		System.out.println("connected");
+		System.out.println("Client Connected: " + clientConnection.getInetAddress().getHostAddress());
 		inboundTraffic = new DataInputStream(clientConnection.getInputStream());
 		outboundTraffic = new DataOutputStream(clientConnection.getOutputStream());
 		userInput = new Scanner(System.in);
-	}
-
-	/**
-	 *
-	 *
-	 * @throws IOException
-	 */
-	public void waitForConnection() throws IOException {
-		if ((clientConnection == null) || !(clientConnection.isConnected())) {
-			clientConnection = clientListener.accept();
-		}
 	}
 
 	/**
