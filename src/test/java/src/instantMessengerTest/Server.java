@@ -32,6 +32,7 @@ public final class Server {
 		try {
 			String message = "";
 			while ((message = server.getInboundTraffic().readUTF()) != null) {
+				System.out.println(message);
 				server.getOutboundTraffic().writeUTF("SERVER ECHOED: " + message);
 				server.getOutboundTraffic().flush();
 			}

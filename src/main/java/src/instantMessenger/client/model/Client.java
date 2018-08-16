@@ -1,6 +1,7 @@
 package src.instantMessenger.client.model;
 
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.io.DataInputStream;
@@ -107,12 +108,18 @@ public final class Client {
 	 *
 	 * @param message
 	 *        The message to send.
+	 * @throws SocketException
+	 *         Thrown if the server connection closes unexpectedly.
 	 * @throws IOException
 	 *         Thrown if the network stream can't be written to.
 	 */
-	public void sendMessage(String message) throws IOException {
+	public void sendMessage(String message) throws SocketException, IOException {
 		if (isConnected() && (networkOutput != null)) {
-			networkOutput.writeUTF(message);
+			try {
+				networkOutput.writeUTF(message);
+			} catch (SocketException e) {
+				throw e;
+			}
 		}
 	}
 
@@ -120,12 +127,18 @@ public final class Client {
 	 * Reads a text based message from the incoming network stream that was sent from the server.
 	 *
 	 * @return The message read from the server. Null, if no message.
+	 * @throws SocketException
+	 *         Thrown if the server connection closes unexpectedly.
 	 * @throws IOException
 	 *         Thrown if there was an error reading from the network stream.
 	 */
-	public String readMessage() throws IOException {
+	public String readMessage() throws SocketException, IOException {
 		if (isConnected() && (networkInput != null)) {
-			return networkInput.readUTF();
+			try {
+				return networkInput.readUTF();
+			} catch (SocketException e) {
+				throw e;
+			}
 		} else {
 			return null;
 		}

@@ -78,4 +78,9 @@ public interface Constants {
 	 */
 	String ALREADY_DISCONNECTED_MESSAGE = getTime() + " - LOG: You are already disconnected from the server.\n";
 
+	/**
+	 * The message displayed to the client when the connection between them and the server becomes interrupted.
+	 */
+	String SERVER_CONNECTION_LOST_MESSAGE = getTime() + " - LOG: The connection to the server has been lost.\n";
+
 }

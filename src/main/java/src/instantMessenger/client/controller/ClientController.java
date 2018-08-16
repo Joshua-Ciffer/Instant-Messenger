@@ -1,6 +1,7 @@
 package src.instantMessenger.client.controller;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
 import src.instantMessenger.client.model.Client;
@@ -13,6 +14,7 @@ import static src.instantMessenger.util.Constants.connectedToServerMessage;
 import static src.instantMessenger.util.Constants.MESSAGE_NOT_SENT_MESSAGE;
 import static src.instantMessenger.util.Constants.ALREADY_DISCONNECTED_MESSAGE;
 import static src.instantMessenger.util.Constants.changedUserNameMessage;
+import static src.instantMessenger.util.Constants.SERVER_CONNECTION_LOST_MESSAGE;
 
 /**
  * The controller acts as a bridge between the view and model. Essentially, the model serves as the client object and the view displays the information from
@@ -111,9 +113,14 @@ public final class ClientController {
 	 */
 	public void sendMessage(String message) throws IOException {
 		if (isConnected()) {
-			message = getTime() + " - " + getUserName() + ": " + message + "\n";
-			model.sendMessage(message);
-			appendToChatFeed(message);
+			try {
+				message = getTime() + " - " + getUserName() + ": " + message + "\n";
+				model.sendMessage(message);
+				appendToChatFeed(message);
+			} catch (SocketException e) {
+				model.disconnect();
+				appendToChatFeed(SERVER_CONNECTION_LOST_MESSAGE);
+			}
 		} else {
 			appendToChatFeed(MESSAGE_NOT_SENT_MESSAGE);
 		}
@@ -128,7 +135,12 @@ public final class ClientController {
 	 */
 	public String readMessage() throws IOException {
 		if (isConnected()) {
-			return model.readMessage();
+			try {
+				return model.readMessage();
+			} catch (SocketException e) {
+				model.disconnect();
+				return SERVER_CONNECTION_LOST_MESSAGE;
+			}
 		} else {
 			return null;
 		}
