@@ -79,7 +79,7 @@ public interface Constants {
 	 * @return The message displayed to the client when they click disconnect, but they already are disconnected from the server.
 	 */
 	static String alreadyDisconnectedMessage() {
-		return getTime() + " - LOG: You are already disconnected from the server.\n";
+		return getTime() + " - LOG: You are already disconnected from a server.\n";
 	}
 
 	/**

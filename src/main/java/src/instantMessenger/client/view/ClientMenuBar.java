@@ -130,8 +130,9 @@ public final class ClientMenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent a) {
-				JOptionPane.showMessageDialog(parentFrame, ("Instant Messenger Version: " + PROGRAM_VERSION + "\nWritten By: Joshua Ciffer"
-						+ "\nGitHub Repo: https://github.com/Joshua-Ciffer/Instant-Messenger"), "About", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(parentFrame, ("<html>Instant Messenger Version: " + PROGRAM_VERSION + "<br>Written By: Joshua Ciffer"
+						+ "<br>GitHub Repo: <a href=\"https://github.com/Joshua-Ciffer/Instant-Messenger\">https://github.com/Joshua-Ciffer/Instant-Messenger</a></html>"),
+						"About", JOptionPane.INFORMATION_MESSAGE);	// TODO: Make link clickable??
 			}
 		});
 		exitItem = new JMenuItem("Exit");
