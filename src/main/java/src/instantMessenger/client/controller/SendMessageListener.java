@@ -40,7 +40,7 @@ public final class SendMessageListener implements ActionListener {
 				parentComponent.getParentFrame().getController().sendMessage(parentComponent.getMessageFieldText());
 				parentComponent.clearMessageTextField();
 			}
-		} catch (IOException e) {
+		} catch (IOException e) {	// TODO: Handle these IOExceptions in a nicer way.
 			e.printStackTrace();
 		}
 	}

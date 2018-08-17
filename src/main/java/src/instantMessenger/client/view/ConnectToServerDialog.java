@@ -63,7 +63,7 @@ public final class ConnectToServerDialog extends JDialog {
 	 * @param parentFrame
 	 *        The parent frame that created this dialog.
 	 */
-	ConnectToServerDialog(ClientFrame parentFrame) {
+	ConnectToServerDialog(ClientFrame parentFrame) {	// TODO: Networking bugs.
 		super(parentFrame, "Connect to Server");
 		this.parentFrame = parentFrame;
 		setResizable(false);

@@ -62,7 +62,7 @@ public final class ClientFrame extends JFrame {
 		add(messageFieldPanel);
 		setSize(500, 300);
 		clientMenuBar.setBounds(0, 0, 500, 20);
-		chatFeedPanel.setBounds(0, 20, 485, 195);
+		chatFeedPanel.setBounds(0, 20, 485, 195);	// TODO: Un-hardcode all UI bounds?
 		messageFieldPanel.setBounds(0, 215, 500, 100);
 		setVisible(true);
 	}

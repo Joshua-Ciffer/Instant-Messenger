@@ -41,7 +41,7 @@ public final class MessageFieldPanel extends JPanel {
 	/**
 	 * Sends the message that is entered in the message text field.
 	 */
-	private JButton sendButton;
+	private JButton sendButton; 	// TODO: Get this to work by pressing enter.
 
 	/**
 	 * Constructs a new <code>MessageFieldPanel</code> panel.
@@ -60,9 +60,11 @@ public final class MessageFieldPanel extends JPanel {
 		messageTextField.setFont(CHAT_FONT);
 		messageFieldPane = new JScrollPane(messageTextField);
 		messageFieldPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		messageFieldPane.getVerticalScrollBar().setAutoscrolls(true);
 		messageFieldPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		sendButton = new JButton("Send");
 		sendButton.addActionListener(new SendMessageListener(this));
+		parentFrame.getRootPane().setDefaultButton(sendButton);
 		add(messageFieldPane);
 		add(sendButton);
 		setSize(500, 100);
